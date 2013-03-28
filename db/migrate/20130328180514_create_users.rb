@@ -6,9 +6,11 @@ class CreateUsers < ActiveRecord::Migration
       t.string :email
       t.string :password_digest
       t.string :location
+      t.string :education
       t.integer :lat
       t.integer :lon
-      t.string :education
+      t.integer :interest_id
+      t.integer :total
       t.timestamps
     end
   end

@@ -3,7 +3,7 @@ class CreateCareerTable < ActiveRecord::Migration
     create_table :careers do |t|
       t.string :code
       t.string :title
-      t.string :zone
+      t.string :zone_num
       t.integer :zone_id
       t.integer :task_id
       t.integer :tool_id
