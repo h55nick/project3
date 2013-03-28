@@ -4,4 +4,5 @@ Project3::Application.routes.draw do
   post '/login' => 'session#create'
   delete '/login' => 'session#destroy'
   resources :users, :only => [:new, :create, :show]
+  resources :careers, :only => [:show]
 end
