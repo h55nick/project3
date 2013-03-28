@@ -1,0 +1,4 @@
+var height = $(window).height() * 0.5
+$('.splash').animate({height:height}, 400);
+$('#user_form').empty().append('<%=j render(:partial => 'form') %>');
+$('#user_form').find('.index-form').delay(400).fadeIn();

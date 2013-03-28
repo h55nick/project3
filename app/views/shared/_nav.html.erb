@@ -1,0 +1,37 @@
+<div class="row">
+  <div class="large-12 columns">
+<nav class="top-bar">
+  <ul class="title-area">
+    <!-- Title Area -->
+    <li class="name">
+      <h1><%= link_to("Project3", root_path) %></h1>
+    </li>
+    <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+    <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+  </ul>
+
+  <section class="top-bar-section">
+
+    <!-- Right Nav Section -->
+    <ul class="left">
+      <% if @auth && @auth.is_admin %>
+        <li><%= link_to("Dashboard", @auth ) %></li>
+        <li><%= link_to("Manage Flights", '#' ) %></li>
+        <li><%= link_to("Manage Planes", '#' ) %></li>
+      <% end %>
+    </ul>
+
+    <ul class="right">
+      <% if @auth %>
+        <li><%= link_to("My Flights", @auth ) %></li>
+        <li><%= link_to("Find Flights", '#' ) %></li>
+        <li><%= link_to("Logout", login_path, :method => 'delete') %></li>
+      <% else %>
+        <li><%= link_to("Create Account", new_user_path, :remote => true ) %></li>
+        <li><%= link_to("Login", login_path, :remote => true ) %></li>
+      <% end %>
+    </ul>
+  </section>
+</nav>
+</div>
+</div>

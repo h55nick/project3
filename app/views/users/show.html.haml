@@ -1,0 +1,35 @@
+.row
+  .large-8.columns
+    .row
+      .large-6.columns.dash-block
+        %h1 Joe Smith
+        %p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque voluptates doloribus dolore repellendus itaque nesciunt unde aperiam voluptate animi labore id sit eos quibusdam.
+      .large-6.columns.dash-block
+        %ul
+          %h1{ style: 'text-align: center;'} Top 3 Interests
+          %li
+            %h3 Realistic
+          %li
+            %h3 Conventional
+          %li
+            %h3 Social
+
+  .large-4.columns.dash-block
+    %canvas{ id: 'canvas', height: 250, width: 250 }
+      %script
+        var doughnutData = [
+        { value: 80, color:"#F7464A" },
+        { value : 50, color : "#46BFBD" },
+        { value : 100, color : "#FDB45C" },
+        { value : 40, color : "#949FB1" },
+        { value : 120, color : "#4D5360" }
+        ];
+
+        var myDoughnut = new Chart(document.getElementById("canvas").getContext("2d")).Doughnut(doughnutData);
+.row.color
+  .large-4.columns
+    %h1 Explore
+  .large-4.columns
+    %h1 Search
+  .large-4.columns
+    %h1 Apply
