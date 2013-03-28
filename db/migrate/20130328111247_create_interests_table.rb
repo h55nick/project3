@@ -9,6 +9,7 @@ class CreateInterestsTable < ActiveRecord::Migration
       t.integer :conventional
       t.integer :artistic
       t.integer :career_id
+      t.integer :user_id
       t.timestamps
     end
   end
