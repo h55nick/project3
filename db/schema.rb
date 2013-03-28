@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(:version => 20130328205005) do
   create_table "careers", :force => true do |t|
     t.string   "code"
     t.string   "title"
-    t.string   "zone"
+    t.string   "zone_num"
     t.integer  "zone_id"
     t.integer  "task_id"
     t.integer  "tool_id"
@@ -52,11 +52,25 @@ ActiveRecord::Schema.define(:version => 20130328205005) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "users", :force => true do |t|
+    t.string   "first"
+    t.string   "last"
+    t.string   "email"
+    t.string   "password_digest"
+    t.string   "location"
+    t.integer  "lat"
+    t.integer  "lon"
+    t.string   "education"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
+
   create_table "zones", :force => true do |t|
     t.string   "title"
     t.text     "education"
     t.text     "experience"
     t.text     "training"
+    t.integer  "career_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end

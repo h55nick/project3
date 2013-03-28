@@ -5,6 +5,7 @@ class CreateZonesTable < ActiveRecord::Migration
       t.text :education
       t.text :experience
       t.text :training
+      t.integer :career_id
       t.timestamps
     end
   end

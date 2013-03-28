@@ -1,6 +1,6 @@
 class Career < ActiveRecord::Base
   #Base
-  attr_accessible :code,:title,:zone
+  attr_accessible :code,:title,:zone_num
   #Adjunct.
   attr_accessible :interest_id
 
@@ -8,6 +8,7 @@ class Career < ActiveRecord::Base
   has_one :interest
   has_one :trend
   has_one :interest
+  has_one :zone
 
 
 def add_interests
