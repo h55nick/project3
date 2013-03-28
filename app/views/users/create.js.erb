@@ -1,0 +1,5 @@
+<% if @user.valid? %>
+  $('#user_form').empty().after('<p>You have successfully created an account!</p>');
+<% else %>
+  $('#user_form').empty().append('<%=j render(:partial => 'form') %>');
+<% end %>

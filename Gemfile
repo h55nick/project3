@@ -6,11 +6,13 @@ gem 'jquery-rails'
 gem 'haml'
 gem 'bcrypt-ruby'
 gem 'httparty'
+gem 'thin'
 
 group :assets do
   gem 'sass-rails'
   gem 'coffee-rails'
   gem 'uglifier'
+  gem 'zurb-foundation', '~> 4.0.0'
 end
 
 group :development, :test do

@@ -12,4 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require_tree .
+//= require foundation
+//= require 'basic.js'
+//= require 'chart-master/Chart.min.js'
+$(document).foundation();
