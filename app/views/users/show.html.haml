@@ -2,11 +2,17 @@
   .large-8.columns
     .row
       .large-6.columns.dash-block
-        %h1 Joe Smith
-        %p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque voluptates doloribus dolore repellendus itaque nesciunt unde aperiam voluptate animi labore id sit eos quibusdam.
+        %h1= "#{@user.first} #{@user.last}"
+        %h3
+          = @user.email
+        %h3
+          Some College
+        %h3
+          %strong Completed:
+          57%
       .large-6.columns.dash-block
         %ul
-          %h1{ style: 'text-align: center;'} Top 3 Interests
+          %h1 Top 3 Interests
           %li
             %h3 Realistic
           %li
@@ -22,14 +28,49 @@
         { value : 50, color : "#46BFBD" },
         { value : 100, color : "#FDB45C" },
         { value : 40, color : "#949FB1" },
+        { value : 90, color : "#46BFBD" },
         { value : 120, color : "#4D5360" }
         ];
 
         var myDoughnut = new Chart(document.getElementById("canvas").getContext("2d")).Doughnut(doughnutData);
-.row.color.wide-color
-  .large-4.columns
-    %h1 Explore
-  .large-4.columns
-    %h1 Search
-  .large-4.columns
-    %h1 Apply
+.wide-color
+  .row
+    .large-4.columns
+      .sectional-block
+        .sectional{ style: "background: url('/assets/mtn.svg') no-repeat center; background-size: 100%;" }
+          %h3 Explore
+    .large-4.columns
+      .sectional-block
+        .sectional{ style: "background: url('/assets/eye.svg') no-repeat center; background-size: 100%;" }
+          %h3 Search
+    .large-4.columns
+      .sectional-block
+        .sectional{ style: "background: url('/assets/pencil.svg') no-repeat center; background-size: 100%;" }
+          %h3 Apply
+
+.row
+  .large-6.columns
+    %h1 Notifications
+    .alert-box.alert
+      %p Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+    .alert-box.alert
+      %p Omnis aperiam excepturi facilis non quisquam odio minus perferendis.
+    .alert-box.alert
+      %p Id aperiam labore totam qui sint et minus dignissimos natus ipsum repudiandae rerum.
+  .large-6.columns.dash-block
+    %h1 Jobs in your area
+    %ul
+      %li
+        %h3
+          = link_to("Computer Programmer", '#')
+        %h6 at Twitter
+      %li
+        %h3
+          = link_to("Graphic Designer", '#')
+        %h6 at Warby Parker
+      %li
+        %h3
+          = link_to("Computer Programmer", '#')
+        %h6 at General Assembly
+
+<a href="http://thenounproject.com/noun/mountain/#icon-No10574" target="_blank">Mountain</a> designed by <a href="http://thenounproject.com/alexfuller" target="_blank">Alex Fuller</a> from The Noun Project

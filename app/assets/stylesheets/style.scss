@@ -8,11 +8,38 @@ h1, h2, h3, h4, h5, h6 { font-family: 'Lato', sans-serif; font-weight: 300; colo
 h1 { font-weight: 900; }
 .dash-block {
   padding: 10px;
+  text-align: center;
+  h6 { margin-top: 0; }
   canvas { display: block; margin: 0 auto; }
   ul { list-style: none; }
   li { text-align: center; }
 }
 
 .wide-color {
-  background: #4D5360;
+  margin: 50px 0;
+  @media only screen and (min-width: 1280px) { background: #efefef; }
+  .sectional-block {
+    background: #efefef;
+    padding: 10px;
+    -webkit-transition: all 0.3s linear;
+    -moz-transition: all 0.3s linear;
+    -ms-transition: all 0.3s linear;
+    -o-transition: all 0.3s linear;
+    transition: all 0.3s linear;
+    &.hover { background: #333; }
+    .sectional {
+      display: table;
+      min-height: 300px;
+      width: 100%;
+      h3 {
+        display: table-cell;
+        vertical-align: middle;
+        text-align: center;
+        color: #fff;
+        font-weight: 900;
+        text-transform: uppercase;
+        letter-spacing: 0.3em;
+      }
+    }
+  }
 }
