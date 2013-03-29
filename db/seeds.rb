@@ -29,5 +29,6 @@ Interest.delete_all
 seed_stable_database
 
 ### All "normal seeding" should go under this line: ###
-
+u1 = User.create(email:"h55nick@gmail.com",first:"Nick",password:'a',password_confirmation:'a')
+u1.interest = Interest.create(social: 26,investigative:35, realistic:26,enterprising:25,conventional:23,artistic:25)
 
