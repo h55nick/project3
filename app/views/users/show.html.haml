@@ -22,14 +22,16 @@
         { value : 50, color : "#46BFBD" },
         { value : 100, color : "#FDB45C" },
         { value : 40, color : "#949FB1" },
+        { value : 90, color : "#46BFBD" },
         { value : 120, color : "#4D5360" }
         ];
 
         var myDoughnut = new Chart(document.getElementById("canvas").getContext("2d")).Doughnut(doughnutData);
-.row.color.wide-color
-  .large-4.columns
-    %h1 Explore
-  .large-4.columns
-    %h1 Search
-  .large-4.columns
-    %h1 Apply
+.wide-color
+  .row.color
+    .large-4.columns
+      %h3 Explore
+    .large-4.columns
+      %h3 Search
+    .large-4.columns
+      %h3 Apply

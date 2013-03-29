@@ -1,5 +1,6 @@
 Project3::Application.routes.draw do
   root :to => 'welcome#index'
+  get '/simple' => 'welcome#simple'
   get '/login' => 'session#new'
   post '/login' => 'session#create'
   delete '/login' => 'session#destroy'
