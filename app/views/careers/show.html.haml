@@ -1,2 +1,20 @@
-HELLO!
-=@career.zone_num
+.row
+  .large-12.columns
+    .career
+      ='Career:'
+      .title=@career.title
+      .interests
+      .zone
+        %h3
+        ='Zone Info:'
+        .znum= @career.zone_num
+        .ztitle= @career.zone.title
+        .zeducation= @career.zone.education
+        .zexperience= @career.zone.experience
+        .zexperience= @career.zone.training
+  .large-4.columns.dash-block
+    %canvas{ id: 'canvas', height: 250, width: 250 }
+      %script
+        ="var doughnutData = [{ value: #{@career.interest.investigative}, color:'#F7464A' },{ value : #{@career.interest.realistic}, color : '#46BFBD' },{ value : #{@career.interest.enterprising}, color : '#FDB45C' },{ value : #{@career.interest.conventional}, color : '#949FB1' },{ value : #{@career.interest.artistic}, color : '#4D5360' }];"
+        var myDoughnut = new Chart(document.getElementById('canvas').getContext('2d')).Doughnut(doughnutData);
+

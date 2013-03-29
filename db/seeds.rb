@@ -29,6 +29,9 @@ end
 # seed_stable_database
 
 ### All "normal seeding" should go under this line: ###
+u1 = User.create(email:"h55nick@gmail.com",first:"Nick",password:'a',password_confirmation:'a')
+u1.interest = Interest.create(social: 26,investigative:35, realistic:26,enterprising:25,conventional:23,artistic:25)
+
 User.delete_all
 Question.delete_all
 user = User.create( email: 'x', password: 'x', password_confirmation: 'x', first: 'Bryan', last: 'Reid', education: "Bachelor's Degree", location: 'New York, NY', total: 0 )
@@ -40,4 +43,5 @@ Question.ask('Conduct a musical choir', 'artistic')
 Question.ask('Give career guidance to people', 'social')
 Question.ask('Sell restaurant franchises to individuals', 'enterprising')
 Question.ask('Generate the monthly payroll checks for an office', 'conventional')
+
 
