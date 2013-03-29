@@ -13,4 +13,22 @@ class UsersController < ApplicationController
       @user = User.new
     end
   end
+
+  def show
+    @user = User.find( params[:id] )
+  end
+
+  def answer_question
+
+    params[:questions].each do |answer|
+      q = Question.find(answer[0])
+      # CHANGE TO AUTH LATER
+      User.first.questions << q
+      Question.up_score(User.first, q.topic, answer[1][0].to_i)
+      User.first.total += 5
+      User.first.save
+    end
+    binding.pry
+
+  end
 end

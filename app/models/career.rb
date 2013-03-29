@@ -1,3 +1,23 @@
+# == Schema Information
+#
+# Table name: careers
+#
+#  id           :integer          not null, primary key
+#  code         :string(255)
+#  title        :string(255)
+#  zone_num     :string(255)
+#  zone_id      :integer
+#  task_id      :integer
+#  tool_id      :integer
+#  knowledge_id :integer
+#  skill_id     :integer
+#  ability_id   :integer
+#  activity_id  :integer
+#  context_id   :integer
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#
+
 class Career < ActiveRecord::Base
   #Base
   attr_accessible :code,:title,:zone_num
