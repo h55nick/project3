@@ -7,7 +7,6 @@
 #  title        :string(255)
 #  zone_num     :string(255)
 #  zone_id      :integer
-#  task_id      :integer
 #  tool_id      :integer
 #  knowledge_id :integer
 #  skill_id     :integer
@@ -16,11 +15,12 @@
 #  context_id   :integer
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
+#  tasks        :text
 #
 
 class Career < ActiveRecord::Base
   #Base
-  attr_accessible :code,:title,:zone_num
+  attr_accessible :code,:title,:zone_num, :tasks
   #Adjunct.
   attr_accessible :interest_id
 
@@ -28,11 +28,14 @@ class Career < ActiveRecord::Base
   has_and_belongs_to_many :users
   has_one :interest
   has_one :trend
-  has_one :interest
   has_one :zone
 
-  def keywords
-
+  def add_tasks
+    self.tasks.present? ? self.task.delete : ""
+    url =  'http://www.onetonline.org/' + "link/table/details/tk/"+self.code+"/Tasks_"+self.code+".csv?fmt=csv&amp;s=IM&amp;t=-10"
+    tasks = HTTParty.get(url).split(/\r?\n/).map!{|d| d.split(",")[2..-1].join(",")}[1..3].join(" ").gsub(/\"/,'')
+    self.tasks = tasks
+    self.save
   end
 
   def add_interests
@@ -55,6 +58,7 @@ class Career < ActiveRecord::Base
     self.zone = Zone.create(params)
     self.save
   end
+
   def add_trends
     onet_base_url =  'http://www.onetonline.org/'
     trend_url = onet_base_url + "link/details/"+ self.code
@@ -63,8 +67,5 @@ class Career < ActiveRecord::Base
     self.trend = Trend.create(params)
     self.save
   end
-
-
-
 
 end

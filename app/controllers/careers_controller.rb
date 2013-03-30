@@ -17,6 +17,11 @@ class CareersController < ApplicationController
     @careers = @auth.careers
   end
 
+  # def test_search
+  #   @careers = @auth ? @auth.get_top_careers(5) : Career.all[1..5]
+  #   render :search
+  # end
+
   def search_jobs
     c = Career.find(params[:id])
     url =[]

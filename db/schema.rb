@@ -11,14 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130330160457) do
+ActiveRecord::Schema.define(:version => 20130330162121) do
+>>>>>>> d42d5d1a3168d5ccb9dab365b759db9dea6e43d1
 
   create_table "careers", :force => true do |t|
     t.string   "code"
     t.string   "title"
     t.string   "zone_num"
     t.integer  "zone_id"
-    t.integer  "task_id"
     t.integer  "tool_id"
     t.integer  "knowledge_id"
     t.integer  "skill_id"
@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(:version => 20130330160457) do
     t.integer  "context_id"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
+    t.text     "tasks"
   end
 
   create_table "careers_users", :id => false, :force => true do |t|
