@@ -15,7 +15,7 @@
                 .content
                   = render partial: 'career_summary', locals: { career: career }
           .small-2.columns
-            .job-nav.remove{ :'data-career-id' => career.id }= image_tag('/assets/no.svg')
+            .job-nav.remove{ :'data-career-id' => career.id }= image_tag('/assets/no.svg', :class=>'imglink')
     - else
       %h1 You haven't selected any careers!
       %p
