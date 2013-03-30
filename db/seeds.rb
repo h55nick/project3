@@ -18,8 +18,10 @@ def seed_stable_database()
        c.add_interests
        c.add_zone
        c.add_trends
+       c.add_tasks #This is a property of Career but needs to be pulled from another csv table
         if Career.all.length == 30
-          binding.pry
+          #binding.pry
+          return
         end
       end
     end
@@ -29,6 +31,8 @@ end
 ##### THIS WILL EFFECTIVELY WIPE THE "STATIC" DATABASE #####
  Career.delete_all
  Interest.delete_all
+ Zone.delete_all
+ Trend.delete_all
 # ## Create database
  seed_stable_database
 
