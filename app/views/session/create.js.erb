@@ -3,13 +3,4 @@
 <% else %>
   $('#user_form').fadeOut(400);
   $('.nav-wrapper').empty().append('<%=j render partial: 'shared/nav' %>');
-  $('.splash').animate({height:149}, 400);
-  $('.splash').find('h1').fadeOut(400);
-  <% if @auth.is_admin %>
-    $('#dashboard').empty().append('<%=j render partial: 'home/admin_dashboard' %>');
-    $('.admin-dash').delay(400).fadeIn(400);
-  <% else %>
-    $('#dashboard').empty().append('<%=j render partial: 'home/user_dashboard' %>');
-    $('.user-dash').delay(400).fadeIn(400);
-  <% end %>
 <% end %>
