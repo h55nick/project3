@@ -27,6 +27,8 @@ class Basic
 
 window.filter_job_zone = (e) ->
   e.preventDefault()
+  $(this).parent().parent().children().removeClass('active')
+  $(this).parent().addClass('active')
   zone = $(this).text()
   settings =
     dataType: 'script'
