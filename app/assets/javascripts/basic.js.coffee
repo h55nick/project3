@@ -5,6 +5,7 @@ class Basic
     $('.sectional-block').find('h3').hide()
     $('.sectional-block').on('mouseenter', Basic.colorize_block)
     $('.sectional-block').on('mouseleave', Basic.colorize_block)
+    $('.sectional-block').on('click', Basic.go_to_page)
 
   @cancel_form: (e) ->
     e.preventDefault()
@@ -20,6 +21,9 @@ class Basic
   @colorize_block: ->
     $(this).toggleClass('hover')
     $(this).parent().find('h3').fadeToggle(300)
+
+  @go_to_page: ->
+    if $(this).find('h3').text() == 'Explore' then document.location.href = '/careers';
 
 window.filter_job_zone = (e) ->
   e.preventDefault()

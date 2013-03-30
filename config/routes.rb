@@ -15,7 +15,7 @@ Project3::Application.routes.draw do
   resources :careers, :only => [:index, :show] do
     collection do
       get :zone_filter
-      get '/search_view' => 'careers#test_search'
+      get '/mycareer' => 'careers#mycareers'
       get '/search/' => 'careers#search_jobs'
     end
   end

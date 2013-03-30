@@ -21,7 +21,10 @@ class User < ActiveRecord::Base
   has_secure_password
   attr_accessible :education, :email, :first, :last, :lat, :location, :lon, :password, :password_confirmation, :total
   has_and_belongs_to_many :questions
+  has_and_belongs_to_many :careers
   has_one :interest
+
+  before_save :initalize_user
 
   def ready_for_graph
     self.total > 25
@@ -40,7 +43,11 @@ class User < ActiveRecord::Base
     t2 = k[v.index(v.sort[-1])]
     t3 = k[v.index(v.sort[-3])]
     return [t1,t2,t3]
+  end
 
+  private
+  def initalize_user
+    self.interest = Interest.create
   end
 
 end

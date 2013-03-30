@@ -13,9 +13,13 @@
       .large-4.columns.dash-block
         %ul
           %h2 Top 3 Interests
-          - @user.get_top_interests.each do |interest|
+          - if @user.ready_for_graph
+            - @user.get_top_interests.each do |interest|
+              %li
+                %h4= interest.capitalize
+          - else
             %li
-              %h4= interest.capitalize
+              %h4 Need more data!
 
       .large-4.columns.dash-block
         %canvas{ id: 'canvas', height: 250, width: 250 }

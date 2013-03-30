@@ -1,0 +1,24 @@
+.row
+  .large-10.columns.large-centered
+    %h1 My Careers
+    %p
+      Take action on the careers you've selected, or find more by
+      = link_to('exploring', careers_path)
+      careers by your top interests.
+    - if @careers.length > 0
+      - @careers.each do |career|
+        .section-container.accordion{ :'data-section' => 'accordion' }
+          %section.section
+            %p.title= link_to(career.title.gsub('"',''), '#')
+            .content
+              %p Lorem ipsum Consequat consequat occaecat ullamco id eu incididunt elit adipisicing occaecat dolor eu fugiat qui consequat commodo qui eu tempor sint mollit non consectetur in deserunt labore veniam ex deserunt non eu magna in culpa ullamco nisi quis anim occaecat Excepteur.
+      /   .career
+      /     .title.inline= career.title
+      /     .link.inline=link_to("Jobs",search_careers_path(:id =>career.id),remote:true, :class=>'button tiny')
+      / .columns.large-6
+      /   #related_jobs
+    - else
+      %h1 You haven't selected any careers!
+      %p
+        = link_to('Explore', careers_path)
+        careers and save a few to view them here. We can then show you jobs that match up with that career.

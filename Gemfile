@@ -7,7 +7,6 @@ gem 'haml'
 gem 'bcrypt-ruby'
 gem 'httparty'
 gem 'thin'
-gem 'uri'
 
 group :assets do
   gem 'sass-rails'
