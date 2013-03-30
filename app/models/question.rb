@@ -23,17 +23,17 @@ class Question < ActiveRecord::Base
   def Question.up_score(owner, interest, value)
     case interest
     when 'realistic'
-      owner.interest.realistic += value
+      owner.interest.update_attributes( realistic: (owner.interest.realistic + value))
     when 'investigative'
-      owner.interest.investigative += value
+      owner.interest.update_attributes( investigative: (owner.interest.investigative + value))
     when 'social'
-      owner.interest.social += value
+      owner.interest.update_attributes( social: (owner.interest.social + value))
     when 'conventional'
-      owner.interest.conventional += value
+      owner.interest.update_attributes( conventional: (owner.interest.conventional + value))
     when 'artistic'
-      owner.interest.artistic += value
+      owner.interest.update_attributes( artistic: (owner.interest.artistic + value))
     when 'enterprising'
-      owner.interest.enterprising += value
+      owner.interest.update_attributes( enterprising: (owner.interest.enterprising + value))
     end
     owner.interest.save
     owner.update_attributes( total: (owner.total + 5)) if owner.is_a?(User)

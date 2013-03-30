@@ -6,6 +6,8 @@ class UsersController < ApplicationController
   def create
     user = User.new( params[:user] )
     if user.save
+      user.interest = Interest.create
+      usr.save
       @user = user
     else
       flash[:notice] = 'Something went wrong.'

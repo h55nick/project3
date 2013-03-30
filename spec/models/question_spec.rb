@@ -31,8 +31,8 @@ describe Question do
     it 'should work with users to update their score' do
       user = User.create( email: 'x', password: 'x', password_confirmation: 'x', first: 'Bryan', last: 'Reid', education: "Bachelor's Degree", location: 'New York, NY', total: 0 )
       user.interest = Interest.create( realistic: 0, investigative: 0, social: 0, artistic: 0, conventional: 0, enterprising: 0)
-      Question.up_score(user, 'social', 4)
-      expect(user.interest.social).to eq 4
+      Question.up_score(user, 'realistic', 4)
+      expect(user.interest.realistic).to eq 4
       expect(user.total).to eq 5
     end
   end
