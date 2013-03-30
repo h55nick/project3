@@ -24,8 +24,6 @@ class User < ActiveRecord::Base
   has_and_belongs_to_many :careers
   has_one :interest
 
-  before_save :initalize_user
-
   def ready_for_graph
     self.total > 25
   end
@@ -41,11 +39,6 @@ class User < ActiveRecord::Base
     k = {social:i.social,investigative:i.investigative,realistic:i.realistic,enterprising:i.enterprising,conventional:i.conventional,artistic:i.artistic}
     k = k.sort_by { |n, a| a }.reverse.map!{|p| p[0].to_s}
     return k
-  end
-
-  private
-  def initalize_user
-    self.interest = Interest.create
   end
 
 end

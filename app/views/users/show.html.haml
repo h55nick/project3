@@ -14,7 +14,7 @@
         %ul
           %h2 Top 3 Interests
           - if @user.ready_for_graph
-            - @user.get_top_interests.each do |interest|
+            - @user.get_top_interests[0..2].each do |interest|
               %li
                 %h4= interest.capitalize
           - else
