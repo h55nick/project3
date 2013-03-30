@@ -15,6 +15,8 @@ Project3::Application.routes.draw do
   resources :careers, :only => [:index, :show] do
     collection do
       get :zone_filter
+      post :add_career
+      delete :remove_career
       get '/mycareer' => 'careers#mycareers'
       get '/search/' => 'careers#search_jobs'
     end

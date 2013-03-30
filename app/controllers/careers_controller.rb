@@ -9,8 +9,9 @@ class CareersController < ApplicationController
   end
 
   def zone_filter
-    # NEED ZONES TO CONNECT TO MULTIPLE CAREERS OTHERWISE THIS WILL SUCK
-    @careers = Career.where( zone_num: "1" )
+    # filters by zone on /careers
+    params[:zone] == 'All' ? @careers = Career.all : @careers = Career.where( zone_num: params[:zone] )
+    @start = 0
   end
 
   def mycareers
@@ -21,6 +22,19 @@ class CareersController < ApplicationController
   #   @careers = @auth ? @auth.get_top_careers(5) : Career.all[1..5]
   #   render :search
   # end
+
+  def add_career
+    # this adds the clicked career to the users careers
+    @picked = Career.find( params[:career_id].to_i )
+    @auth.careers << @picked
+  end
+
+  def remove_career
+    # this removes the clicked career to the users careers
+    @picked = Career.find( params[:career_id].to_i )
+    @auth.careers = @auth.careers - [@picked]
+    @auth.save
+  end
 
   def search_jobs
     c = Career.find(params[:id])

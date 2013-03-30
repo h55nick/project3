@@ -14,6 +14,8 @@
       %dd= link_to('3', '#')
       %dd= link_to('4', '#')
       %dd= link_to('5', '#')
-    = render partial: 'index'
+    .career-list
+      = render partial: 'index'
 %script
   $('.sub-nav').on('click', 'dd a', window.filter_job_zone)
+  $('.job-nav.add').on('click', saver.save_career_to_user)

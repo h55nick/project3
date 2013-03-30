@@ -20,8 +20,8 @@ def seed_stable_database()
        c.add_trends
        c.add_tasks #This is a property of Career but needs to be pulled from another csv table
         if Career.all.length == 30
-          #binding.pry
-          return
+          binding.pry
+          # return
         end
       end
     end
