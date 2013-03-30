@@ -1,32 +1,33 @@
 .row
-  .large-8.columns
+  .large-10.columns.large-centered
     .row
-      .large-6.columns.dash-block
-        %h1= "#{@user.first} #{@user.last}"
-        %h3
+      .large-4.columns.dash-block
+        %h2= "#{@user.first} #{@user.last}"
+        %h4
           = @user.email
-        %h3
+        %h4
           = @user.education
-        %h3
+        %h4
           %strong Completed:
           = "#{((@user.questions.length.to_f / Question.all.length) * 100).to_i}%"
-      .large-6.columns.dash-block
+      .large-4.columns.dash-block
         %ul
-          %h1 Top 3 Interests
+          %h2 Top 3 Interests
           - @user.get_top_interests.each do |interest|
             %li
-              %h3= interest.capitalize
+              %h4= interest.capitalize
 
-  .large-4.columns.dash-block
-    %canvas{ id: 'canvas', height: 250, width: 250 }
-      - if @user.ready_for_graph
-        %script
-          = "var doughnutData = [ { value: #{@user.interest.realistic}, color: '#FF2151' }, { value: #{@user.interest.investigative}, color: '#FCE9C8' }, { value: #{@user.interest.artistic}, color: '#FF7B29' }, { value: #{@user.interest.social}, color: '#8B77B5' }, { value: #{@user.interest.enterprising}, color: '#FFC629' }, { value: #{@user.interest.conventional}, color: '#4D5360' } ];"
-      - else
-        %script
-          var doughnutData = [ { value: 10, color: '#EFEFEF' }, { value: 10, color: '#DDDDDD' }, { value: 10, color: '#EFEFEF' }, { value: 10, color: '#DDDDDD' }, { value: 10, color: '#EFEFEF' }, { value: 10, color: '#DDDDDD' } ];
-      %script
-        var myDoughnut = new Chart(document.getElementById("canvas").getContext("2d")).Doughnut(doughnutData);
+      .large-4.columns.dash-block
+        %canvas{ id: 'canvas', height: 250, width: 250 }
+          - if @user.ready_for_graph
+            %script
+              = "var doughnutData = [ { value: #{@user.interest.realistic}, color: '#FF2151' }, { value: #{@user.interest.investigative}, color: '#FCE9C8' }, { value: #{@user.interest.artistic}, color: '#FF7B29' }, { value: #{@user.interest.social}, color: '#8B77B5' }, { value: #{@user.interest.enterprising}, color: '#FFC629' }, { value: #{@user.interest.conventional}, color: '#4D5360' } ];"
+          - else
+            %script
+              var doughnutData = [ { value: 10, color: '#EFEFEF' }, { value: 10, color: '#DDDDDD' }, { value: 10, color: '#EFEFEF' }, { value: 10, color: '#DDDDDD' }, { value: 10, color: '#EFEFEF' }, { value: 10, color: '#DDDDDD' } ];
+          %script
+            var myDoughnut = new Chart(document.getElementById("canvas").getContext("2d")).Doughnut(doughnutData);
+/ .down-button
 .wide-color
   .row
     .large-4.columns
@@ -41,30 +42,31 @@
       .sectional-block
         .sectional{ style: "background: url('/assets/pencil.svg') no-repeat center; background-size: 100%;" }
           %h3 Apply
-
-.row
-  .large-6.columns
-    %h1 Notifications
-    .alert-box.alert
-      %p Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-    .alert-box.alert
-      %p Omnis aperiam excepturi facilis non quisquam odio minus perferendis.
-    .alert-box.alert
-      %p Id aperiam labore totam qui sint et minus dignissimos natus ipsum repudiandae rerum.
-  .large-6.columns.dash-block
-    %h1 Jobs in your area
-    %ul
-      %li
-        %h3
-          = link_to("Computer Programmer", '#')
-        %h6 at Twitter
-      %li
-        %h3
-          = link_to("Graphic Designer", '#')
-        %h6 at Warby Parker
-      %li
-        %h3
-          = link_to("Computer Programmer", '#')
-        %h6 at General Assembly
-
-<a href="http://thenounproject.com/noun/mountain/#icon-No10574" target="_blank">Mountain</a> designed by <a href="http://thenounproject.com/alexfuller" target="_blank">Alex Fuller</a> from The Noun Project
+.wide-color-below
+  .row
+    .large-6.columns
+      %h1 Notifications
+      %ol{ style: 'padding: 0 20px;'}
+        %li
+          %p Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+        %li
+          %p Omnis aperiam excepturi facilis non quisquam odio minus perferendis.
+        %li
+          %p Id aperiam labore totam qui sint et minus dignissimos natus ipsum repudiandae rerum.
+    .large-6.columns
+      %h1 Jobs in your area
+      %ul{ style: 'list-style: none;'}
+        %li
+          %h3
+            = link_to("Computer Programmer", '#')
+            at Twitter
+        %li
+          %h3
+            = link_to("Graphic Designer", '#')
+            at Warby Parker
+        %li
+          %h3
+            = link_to("Computer Programmer", '#')
+            at General Assembly
+  %script
+    window.resizer.user_dashboard()

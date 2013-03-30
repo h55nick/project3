@@ -2,18 +2,15 @@
   <div class="large-8 columns large-centered nav-border">
     <h1 class="hero">PROJECT<span>3</span></h1>
     <nav class="top-bar">
-
       <section class="top-bar-section">
 
         <!-- Right Nav Section -->
         <ul>
           <% if @auth %>
-            <li><%= link_to("Link 1", @auth ) %></li>
-            <li><%= link_to("Link 2", '#' ) %></li>
-            <li><%= link_to("Link 3", '#' ) %></li>
-          <% end %>
-          <% if @auth %>
-            <li><%= link_to("Dashboard", @auth ) %></li>
+            <li><%= link_to("My Future", @auth ) %></li>
+            <li><%= link_to("My Career", '#' ) %></li>
+            <li><%= link_to("My Jobs", '#' ) %></li>
+            <li><%= link_to("My Dashboard", @auth ) %></li>
             <li><%= link_to("Logout", login_path, :method => 'delete') %></li>
           <% else %>
             <li><%= link_to("Create Account", new_user_path, :remote => true ) %></li>

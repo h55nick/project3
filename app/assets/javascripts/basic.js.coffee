@@ -21,5 +21,13 @@ class Basic
     $(this).toggleClass('hover')
     $(this).parent().find('h3').fadeToggle(300)
 
+window.filter_job_zone = (e) ->
+  e.preventDefault()
+  zone = $(this).text()
+  settings =
+    dataType: 'script'
+    method: 'GET'
+    url: "/careers/zone_filter?zone=#{zone}"
+  $.ajax(settings)
 
 $(document).ready(Basic.document_ready)

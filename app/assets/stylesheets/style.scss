@@ -16,14 +16,25 @@ body { font-family: 'Lato', sans-serif; }
 
 /// TOP SHELF
 .top-bar {
-  background: #FFF;
+  background: none;
+  text-align: center;
   border-top: 1px solid #DDD;
   border-bottom: 1px solid #DDD;
-  li a, li a:not(.button) {
-    background: #FFF; color: #3e454c;
-    &:hover { color: #222; background: #efefef; }
+  & ul {
+    background: none;
+    display: inline-block;
+    & li a:not(.button) {
+      background: none;
+      color: lighten($body-font-color, 10%);
+      font-weight: 400;
+      text-transform: uppercase;
+      &:hover {
+        background: $purple;
+        color: #FFF;
+      }
+    }
   }
-  &.top-bar-section ul { display: block; margin: 0 auto; }
+  .center { margin: 0 auto; }
 }
 
 /// DASHING DASHBOARDS
@@ -36,11 +47,25 @@ body { font-family: 'Lato', sans-serif; }
   li { text-align: center; }
 }
 
+.down-button {
+  position: fixed;
+  bottom: 0;
+  right: 50px;
+  height: 50px;
+  width: 50px;
+  background: $yellow;
+}
+
+.wide-color-below {
+  padding: 20px 0;
+  background: darken($yellow, 5%);
+  & a { color: $grey; }
+}
 .wide-color {
-  margin: 50px 0;
-  @media only screen and (min-width: 1280px) { background: #efefef; }
+  margin: 50px 0 0;
+  background: $yellow;
   .sectional-block {
-    background: #efefef;
+    background: $yellow;
     padding: 10px;
     -webkit-transition: all 0.3s linear;
     -moz-transition: all 0.3s linear;
@@ -62,5 +87,14 @@ body { font-family: 'Lato', sans-serif; }
         letter-spacing: 0.3em;
       }
     }
+  }
+}
+
+/// JOB NAVIGATION
+.job-nav {
+  text-align: center;
+  img {
+    height: 50px;
+    float: left;
   }
 }

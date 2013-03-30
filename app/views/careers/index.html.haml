@@ -1,0 +1,19 @@
+.row
+  .large-10.columns.large-centered
+    %h1 Find the career that suits you
+    %p Below you will find careers that match your results from the <strong>Holland Code Personality Test,</strong> ordered by your top interest through your third. Scroll over each to see a bit of information about the career and use the buttons to save your careers for viewing later or remove from your list.
+    %p Click on one of the <strong>Education</strong> filters to only show careers that match that level of education. An Education level of 1 means you need little to no training while a 5 can include advanced degrees.
+
+.row
+  .large-10.columns.large-centered
+    %dl.sub-nav
+      %dt Education Level:
+      %dd.active= link_to('All', '#')
+      %dd= link_to('1', '#')
+      %dd= link_to('2', '#')
+      %dd= link_to('3', '#')
+      %dd= link_to('4', '#')
+      %dd= link_to('5', '#')
+    = render partial: 'index'
+%script
+  $('.sub-nav').on('click', 'dd a', window.filter_job_zone)
