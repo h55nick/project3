@@ -1,8 +1,0 @@
-.row
-  .columns.large-6
-    -@careers.each do |career|
-      .career
-        .title.inline= career.title
-        .link.inline=link_to("Jobs",search_careers_path(:id =>career.id),remote:true, :class=>'button tiny')
-  .columns.large-6
-    #related_jobs
