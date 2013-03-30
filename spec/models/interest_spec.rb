@@ -17,15 +17,16 @@
 #  question_id   :integer
 #
 
-class Interest < ActiveRecord::Base
-  #Base
-  attr_accessible :t3, :social,:investigative,:realistic,:enterprising,:conventional,:artistic
+require 'spec_helper'
 
-  #Adjunct
-  attr_accessible :career_id
-
-  #Relationships
-  has_one :career
-  has_one :user
-  has_one :question
+describe Question do
+  describe '.ready_for_graph' do
+    it 'should return true only if all questions have answered at least 30 points worth of questions' do
+      user = User.create( email: 'x', password: 'x', password_confirmation: 'x', first: 'Bryan', last: 'Reid', education: "Bachelor's Degree", location: 'New York, NY' )
+      user.interest = Interest.create
+      expect(user.ready_for_graph).to be false
+      user.update_attributes( total: 35 )
+      expect(user.ready_for_graph).to be true
+    end
+  end
 end

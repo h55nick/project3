@@ -6,32 +6,26 @@
         %h3
           = @user.email
         %h3
-          Some College
+          = @user.education
         %h3
           %strong Completed:
-          57%
+          = "#{((@user.questions.length.to_f / Question.all.length) * 100).to_i}%"
       .large-6.columns.dash-block
         %ul
           %h1 Top 3 Interests
-          %li
-            %h3 Realistic
-          %li
-            %h3 Conventional
-          %li
-            %h3 Social
+          - @user.get_top_interests.each do |interest|
+            %li
+              %h3= interest.capitalize
 
   .large-4.columns.dash-block
     %canvas{ id: 'canvas', height: 250, width: 250 }
+      - if @user.ready_for_graph
+        %script
+          = "var doughnutData = [ { value: #{@user.interest.realistic}, color: '#FF2151' }, { value: #{@user.interest.investigative}, color: '#FCE9C8' }, { value: #{@user.interest.artistic}, color: '#FF7B29' }, { value: #{@user.interest.social}, color: '#8B77B5' }, { value: #{@user.interest.enterprising}, color: '#FFC629' }, { value: #{@user.interest.conventional}, color: '#4D5360' } ];"
+      - else
+        %script
+          var doughnutData = [ { value: 10, color: '#EFEFEF' }, { value: 10, color: '#DDDDDD' }, { value: 10, color: '#EFEFEF' }, { value: 10, color: '#DDDDDD' }, { value: 10, color: '#EFEFEF' }, { value: 10, color: '#DDDDDD' } ];
       %script
-        var doughnutData = [
-        { value: 80, color:"#F7464A" },
-        { value : 50, color : "#46BFBD" },
-        { value : 100, color : "#FDB45C" },
-        { value : 40, color : "#949FB1" },
-        { value : 90, color : "#46BFBD" },
-        { value : 120, color : "#4D5360" }
-        ];
-
         var myDoughnut = new Chart(document.getElementById("canvas").getContext("2d")).Doughnut(doughnutData);
 .wide-color
   .row

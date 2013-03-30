@@ -2,7 +2,7 @@
   .row{ :style => 'padding: 15px 30px 30px;'}
     .large-12.columns
       %h2 Login
-      = form_tag '/login', :remote => true do
+      = form_tag '/login' do
         = label_tag 'Email'
         = text_field_tag 'email', nil, :autofocus => true
         = label_tag 'Password'

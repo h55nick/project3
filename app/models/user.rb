@@ -12,7 +12,7 @@
 #  lat             :integer
 #  lon             :integer
 #  interest_id     :integer
-#  total           :integer
+#  total           :integer          default(0)
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #
@@ -24,10 +24,15 @@ class User < ActiveRecord::Base
   has_one :interest
 
 
+def ready_for_graph
+  self.total > 25
+end
+
 def get_top_careers(n)
   vals = self.get_top_interests
   c = Career.readonly.joins(:interest).order("#{vals[0]} DESC").order("#{vals[1]} DESC").order("#{vals[2]} DESC").limit(n)
 end
+
 def get_top_interests()
   i = self.interest
   k = ["social","investigative","realistic","enterprising","conventional","artistic"]

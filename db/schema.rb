@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130329023126) do
+ActiveRecord::Schema.define(:version => 20130329235220) do
 
   create_table "careers", :force => true do |t|
     t.string   "code"
@@ -31,16 +31,16 @@ ActiveRecord::Schema.define(:version => 20130329023126) do
 
   create_table "interests", :force => true do |t|
     t.string   "t3"
-    t.integer  "social"
-    t.integer  "investigative"
-    t.integer  "realistic"
-    t.integer  "enterprising"
-    t.integer  "conventional"
-    t.integer  "artistic"
+    t.integer  "social",        :default => 0
+    t.integer  "investigative", :default => 0
+    t.integer  "realistic",     :default => 0
+    t.integer  "enterprising",  :default => 0
+    t.integer  "conventional",  :default => 0
+    t.integer  "artistic",      :default => 0
     t.integer  "career_id"
     t.integer  "user_id"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.datetime "created_at",                   :null => false
+    t.datetime "updated_at",                   :null => false
     t.integer  "question_id"
   end
 
@@ -76,9 +76,9 @@ ActiveRecord::Schema.define(:version => 20130329023126) do
     t.integer  "lat"
     t.integer  "lon"
     t.integer  "interest_id"
-    t.integer  "total"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.integer  "total",           :default => 0
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
   end
 
   create_table "zones", :force => true do |t|

@@ -1,11 +1,32 @@
 @import url(http://fonts.googleapis.com/css?family=Lato:300,400,700,900);
+@import url(http://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700);
 
 @import "custom_settings.scss";
 @import "foundation.scss";
 
 /// TYPOGRAPHY
-h1, h2, h3, h4, h5, h6 { font-family: 'Lato', sans-serif; font-weight: 300; color: $body-font-color; }
-h1 { font-weight: 900; }
+h1, h2, h3, h4, h5, h6 { font-family: 'PT Sans Narrow', sans-serif; font-weight: 400; color: $body-font-color; }
+h1 {
+  &.hero { font-size: 5em; text-align: center; }
+  span { font-weight: 700; }
+}
+
+/// BODY LANGUAGE
+body { font-family: 'Lato', sans-serif; }
+
+/// TOP SHELF
+.top-bar {
+  background: #FFF;
+  border-top: 1px solid #DDD;
+  border-bottom: 1px solid #DDD;
+  li a, li a:not(.button) {
+    background: #FFF; color: #3e454c;
+    &:hover { color: #222; background: #efefef; }
+  }
+  &.top-bar-section ul { display: block; margin: 0 auto; }
+}
+
+/// DASHING DASHBOARDS
 .dash-block {
   padding: 10px;
   text-align: center;

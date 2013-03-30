@@ -5,6 +5,7 @@ class UsersController < ApplicationController
 
   def create
     user = User.new( params[:user] )
+    user.interest = Interest.create
     if user.save
       @user = user
     else
@@ -22,13 +23,9 @@ class UsersController < ApplicationController
 
     params[:questions].each do |answer|
       q = Question.find(answer[0])
-      # CHANGE TO AUTH LATER
-      User.first.questions << q
-      Question.up_score(User.first, q.topic, answer[1][0].to_i)
-      User.first.total += 5
-      User.first.save
+      @auth.questions << q
+      Question.up_score(@auth, q.topic, answer[1][0].to_i)
     end
-    binding.pry
 
   end
 end

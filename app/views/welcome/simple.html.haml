@@ -2,7 +2,8 @@
   .large-12.columns
     = form_tag(answer_users_path) do
       - Question.all.each do |question|
-        = label_tag "#{question.q}", nil, for: "#{question.id}[]"
-        - [1,2,3,4,5].each do |val|
-          = radio_button_tag "questions[#{question.id}][]", val
+        - unless @auth.questions.include?(question)
+          = label_tag "#{question.q}", nil, for: "#{question.id}[]"
+          - [1,2,3,4,5].each do |val|
+            = radio_button_tag "questions[#{question.id}][]", val
       = submit_tag

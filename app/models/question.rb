@@ -36,14 +36,15 @@ class Question < ActiveRecord::Base
       owner.interest.enterprising += value
     end
     owner.interest.save
+    owner.update_attributes( total: (owner.total + 5)) if owner.is_a?(User)
   end
 
   def topic
-    return 'realistic' if self.interest.realistic.present?
-    return 'investigative' if self.interest.investigative.present?
-    return 'social' if self.interest.social.present?
-    return 'conventional' if self.interest.conventional.present?
-    return 'artistic' if self.interest.artistic.present?
-    return 'enterprising' if self.interest.enterprising.present?
+    return 'realistic' if self.interest.realistic > 0
+    return 'investigative' if self.interest.investigative > 0
+    return 'social' if self.interest.social > 0
+    return 'conventional' if self.interest.conventional > 0
+    return 'artistic' if self.interest.artistic > 0
+    return 'enterprising' if self.interest.enterprising > 0
   end
 end
