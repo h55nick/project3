@@ -30,6 +30,10 @@ class Career < ActiveRecord::Base
   has_one :interest
   has_one :zone
 
+def keywords
+
+end
+
 
 def add_interests
     self.interest.present? ? self.interest.delete : ""
@@ -47,7 +51,7 @@ def add_zone
   onet_base_url =  'http://www.onetonline.org/'
   zonscv = "link/table/details/jz/" + self.code + "/Job_Zone_"+ self.code+"47-5041-00.csv?fmt=csv"
   z = HTTParty.get(onet_base_url  + zonscv).split(/\r?\n/).map!{|d| d.split(",")}
-  params ={title:z[1][1],education:z[2][1],experience:z[3][1..-1].join(","),training:z[4][1..-1].join(',')}
+  params ={title:z[1][1],education:z[2][1].gsub(/\"/,''),experience:z[3][1..-1].join(",").gsub(/\"/,''),training:z[4][1..-1].join(',').gsub(/\"/,'')}
   self.zone = Zone.create(params)
   self.save
 end
@@ -55,7 +59,7 @@ def add_trends
   onet_base_url =  'http://www.onetonline.org/'
   trend_url = onet_base_url + "link/details/"+ self.code
   s = Nokogiri::HTML(HTTParty.get(trend_url)).xpath('//table').last.text().split(/\r?\n/)
-  params = {wages:s[1],growth:s[5..6].join(""),openings:s[9],industries:s[11]}
+  params = {wages:s[1].gsub(/\"/,''),growth:s[5..6].join("").gsub(/\"/,''),openings:s[9].gsub(/\"/,''),industries:s[11].gsub(/\"/,'')}
   self.trend = Trend.create(params)
   self.save
 end

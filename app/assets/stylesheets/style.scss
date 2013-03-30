@@ -47,6 +47,7 @@ body { font-family: 'Lato', sans-serif; }
   li { text-align: center; }
 }
 
+<<<<<<< HEAD
 .down-button {
   position: fixed;
   bottom: 0;
@@ -61,6 +62,9 @@ body { font-family: 'Lato', sans-serif; }
   background: darken($yellow, 5%);
   & a { color: $grey; }
 }
+=======
+
+>>>>>>> 789a20b0924d39eadd30239d593a842542ed0f3e
 .wide-color {
   margin: 50px 0 0;
   background: $yellow;

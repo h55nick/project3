@@ -14,6 +14,10 @@
 //= require jquery_ujs
 //= require foundation
 //= require 'basic.js'
+<<<<<<< HEAD
 //= require 'screen_sizing.js'
+=======
+//= require search
+>>>>>>> 789a20b0924d39eadd30239d593a842542ed0f3e
 //= require 'chart-master/Chart.min.js'
 $(document).foundation();
