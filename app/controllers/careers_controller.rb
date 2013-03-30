@@ -5,7 +5,12 @@ class CareersController < ApplicationController
   end
 
   def show
-    @career = Career.find(params[:id])
+    if @auth
+      @career = Career.find(params[:id])
+      @response = Job.search(@auth,@career)
+    else
+      redirect_to root_path
+    end
   end
 
   def zone_filter
@@ -23,19 +28,6 @@ class CareersController < ApplicationController
   # end
 
   def search_jobs
-    c = Career.find(params[:id])
-    url =[]
-    qp = c.title
-    location = "new york, NYC"
-    limit = "100"
-    url << "http://api.indeed.com/ads/apisearch?publisher=6311669519978301"
-    url << "&q="+ qp
-    url << "&l=" + location
-    url << "&format=json"
-    url << "&radius="
-    url << "&limit="+ limit
-    url << "&co=us"
-    url << "&chnl=&userip=1.2.3.4&useragent=Mozilla/%2F4.0%28Firefox%29&v=2"
-    @response = HTTParty.get(URI.escape(url.join()))
+    Job.search(@auth,Career.find(params[:id]))
   end
 end

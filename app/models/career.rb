@@ -29,7 +29,14 @@ class Career < ActiveRecord::Base
   has_one :interest
   has_one :trend
   has_one :zone
+def get_top_interests()
+    i = self.interest
+    k = {social:i.social,investigative:i.investigative,realistic:i.realistic,enterprising:i.enterprising,conventional:i.conventional,artistic:i.artistic}
+    k = k.sort_by { |n, a| a }.reverse.map!{|p| p[0].to_s}
+    return k
+end
 
+########  DATABASE ADDING  FUNCTIONS ########
   def add_tasks
     self.tasks.present? ? self.task.delete : ""
     url =  'http://www.onetonline.org/' + "link/table/details/tk/"+self.code+"/Tasks_"+self.code+".csv?fmt=csv&amp;s=IM&amp;t=-10"
@@ -37,7 +44,6 @@ class Career < ActiveRecord::Base
     self.tasks = tasks
     self.save
   end
-
   def add_interests
     self.interest.present? ? self.interest.delete : ""
     onet_base_url =  'http://www.onetonline.org/'
@@ -48,7 +54,6 @@ class Career < ActiveRecord::Base
     self.interest = Interest.create(params)
     self.save #double check the save
   end
-
   def add_zone
     #career.zone.present? ? career.zone.delete : ""
     onet_base_url =  'http://www.onetonline.org/'
@@ -58,7 +63,6 @@ class Career < ActiveRecord::Base
     self.zone = Zone.create(params)
     self.save
   end
-
   def add_trends
     onet_base_url =  'http://www.onetonline.org/'
     trend_url = onet_base_url + "link/details/"+ self.code

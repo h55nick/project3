@@ -1,20 +1,56 @@
 .row
   .large-12.columns
-    .career
-      ='Career:'
-      .title=@career.title
-      .interests
-      .zone
-        %h3
-        ='Zone Info:'
-        .znum= @career.zone_num
-        .ztitle= @career.zone.title
-        .zeducation= @career.zone.education
-        .zexperience= @career.zone.experience
-        .zexperience= @career.zone.training
-  .large-4.columns.dash-block
-    %canvas{ id: 'canvas', height: 250, width: 250 }
-      %script
-        ="var doughnutData = [{ value: #{@career.interest.investigative}, color:'#F7464A' },{ value : #{@career.interest.realistic}, color : '#46BFBD' },{ value : #{@career.interest.enterprising}, color : '#FDB45C' },{ value : #{@career.interest.conventional}, color : '#949FB1' },{ value : #{@career.interest.artistic}, color : '#4D5360' }];"
-        var myDoughnut = new Chart(document.getElementById('canvas').getContext('2d')).Doughnut(doughnutData);
+    .row
+      .large-10.centered.columns.title
+        %h4=@career.title
+    .row
+      .large-7.columns
+        %h5 Description:
+        %p=@career.tasks
+        %h5 Education:
+        %p= @career.zone.education
+      .large-5.centered.columns
+        %h5 Wages:
+        -t = @career.trend
+        =t.wages
+        %h5 Growth:
+        =t.growth
+        %h5 Openings:
+        =t.openings
+        %h5 Industries
+        =t.industries
+    .row
+      .large-12.columns
+        -if @response
+          .searched
+            %h3
+              .params.inline=@response['query']
+              .location.inline=@response['location']
+          %table
+            %th Title
+            %th Company
+            %th Location
+            %th Posted
+            %th Description
+            %th
+            -@response['results'].each do |job|
+              %tr
+                %td=job['jobtitle']
+                %td=job['company']
+                %td=job['formattedLocation']
+                %td=time_ago_in_words(job['date']) + " a go."
+                %td!=job['snippet'].gsub("<b>","")
+                %td!=link_to("View",job['url'],:id=>job['jobkey'] ,:target=>"_blank",:class=>'button tiny')
 
+
+
+  /   .interests
+  /   .zone
+  /     %h3
+  /     ='Zone Info:'
+  /     .znum= @career.zone_num
+  /     .ztitle= @career.zone.title
+  /     .z
+  /     .zexperience= @career.zone.experience
+  /     .zexperience= @career.zone.training
+  / .large-4.columns.dash-block
