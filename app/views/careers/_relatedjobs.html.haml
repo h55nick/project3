@@ -1,0 +1,17 @@
+.row
+  .large-12.columns
+    -if @response
+      .searched
+        .params.inline=@response['query']
+        .location.inline=@response['location']
+      %table
+        -@response['results'].each do |job|
+          %tr
+            %td=job['jobtitle']
+            %td=job['company']
+            %td=job['formattedLocation']
+            %td=job['date']
+            %td!=job['snippet'].gsub("<b>","")
+            %td!=link_to("Check it Out!",job['url'],:id=>job['jobkey'] ,:target=>"_blank")
+    -else
+      There has been a mistake. Sorry. Please try again.

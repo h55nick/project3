@@ -14,5 +14,6 @@
 //= require jquery_ujs
 //= require foundation
 //= require 'basic.js'
+//= require search
 //= require 'chart-master/Chart.min.js'
 $(document).foundation();
