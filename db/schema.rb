@@ -12,7 +12,6 @@
 # It's strongly recommended to check this file into your version control system.
 
 ActiveRecord::Schema.define(:version => 20130330162121) do
->>>>>>> d42d5d1a3168d5ccb9dab365b759db9dea6e43d1
 
   create_table "careers", :force => true do |t|
     t.string   "code"
