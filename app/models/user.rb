@@ -30,6 +30,7 @@ class User < ActiveRecord::Base
     self.total > 25
   end
 
+
   def get_top_careers(n = 10)
     vals = self.get_top_interests
     c = Career.readonly.joins(:interest).order("#{vals[0]} DESC").order("#{vals[1]} DESC").order("#{vals[2]} DESC").limit(n)
@@ -37,12 +38,9 @@ class User < ActiveRecord::Base
 
   def get_top_interests()
     i = self.interest
-    k = ["social","investigative","realistic","enterprising","conventional","artistic"]
-    v = [i.social,i.investigative,i.realistic,i.enterprising,i.conventional,i.artistic]
-    t1 = k[v.index(v.max)]
-    t2 = k[v.index(v.sort[-1])]
-    t3 = k[v.index(v.sort[-3])]
-    return [t1,t2,t3]
+    k = {social:i.social,investigative:i.investigative,realistic:i.realistic,enterprising:i.enterprising,conventional:i.conventional,artistic:i.artistic}
+    k = k.sort_by { |n, a| a }.reverse.map!{|p| p[0].to_s}
+    return k
   end
 
   private
