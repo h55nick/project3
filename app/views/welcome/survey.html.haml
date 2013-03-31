@@ -1,0 +1,14 @@
+.survey-wrapper
+  .survey-question
+    .question
+      %span= @question.q
+    %ul
+      %li Dislike
+      %li.choice 1
+      %li.choice 2
+      %li.choice 3
+      %li.choice 4
+      %li.choice 5
+      %li Like
+%script
+  $(document).ready(window.survey.document_ready)

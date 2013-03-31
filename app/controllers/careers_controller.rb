@@ -44,4 +44,11 @@ class CareersController < ApplicationController
   def search_jobs
     Job.search(@auth,Career.find(params[:id]))
   end
+
+  def job
+    binding.pry
+    job = Job.new
+    job.transform_to_job( params[:url] )
+    @auth.jobs << job
+  end
 end

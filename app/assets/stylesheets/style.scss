@@ -99,3 +99,34 @@ body { font-family: 'Lato', sans-serif; }
     float: left;
   }
 }
+
+/// SURVEY STYLES
+.survey-wrapper {
+  display: table;
+  width: 100%;
+  text-align: center;
+  & div.survey-question {
+    display: table-cell;
+    vertical-align: middle;
+    padding: 0 25%;
+    min-height: 300px;
+    span {
+      display: none;
+      font-size: 3em;
+    }
+    & ul {
+      list-style: none;
+      margin: 25px 0;
+      li {
+        display: inline-block;
+        &.choice {
+          background: $purple;
+          padding: 25px 35px;
+          margin: 15px;
+          font-weight: 900;
+          color: #FFF;
+        }
+      }
+    }
+  }
+}

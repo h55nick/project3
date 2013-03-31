@@ -17,5 +17,6 @@
 //= require 'screen_sizing.js'
 //= require 'saving.js'
 //= require 'search.js'
+//= require 'survey.js'
 //= require 'chart-master/Chart.min.js'
 $(document).foundation();

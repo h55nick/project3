@@ -41,8 +41,7 @@
                 %td=time_ago_in_words(job['date']) + " a go."
                 %td!=job['snippet'].gsub("<b>","")
                 %td!=link_to("View",job['url'],:id=>job['jobkey'] ,:target=>"_blank",:class=>'button tiny')
-
-
+                %td= link_to("Save", job_careers_path, remote: true, method: 'POST')
 
   /   .interests
   /   .zone
