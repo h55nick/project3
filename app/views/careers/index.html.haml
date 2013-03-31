@@ -9,12 +9,12 @@
     %dl.sub-nav
       %dt Education Level:
       %dd.active= link_to('All', '#')
-      %dd= link_to('1', '#')
-      %dd= link_to('2', '#')
-      %dd= link_to('3', '#')
-      %dd= link_to('4', '#')
-      %dd= link_to('5', '#')
-    .career-list
+      %dd= link_to('1', '#list',:title=>"Select a Different Education Level")
+      %dd= link_to('2', '#list',:title=>"Select a Different Education Level")
+      %dd= link_to('3', '#list',:title=>"Select a Different Education Level")
+      %dd= link_to('4', '#list',:title=>"Select a Different Education Level")
+      %dd= link_to('5', '#list',:title=>"Select a Different Education Level")
+    #list.career-list
       = render partial: 'index'
 %script
   $('.sub-nav').on('click', 'dd a', window.filter_job_zone)

@@ -9,6 +9,6 @@
             = render partial: 'career_summary', locals: { career: career }
     .small-2.columns
       - if !@auth.careers.include?(career)
-        .job-nav.add{ :'data-career-id' => career.id }= image_tag('/assets/bookmark.svg',:class=>'imglink')
+        .job-nav.add{ :'data-career-id' => career.id, :title=>"Add to My Careers"}= image_tag('/assets/bookmark.svg',:class=>'imglink')
       -else
         .job-nav.added{:'data-career-id'=>career.id}= image_tag('assets/')

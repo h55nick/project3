@@ -1,11 +1,20 @@
-%p= career.tasks
 %p
-  %strong Outlook:
-  = career.trend.growth
-  %br
-  %strong Wages:
-  = career.trend.wages
-  %br
-  %strong Top Industry:
-  = career.trend.industries
-%p= link_to('>>> Find More Jobs from Indeed', career_path(career))
+  = career.tasks
+.row
+  .columns.large-8
+    %p
+      %strong Outlook:
+      %span{:class=>'growth'+career.growth_num.to_s}= career.trend.growth
+    %p
+      %strong Wages:
+      = career.trend.wages
+  .columns.large-4
+    -career.get_top_interests(3).each do |int|
+      .interestbox{:class=> int}=int.capitalize
+.row
+  .columns.large-12
+    %p
+      %strong Top Industry:
+      = career.trend.industries
+    %p
+      = link_to('>>> Find More Jobs from Indeed', career_path(career))

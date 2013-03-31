@@ -30,19 +30,19 @@ class Career < ActiveRecord::Base
   has_one :trend
   has_one :zone
 
-def get_top_interests()
+def get_top_interests(length = 7)
     i = self.interest
     k = {social:i.social,investigative:i.investigative,realistic:i.realistic,enterprising:i.enterprising,conventional:i.conventional,artistic:i.artistic}
     k = k.sort_by { |n, a| a }.reverse.map!{|p| p[0].to_s}
-    return k
+    return k[0..length-1]
 end
 
 def growth_num
       z = self.trend ? self.trend.growth.split(' ').first.downcase  : "average"
     case z
-      when "slower"
-        return 1
       when "little"
+        return 1
+      when "slower"
         return 2
       when "average"
         return 3
