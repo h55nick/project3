@@ -29,6 +29,7 @@ class Career < ActiveRecord::Base
   has_one :interest
   has_one :trend
   has_one :zone
+
 def get_top_interests()
     i = self.interest
     k = {social:i.social,investigative:i.investigative,realistic:i.realistic,enterprising:i.enterprising,conventional:i.conventional,artistic:i.artistic}
@@ -36,7 +37,27 @@ def get_top_interests()
     return k
 end
 
+def growth_num
+      z = self.trend ? self.trend.growth.split(' ').first.downcase  : "average"
+    case z
+      when "slower"
+        return 1
+      when "little"
+        return 2
+      when "average"
+        return 3
+      when "faster"
+        return 4
+      when 'much'
+        return 5
+      else
+        return 3
+    end
+end
+
 ########  DATABASE ADDING  FUNCTIONS ########
+
+
   def add_tasks
     self.tasks.present? ? self.task.delete : ""
     url =  'http://www.onetonline.org/' + "link/table/details/tk/"+self.code+"/Tasks_"+self.code+".csv?fmt=csv&amp;s=IM&amp;t=-10"
