@@ -1,7 +1,6 @@
 class WelcomeController < ApplicationController
-  before_filter :logged_in, only: [:survey, :answer, :simple]
   before_filter :survey_completed, only: [:survey, :answer]
-  before_filter :auth_redirect, only:[:index]
+  before_filter :go_to_show_page, only: [:index]
   layout 'survey_layout', only: [:survey]
 
   def index
@@ -19,5 +18,10 @@ class WelcomeController < ApplicationController
     Question.up_score(@auth, question.topic, params[:question_val].to_i )
     @auth.questions << question
     @next_question = params[:survey_id][1..-1].to_i + 1
+  end
+
+  private
+  def go_to_show_page
+    redirect_to(@auth) if @auth
   end
 end

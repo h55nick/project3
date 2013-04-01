@@ -38,23 +38,15 @@
                 %td=job['jobtitle']
                 %td=job['company']
                 %td=job['formattedLocation']
-                %td=time_ago_in_words(job['date']) + " a go."
+                %td=time_ago_in_words(job['date']) + " ago."
                 %td!=job['snippet'].gsub("<b>","")
                 %td!=link_to("View",job['url'],:id=>job['jobkey'] ,:target=>"_blank",:class=>'button tiny')
-                %td= link_to("Save", add_jobs_path(job), remote: true, method: 'POST')
+                - if @auth.jobs.map(&:name).include?(job['jobtitle'])
+                  %td Saved
+                - else
+                  %td.save= link_to("Save", add_jobs_path(job), remote: true, method: 'POST')
         - else
           %h4
             No Jobs Currently Found.
           %h6
             =link_to("Check out another Career!",careers_path)
-
-  /   .interests
-  /   .zone
-  /     %h3
-  /     ='Zone Info:'
-  /     .znum= @career.zone_num
-  /     .ztitle= @career.zone.title
-  /     .z
-  /     .zexperience= @career.zone.experience
-  /     .zexperience= @career.zone.training
-  / .large-4.columns.dash-block

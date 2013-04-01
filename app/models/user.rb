@@ -35,7 +35,7 @@ class User < ActiveRecord::Base
   end
 
   def ready_for_graph
-    self.total > 25
+    self.total >= 50
   end
 
   def show_color(interest)
@@ -46,7 +46,7 @@ class User < ActiveRecord::Base
       when 'realistic' ; return '#FF2151'
       when 'artistic' ; return '#FF7B29'
       when 'social' ; return '#8B77B5'
-      when 'investigative' ; return '#FCE9C8'
+      when 'investigative' ; return '#7686C2'
       end
     else
       '#EFEFEF'

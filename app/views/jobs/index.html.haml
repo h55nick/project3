@@ -14,7 +14,7 @@
             %td= job['name']
             %td= job['company']
             %td= job['location']
-            %td= job['description'].gsub("<b>","")
+            %td= truncate(job['description'].gsub("<b>",""), length: 100)
             %td= link_to("View", job['url'], :target=>"_blank", :class=>'button tiny')
             %td= link_to("Remove", job_path(job), remote: true, method: 'DELETE')
     -else

@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-  before_filter :logged_in, except: [:new, :create]
+  before_filter :logged_in, :only => [:answer_question]
+  before_filter :survey_says, :only => [:show]
   def new
     @user = User.new
   end
@@ -32,5 +33,10 @@ class UsersController < ApplicationController
       @auth.questions << q
       Question.up_score(@auth, q.topic, answer[1][0].to_i)
     end
+  end
+
+  private
+  def survey_says
+    redirect_to(survey_path) if !@auth.ready_for_graph
   end
 end
