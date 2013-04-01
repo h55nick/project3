@@ -1,6 +1,7 @@
 class WelcomeController < ApplicationController
   before_filter :logged_in, only: [:survey, :answer, :simple]
   before_filter :survey_completed, only: [:survey, :answer]
+  before_filter :auth_redirect, only:[:index]
   layout 'survey_layout', only: [:survey]
 
   def index

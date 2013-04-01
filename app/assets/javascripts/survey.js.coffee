@@ -20,13 +20,17 @@ window.survey =
         question_val: q_val
         survey_id: s_id
 
-    $.ajax(settings)
+    $.ajax(settings).done(survey.checkenough)
 
   change_background: (question) ->
     bg = $(question).css('background')
     img = '/assets/' + $(question).parent().parent().find('.hide').text() + '-1.jpg'
     $(question).parent().parent().css('background', bg)
     $(question).parent().parent().parent().css('background', "url('#{img}') no-repeat")
+
+  checkenough: (data)->
+
+
 
   # random_background: ->
   #   colors = ['#4D5360', '#FFC629', '#FF2151', '#FF7B29', '#8B77B5', '#FCE9C8']
