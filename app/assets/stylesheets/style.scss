@@ -139,6 +139,13 @@ body { font-family: 'Lato', sans-serif; }
   & .question {
     padding: 50px 0;
     text-align: center;
+    &.intro {
+      h3 { text-align: left; color: $red; }
+      font-size: 1.1em;
+      text-align: left;
+      background: white;
+      color: $grey;
+    }
     &.serious {
       background: $beige;
       color: $grey;

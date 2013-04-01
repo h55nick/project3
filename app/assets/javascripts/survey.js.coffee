@@ -5,7 +5,7 @@ window.survey =
     $('.survey-question').css('padding-top', ($(window).height()/4))
     $('.survey-question').on('click', 'li', survey.next_question)
     survey.change_background(question) for question in $('.question')
-    parallax.q1.top()
+    parallax.q0.top()
 
   next_question: ->
     q_id = $(this).parent().prev().children('span').first().data('questionId')
