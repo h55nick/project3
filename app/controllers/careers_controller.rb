@@ -15,10 +15,14 @@ class CareersController < ApplicationController
     end
   end
 
+  def more
+
+  end
   def zone_filter
     # filters by zone on /careers
     params[:zone] == 'All' ? @careers = Career.all : @careers = Career.where( zone_num: params[:zone] )
-    @start = 0
+    @start = 0 #for knowing where to start
+    @zone = params[:zone] #for updating more button
   end
 
   def mycareers

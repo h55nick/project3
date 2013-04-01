@@ -18,6 +18,7 @@ Project3::Application.routes.draw do
       get :zone_filter
       post :add_career
       delete :remove_career
+      get :more
       get '/mycareer' => 'careers#mycareers'
     end
   end
