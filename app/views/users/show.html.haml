@@ -25,7 +25,7 @@
         %canvas{ id: 'canvas', height: 250, width: 250 }
           - if @user.ready_for_graph
             %script
-              = "var doughnutData = [ { value: #{@user.interest.realistic}, color: '#FF2151' }, { value: #{@user.interest.investigative}, color: '#FCE9C8' }, { value: #{@user.interest.artistic}, color: '#FF7B29' }, { value: #{@user.interest.social}, color: '#8B77B5' }, { value: #{@user.interest.enterprising}, color: '#FFC629' }, { value: #{@user.interest.conventional}, color: '#4D5360' } ];"
+              = "var doughnutData = [ { value: #{@user.interest.realistic}, color: '#FF2151' }, { value: #{@user.interest.investigative}, color: '##{ @user.show_color('investigative') ? 'FCE9C8' : 'EFEFEF'}' }, { value: #{@user.interest.artistic}, color: '##{ @user.show_color('artistic') ? 'FF7B29' : 'EFEFEF' }' }, { value: #{@user.interest.social}, color: '##{ @user.show_color('social') ? '8B77B5' : 'EFEFEF' }' }, { value: #{@user.interest.enterprising}, color: '#FFC629' }, { value: #{@user.interest.conventional}, color: '#4D5360' } ];"
           - else
             %script
               var doughnutData = [ { value: 10, color: '#EFEFEF' }, { value: 10, color: '#DDDDDD' }, { value: 10, color: '#EFEFEF' }, { value: 10, color: '#DDDDDD' }, { value: 10, color: '#EFEFEF' }, { value: 10, color: '#DDDDDD' } ];
