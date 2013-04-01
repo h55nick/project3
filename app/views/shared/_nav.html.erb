@@ -9,7 +9,7 @@
           <% if @auth %>
             <li><%= link_to("Explore", careers_path ) %></li>
             <li><%= link_to("My Careers", mycareer_careers_path ) %></li>
-            <li><%= link_to("My Jobs", '#' ) %></li>
+            <li><%= link_to("My Jobs", jobs_path ) %></li>
             <li><%= link_to("My Dashboard", @auth ) %></li>
             <li><%= link_to("Logout", login_path, :method => 'delete') %></li>
           <% else %>

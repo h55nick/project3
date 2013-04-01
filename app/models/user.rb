@@ -22,6 +22,7 @@ class User < ActiveRecord::Base
   attr_accessible :education, :email, :first, :last, :lat, :location, :lon, :password, :password_confirmation, :total
   has_and_belongs_to_many :questions
   has_and_belongs_to_many :careers
+  has_many :jobs
   has_one :interest
 
   def ready_for_graph

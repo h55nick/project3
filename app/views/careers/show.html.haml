@@ -41,14 +41,12 @@
                 %td=time_ago_in_words(job['date']) + " a go."
                 %td!=job['snippet'].gsub("<b>","")
                 %td!=link_to("View",job['url'],:id=>job['jobkey'] ,:target=>"_blank",:class=>'button tiny')
-        -else
+                %td= link_to("Save", add_jobs_path(job), remote: true, method: 'POST')
+        - else
           %h4
             No Jobs Currently Found.
           %h6
             =link_to("Check out another Career!",careers_path)
-
-
-
 
   /   .interests
   /   .zone

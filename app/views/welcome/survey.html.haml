@@ -1,0 +1,13 @@
+- if @auth.total > 50
+  %a{ href: root_path }
+    #triangle-topleft{ style: "background: url('/assets/leave-survey.png') no-repeat;" }
+- count = 0
+- @questions.each do |question|
+  .background-image{ id: "q#{(count += 1)}" }
+    .survey-wrapper
+      = render partial: 'question', locals: { question: question }
+      %script
+        = "parallax.add( $('#q#{count}') )"
+%script
+  var menu_count = 1
+  $(document).ready(window.survey.document_ready)

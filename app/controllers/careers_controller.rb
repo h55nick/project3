@@ -1,4 +1,6 @@
 class CareersController < ApplicationController
+  before_filter :logged_in
+
   def index
     @careers = Career.all
     @start = 0
@@ -39,9 +41,5 @@ class CareersController < ApplicationController
     @picked = Career.find( params[:career_id].to_i )
     @auth.careers = @auth.careers - [@picked]
     @auth.save
-  end
-
-  def search_jobs
-    Job.search(@auth,Career.find(params[:id]))
   end
 end
