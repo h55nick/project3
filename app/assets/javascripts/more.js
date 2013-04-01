@@ -1,6 +1,6 @@
 
 $(function(){
-  $('body').on('click','#more',moreplease)
+  $('body').on('click','#more',moreplease);
   $('.career').show();
 });
 
@@ -19,5 +19,5 @@ function moreplease(e){
 }
 
 function moredone(e){
-  e.preventDefault();
+ /* e.preventDefault();*/
 }

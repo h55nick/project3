@@ -1,2 +1,5 @@
 $('.career-list').empty().append('<%=j render partial: 'careerblock' %>');
 $('#more').attr('data-zone', '<%= @zone %>');
+
+console.log('End: <%= @end%>');
+console.log('Careers: <%= @careers.length %>');

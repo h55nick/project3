@@ -3,6 +3,7 @@ class CareersController < ApplicationController
 
   def index
     @careers = @auth.get_top_careers(5)
+    @end = 5
   end
 
   def show
@@ -18,16 +19,18 @@ class CareersController < ApplicationController
     zone = params[:zone]
     @start = params[:start].to_i
     @end = @start+10
-    @b = 10
       if zone == "0"
-        @careers = @auth.get_top_careers(@end)
+        @careers = @auth.get_top_careers(@end+100)
       else
-        @careers = Career.where(:zone_num => zone.to_s)[0..@end]
+        @careers = @auth.get_top_careers(@end+900).reject {|d| d.zone_num != zone.to_s}
+        #Career.where(:zone_num => zone.to_s)[0..@end]
       end
   end
   def zone_filter
+    @end = 5
     # filters by zone on /careers
-    params[:zone] == 'All' ? @careers = Career.all : @careers = Career.where( zone_num: params[:zone] )
+    zone = params[:zone]
+    zone == 'All' ? @careers = @auth.get_top_careers(@end): @careers = @auth.get_top_careers(@end+900).reject {|d| d.zone_num != zone.to_s}
     @start = 0 #for knowing where to start
     @zone = params[:zone] #for updating more button
   end
