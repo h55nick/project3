@@ -26,4 +26,4 @@ window.survey =
     bg = $(question).css('background')
     img = '/assets/' + $(question).parent().parent().find('.hide').text() + '-1.jpg'
     $(question).parent().parent().css('background', bg)
-    $(question).parent().parent().parent().css('background', "url('#{img}') no-repeat")
+    $(question).parent().parent().parent().css('background', "url('#{img}') no-repeat center")
