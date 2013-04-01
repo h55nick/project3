@@ -1,6 +1,11 @@
 .row
-  .large-12.columns
-    %h1 This is the welcome page.
-    %p.editable I can be edited.
-  #user_form
-    %h6 Hey.
+  .large-6.columns
+    %h4
+      Welcome to Project3.
+    %p!="Please " + link_to("Login", login_path, :remote => true ) +" or " +link_to("Create an Account", new_user_path, :remote => true ) +" ."
+    %p
+    You are one Project closer to finding the perfect career and the perfect job!
+  .large-6.columns
+    -if @auth.nil?
+      #user_form
+        =render :partial => 'session/form'

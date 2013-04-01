@@ -1,6 +1,5 @@
-- if @auth.total > 50
-  %a{ href: root_path }
-    #triangle-topleft{ style: "background: url('/assets/leave-survey.png') no-repeat;" }
+%a{ href: root_path }
+  #triangle-topleft{ style: "background: url('/assets/leave-survey.png') no-repeat;" , :class=> 'hide'}
 - count = 0
 - @questions.each do |question|
   .background-image{ id: "q#{(count += 1)}" }

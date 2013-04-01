@@ -8,3 +8,6 @@
 <% else %>
   parallax.q<%= @next_question %>.left()
 <% end %>
+<%if @auth.total > 50 %>
+  $('#triangle-topleft').removeClass('hide');
+<%end%>
