@@ -1,6 +1,4 @@
 class SessionController < ApplicationController
-  before_filter :logged_in, only: [:destroy]
-
   def new
   end
 
@@ -8,10 +6,11 @@ class SessionController < ApplicationController
     user = User.where( email: params[:email] ).first
     if user.present? && user.authenticate( params[:password] )
       session[:user_id] = user.id
+      redirect_to(user)
     else
       session[:user_id] = nil
+      redirect_to(root_path)
     end
-    redirect_to(user)
   end
 
   def destroy

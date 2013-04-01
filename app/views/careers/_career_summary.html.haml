@@ -19,4 +19,4 @@
       %strong Top Industry:
       = career.trend.industries
     %p
-      = link_to('>>> Find More Jobs from Indeed', career_path(career))
+      = link_to(">>> Find Jobs in #{@auth.location}", career_path(career))

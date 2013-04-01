@@ -1,4 +1,5 @@
 @import "custom_settings.scss";
+
 .inline{
   display: inline-block;
 }
@@ -13,13 +14,16 @@
   color: $red;
 
 }.growth2{
-  color: $orange;
+  color: $red;
 }
 .growth3{
-  color: $purple;
+  color: $blue;
+}
+.growth4{
+  color: darken($blue, 10%);
 }
 .growth5{
-  color: $blue;
+  color: darken($blue, 20%);
 }
 .interestbox{
   margin-bottom: 3px;

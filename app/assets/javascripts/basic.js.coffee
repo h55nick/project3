@@ -6,6 +6,7 @@ class Basic
     $('.sectional-block').on('mouseenter', Basic.colorize_block)
     $('.sectional-block').on('mouseleave', Basic.colorize_block)
     $('.sectional-block').on('click', Basic.go_to_page)
+    $('.searched').next().on('click', '.save', Basic.save_job)
 
   @cancel_form: (e) ->
     e.preventDefault()
@@ -24,6 +25,9 @@ class Basic
 
   @go_to_page: ->
     if $(this).find('h3').text() == 'Explore' then document.location.href = '/careers';
+
+  @save_job: ->
+    $(this).empty().text('Saved')
 
 window.filter_job_zone = (e) ->
   e.preventDefault()

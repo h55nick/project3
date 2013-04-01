@@ -27,21 +27,3 @@ window.survey =
     img = '/assets/' + $(question).parent().parent().find('.hide').text() + '-1.jpg'
     $(question).parent().parent().css('background', bg)
     $(question).parent().parent().parent().css('background', "url('#{img}') no-repeat")
-
-  checkenough: (data)->
-
-
-
-  # random_background: ->
-  #   colors = ['#4D5360', '#FFC629', '#FF2151', '#FF7B29', '#8B77B5', '#FCE9C8']
-  #   # grey, yellow, red, orange, purple, beige
-  #   random = Math.floor((Math.random()*6)+1)
-  #   $color_bg = false
-  #   if $color_bg == false
-  #     console.log('inside')
-  #     $('.survey-wrapper').animate({ opacity: 0 }, 1000).delay(1000).css('background-color', colors[random]).animate({ opacity: 1 }, 1000)
-  #     color_bg = true
-  #   else
-  #     console.log('to white')
-  #     $('.survey-wrapper').animate({ opacity: 0 }, 1000).css('background', '#FFFFFF').animate({ opacity: 1 }, 1000)
-  #     $color_bg = false
