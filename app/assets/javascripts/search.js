@@ -21,3 +21,16 @@ $(function(){
 function result_show(){
       alert("BOOM");
 }*/
+$(function(){
+  $('#dbear').hide();
+  $('body').keypress(dancingbear);
+
+});
+
+
+function dancingbear(e){
+if(e.keyCode === 98){
+  $('#dbear').toggle('hide');
+  $('.hero').toggle('hide');
+}
+}
