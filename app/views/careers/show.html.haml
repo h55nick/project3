@@ -14,14 +14,14 @@
         -t = @career.trend
         =t.wages
         %h5 Growth:
-        =t.growth
+        %span{:class=>'growth'+@career.growth_num.to_s}=t.growth
         %h5 Openings:
         =t.openings
         %h5 Industries
         =t.industries
     .row
       .large-12.columns
-        -if @response
+        -if @response['results'].present?
           .searched
             %h3
               .params.inline=@response['query']
@@ -41,7 +41,12 @@
                 %td=time_ago_in_words(job['date']) + " a go."
                 %td!=job['snippet'].gsub("<b>","")
                 %td!=link_to("View",job['url'],:id=>job['jobkey'] ,:target=>"_blank",:class=>'button tiny')
-                %td= link_to("Save", job_careers_path, remote: true, method: 'POST')
+                %td= link_to("Save", add_jobs_path(job), remote: true, method: 'POST')
+        - else
+          %h4
+            No Jobs Currently Found.
+          %h6
+            =link_to("Check out another Career!",careers_path)
 
   /   .interests
   /   .zone

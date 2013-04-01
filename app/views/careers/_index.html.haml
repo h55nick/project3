@@ -1,11 +1,14 @@
-- @careers.shuffle[(@start)..(@start + 4)].each do |career|
+- @careers[(@start)..(@start + 4)].each do |career|
   .row
     .small-10.columns
       .section-container.accordion{ :'data-section' => 'accordion' }
         %section.section
-          %p.title= link_to(career.title.gsub('"',''), '#')
+          %p.title
+            = link_to(career.title.gsub('"',''), '#')
           .content
             = render partial: 'career_summary', locals: { career: career }
     .small-2.columns
-      - unless @auth.careers.include?(career)
-        .job-nav.add{ :'data-career-id' => career.id }= image_tag('/assets/bookmark.svg')
+      - if !@auth.careers.include?(career)
+        .job-nav.add{ :'data-career-id' => career.id, :title=>"Add to My Careers"}= image_tag('/assets/bookmark.svg',:class=>'imglink')
+      -else
+        .job-nav.added{:'data-career-id'=>career.id}= image_tag('assets/')

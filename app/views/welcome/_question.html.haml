@@ -1,0 +1,10 @@
+.survey-question
+  .question{ class: Question.choose_class }
+    %span{ :'data-question-id' => question.id }= question.q
+  %ul
+    %li.choice 1
+    %li.choice 2
+    %li.choice 3
+    %li.choice 4
+    %li.choice 5
+  .hide= question.topic

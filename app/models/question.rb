@@ -20,6 +20,14 @@ class Question < ActiveRecord::Base
     Question.up_score(q, interest, 5)
   end
 
+  def Question.choose_class
+    count = Random.rand(4) + 1
+    return 'modern' if count == 1
+    return 'serious' if count == 2
+    return 'bookish' if count == 3
+    return 'classic' if count == 4
+  end
+
   def Question.up_score(owner, interest, value)
     case interest
     when 'realistic'

@@ -1,14 +1,13 @@
-.survey-wrapper
-  .survey-question
-    .question
-      %span= @question.q
-    %ul
-      %li Dislike
-      %li.choice 1
-      %li.choice 2
-      %li.choice 3
-      %li.choice 4
-      %li.choice 5
-      %li Like
+- if @auth.total > 50
+  %a{ href: root_path }
+    #triangle-topleft{ style: "background: url('/assets/leave-survey.png') no-repeat;" }
+- count = 0
+- @questions.each do |question|
+  .background-image{ id: "q#{(count += 1)}" }
+    .survey-wrapper
+      = render partial: 'question', locals: { question: question }
+      %script
+        = "parallax.add( $('#q#{count}') )"
 %script
+  var menu_count = 1
   $(document).ready(window.survey.document_ready)

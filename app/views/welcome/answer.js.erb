@@ -1,0 +1,10 @@
+<% count = Random.rand(4) %>
+<% if count == 0 %>
+  parallax.q<%= @next_question %>.top()
+<% elsif count == 1 %>
+  parallax.q<%= @next_question %>.bottom()
+<% elsif count == 2 %>
+  parallax.q<%= @next_question %>.right()
+<% else %>
+  parallax.q<%= @next_question %>.left()
+<% end %>
