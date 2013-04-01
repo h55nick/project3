@@ -55,7 +55,8 @@ class User < ActiveRecord::Base
 
   def get_top_careers(n = 10)
     vals = self.get_top_interests
-    Career.readonly.joins(:interest).order("#{vals[0]} DESC").order("#{vals[1]} DESC").order("#{vals[2]} DESC").limit(n)
+    c = Career.readonly.joins(:interest).order("#{vals[0]} DESC").order("#{vals[1]} DESC").order("#{vals[2]} DESC").limit(n+10).to_a
+    c = c.uniq! {|d| d.title}[0..(n-1)]
   end
 
   def get_top_interests()

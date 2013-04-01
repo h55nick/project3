@@ -2,7 +2,7 @@ class CareersController < ApplicationController
   before_filter :logged_in
 
   def index
-    @careers = Career.all[0..4]
+    @careers = @auth.get_top_careers(5)
   end
 
   def show
@@ -16,13 +16,14 @@ class CareersController < ApplicationController
 
   def more
     zone = params[:zone]
-    start = params[:start].to_i
+    @start = params[:start].to_i
+    @end = @start+10
+    @b = 10
       if zone == "0"
-        @careers = Career.all[start..start+10]
+        @careers = @auth.get_top_careers(@end)
       else
-        @careers = Career.where(:zone_num => zone.to_s)[start..start+10]
+        @careers = Career.where(:zone_num => zone.to_s)[0..@end]
       end
-
   end
   def zone_filter
     # filters by zone on /careers
