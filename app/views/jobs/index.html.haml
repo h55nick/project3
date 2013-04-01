@@ -1,5 +1,5 @@
 .row
-  .large-10.columns.large-centered
+  .large-10.columns.large-centered#jobhome
     -if @auth.jobs.present?
       %h1 My jobs
       %table
@@ -9,14 +9,8 @@
         %th Posted
         %th Description
         %th
-        - @auth.jobs.each do |job|
-          %tr
-            %td= job['name']
-            %td= job['company']
-            %td= job['location']
-            %td= truncate(job['description'].gsub("<b>",""), length: 100)
-            %td= link_to("View", job['url'], :target=>"_blank", :class=>'button tiny')
-            %td= link_to("Remove", job_path(job), remote: true, method: 'DELETE')
+        %section.tbody
+          =render 'jobs'
     -else
       %h4
         You currently have no saved jobs!
