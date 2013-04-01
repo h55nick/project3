@@ -38,6 +38,10 @@ class User < ActiveRecord::Base
     self.total > 25
   end
 
+  def show_color(interest)
+    self.get_top_interests[0..2].include?(interest)
+  end
+
   def get_top_careers(n = 10)
     vals = self.get_top_interests
     Career.readonly.joins(:interest).order("#{vals[0]} DESC").order("#{vals[1]} DESC").order("#{vals[2]} DESC").limit(n)
