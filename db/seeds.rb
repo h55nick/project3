@@ -1,5 +1,8 @@
 require 'httparty'
+=begin
 require 'nokogiri'
+=end
+
 
 ############ RUNNING CODE #################
 def seed_stable_database()
