@@ -29,10 +29,10 @@ $body-font-style: normal;
 $text-direction: ltr;
 
 // We use these as default colors throughout
-$primary-color: #ff7300;
-$secondary-color: lighten($primary-color, 20%);
-$alert-color: #3E454C;
-$success-color: #2185C5;
+$primary-color: $red;
+$secondary-color: darken($red, 20%);
+$alert-color: $grey;
+$success-color: $purple;
 
 // We use these to make sure border radius matches unless we want it different.
 $global-radius: 3px;
