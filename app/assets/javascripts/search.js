@@ -29,7 +29,7 @@ $(function(){
 
 
 function dancingbear(e){
-if(e.keyCode === 98){
+if(e.keyCode === 66){
   $('#dbear').toggle('hide');
   $('.hero').toggle('hide');
 }
