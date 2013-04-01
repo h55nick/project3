@@ -47,7 +47,15 @@ body { font-family: 'Lato', sans-serif; }
   h6 { margin-top: 0; }
   canvas { display: block; margin: 0 auto; }
   ul { list-style: none; }
-  li { text-align: center; }
+  li {
+    text-align: center;
+    margin: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    border-radius:5px;
+  }
 }
 
 .down-button {

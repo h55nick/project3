@@ -9,19 +9,19 @@
 }
 
 .growth1{
-  color:red;
+  color: $red;
 
 }.growth2{
-  color: #4411AA;
+  color: $orange;
 }
 .growth3{
-  color: #1144aa;
+  color: $purple;
 }
 .growth5{
-  color:green;
+  color: $blue;
 }
 .interestbox{
-  padding: 2px;
   margin-bottom: 3px;
-  border: 1px black solid;
+  padding: 5px;
+  text-align: center;
 }

@@ -30,7 +30,18 @@ class User < ActiveRecord::Base
   end
 
   def show_color(interest)
-    self.get_top_interests[0..2].include?(interest)
+    if self.get_top_interests[0..2].include?(interest)
+      case interest
+      when 'conventional' ; return '#4D5360'
+      when 'enterprising' ; return '#FFC629'
+      when 'realistic' ; return '#FF2151'
+      when 'artistic' ; return '#FF7B29'
+      when 'social' ; return '#8B77B5'
+      when 'investigative' ; return '#FCE9C8'
+      end
+    else
+      '#EFEFEF'
+    end
   end
 
   def get_top_careers(n = 10)

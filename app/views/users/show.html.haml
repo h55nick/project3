@@ -15,7 +15,7 @@
           %h2 Top 3 Interests
           - if @user.ready_for_graph
             - @user.get_top_interests[0..2].each do |interest|
-              %li
+              %li{ style: "background: #{@user.show_color(interest)};"}
                 %h4= interest.capitalize
           - else
             %li
@@ -25,7 +25,7 @@
         %canvas{ id: 'canvas', height: 250, width: 250 }
           - if @user.ready_for_graph
             %script
-              = "var doughnutData = [ { value: #{@user.interest.realistic}, color: '#FF2151' }, { value: #{@user.interest.investigative}, color: '##{ @user.show_color('investigative') ? 'FCE9C8' : 'EFEFEF'}' }, { value: #{@user.interest.artistic}, color: '##{ @user.show_color('artistic') ? 'FF7B29' : 'EFEFEF' }' }, { value: #{@user.interest.social}, color: '##{ @user.show_color('social') ? '8B77B5' : 'EFEFEF' }' }, { value: #{@user.interest.enterprising}, color: '#FFC629' }, { value: #{@user.interest.conventional}, color: '#4D5360' } ];"
+              = "var doughnutData = [ { value: #{@user.interest.realistic}, color: '#{ @user.show_color('realistic') }' }, { value: #{@user.interest.investigative}, color: '#{@user.show_color('investigative')}' }, { value: #{@user.interest.artistic}, color: '#{ @user.show_color('artistic')}' }, { value: #{@user.interest.social}, color: '#{ @user.show_color('social')}' }, { value: #{@user.interest.enterprising}, color: '#{ @user.show_color('enterprising')}' }, { value: #{@user.interest.conventional}, color: '#{@user.show_color('conventional')}' } ];"
           - else
             %script
               var doughnutData = [ { value: 10, color: '#EFEFEF' }, { value: 10, color: '#DDDDDD' }, { value: 10, color: '#EFEFEF' }, { value: 10, color: '#DDDDDD' }, { value: 10, color: '#EFEFEF' }, { value: 10, color: '#DDDDDD' } ];

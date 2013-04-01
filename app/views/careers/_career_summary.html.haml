@@ -1,16 +1,18 @@
-%p
-  = career.tasks
 .row
-  .columns.large-8
+  .large-8.columns
+    %p
+      = career.tasks
+  .columns.large-4
+    -career.get_top_interests(3).each do |int|
+      .interestbox{ :style => "background: #{@auth.show_color(int)}" }=int.capitalize
+.row
+  .columns.large-12
     %p
       %strong Outlook:
       %span{:class=>'growth'+career.growth_num.to_s}= career.trend.growth
     %p
       %strong Wages:
       = career.trend.wages
-  .columns.large-4
-    -career.get_top_interests(3).each do |int|
-      .interestbox{:class=> int}=int.capitalize
 .row
   .columns.large-12
     %p
