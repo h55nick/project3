@@ -18,6 +18,7 @@
 //= require 'saving.js'
 //= require 'search.js'
 //= require 'survey.js'
+//= require more
 //= require 'chart-master/Chart.min.js'
 //= require 'parallax.min.js'
 $(document).foundation();

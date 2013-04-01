@@ -19,9 +19,8 @@
     .row
       .large-10.columns
         .small-3.columns.large-centered
-          %a{'data-remote'=>:true, :method=>'get',:href=>'/careers/more'}
-            #more.title{ 'data-zone' => 0}
-              More
+          #more.title{ 'data-zone' => 0}
+            More
 %script
   $('.sub-nav').on('click', 'dd a', window.filter_job_zone)
   $('body').on('click',".job-nav.add", saver.save_career_to_user)
