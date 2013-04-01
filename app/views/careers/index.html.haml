@@ -15,7 +15,13 @@
       %dd= link_to('4', '#list',:title=>"Select a Different Education Level")
       %dd= link_to('5', '#list',:title=>"Select a Different Education Level")
     #list.career-list
-      = render partial: 'index'
+      = render 'careerblock'
+    .row
+      .large-10.columns
+        .small-3.columns.large-centered
+          %a{'data-remote'=>:true, :method=>'get',:href=>'/careers/more'}
+            #more.title{ 'data-zone' => 0}
+              More
 %script
   $('.sub-nav').on('click', 'dd a', window.filter_job_zone)
-  $('.job-nav.add').on('click', saver.save_career_to_user)
+  $('body').on('click',".job-nav.add", saver.save_career_to_user)

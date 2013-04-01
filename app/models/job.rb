@@ -38,7 +38,7 @@ class Job < ActiveRecord::Base
     url << "&limit="+ limit
     url << "&co=us"
     url << "&chnl=&userip=1.2.3.4&useragent=Mozilla/%2F4.0%28Firefox%29&v=2"
-    HTTParty.get(URI.escape(url.join()))
+    c = HTTParty.get(URI.escape(url.join()))
   end
 
   def add_from_idealist(input)
