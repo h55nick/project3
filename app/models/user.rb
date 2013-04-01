@@ -25,14 +25,22 @@ class User < ActiveRecord::Base
   has_many :jobs
   has_one :interest
 
+  before_save :geocode
+  def geocode
+    result = Geocoder.search(self.location).first
+    if result.present?
+      self.lat = result.latitude
+      self.lon = result.longitude
+    end
+  end
+
   def ready_for_graph
     self.total > 25
   end
 
-
   def get_top_careers(n = 10)
     vals = self.get_top_interests
-    c = Career.readonly.joins(:interest).order("#{vals[0]} DESC").order("#{vals[1]} DESC").order("#{vals[2]} DESC").limit(n)
+    Career.readonly.joins(:interest).order("#{vals[0]} DESC").order("#{vals[1]} DESC").order("#{vals[2]} DESC").limit(n)
   end
 
   def get_top_interests()

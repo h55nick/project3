@@ -1,18 +1,24 @@
 .row
   .large-10.columns.large-centered
-    %h1 My jobs
-    %table
-      %th Title
-      %th Company
-      %th Location
-      %th Posted
-      %th Description
-      %th
-      - @auth.jobs.each do |job|
-        %tr
-          %td= job['name']
-          %td= job['company']
-          %td= job['location']
-          %td= job['description'].gsub("<b>","")
-          %td= link_to("View", job['url'], :target=>"_blank", :class=>'button tiny')
-          %td= link_to("Remove", job_path(job), remote: true, method: 'DELETE')
+    -if @auth.jobs.present?
+      %h1 My jobs
+      %table
+        %th Title
+        %th Company
+        %th Location
+        %th Posted
+        %th Description
+        %th
+        - @auth.jobs.each do |job|
+          %tr
+            %td= job['name']
+            %td= job['company']
+            %td= job['location']
+            %td= job['description'].gsub("<b>","")
+            %td= link_to("View", job['url'], :target=>"_blank", :class=>'button tiny')
+            %td= link_to("Remove", job_path(job), remote: true, method: 'DELETE')
+    -else
+      %h4
+        You currently have no saved jobs!
+      %h4
+        =link_to("Explore a Career",careers_path)

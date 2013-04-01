@@ -18,4 +18,4 @@
       = render partial: 'index'
 %script
   $('.sub-nav').on('click', 'dd a', window.filter_job_zone)
-  $('.job-nav.add').on('click', saver.save_career_to_user)
+  $('body').on('click',".job-nav.add", saver.save_career_to_user)

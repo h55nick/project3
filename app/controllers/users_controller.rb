@@ -19,6 +19,11 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find( params[:id] )
+    if @user = @auth
+      render :show
+    else
+      redirect_to root_path
+    end
   end
 
   def answer_question
