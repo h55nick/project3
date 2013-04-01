@@ -1,1 +1,2 @@
-$('div').find('.job-nav[data-career-id="<%= @picked.id %>"]').remove();
+var box = $('<div>').addClass('added').append('<img src="/assets/checkmark.svg">');
+$('div').find('.job-nav[data-career-id="<%= @picked.id %>"]').parent().empty();
