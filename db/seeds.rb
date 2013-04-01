@@ -4,8 +4,7 @@ require 'nokogiri'
 ############ RUNNING CODE #################
 def seed_stable_database()
     onet_base_url =  'http://www.onetonline.org/'
-    all_attrs = ["Social"]
-    #,"Artistic","Enterprising","Conventional","Investigative","Realistic"]
+    all_attrs = ["Social","Artistic","Enterprising","Conventional","Investigative","Realistic"]
     #Only need to Loop through each one idividually (permutations are included on the 1,2,3 IA (Interest Area))
     all_attrs.each do | a |
       attrcsv = "explore/interests-table/"+ a + '/'+a+".csv?fmt=csv"
@@ -19,10 +18,6 @@ def seed_stable_database()
        c.add_zone
        c.add_trends
        c.add_tasks #This is a property of Career but needs to be pulled from another csv table
-        if Career.all.length == 30
-          binding.pry
-          # return
-        end
       end
     end
 end
