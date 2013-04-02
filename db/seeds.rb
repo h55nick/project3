@@ -1,7 +1,3 @@
-require 'httparty'
-require 'nokogiri'
-
-
 
 ############ RUNNING CODE #################
 def seed_stable_database()
