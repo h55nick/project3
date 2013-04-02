@@ -74,7 +74,7 @@ class Job < ActiveRecord::Base
   end
 
   def transform_to_job(input)
-    doc = Nokogiri::HTML(open(input.to_s))
+    doc = Nokogiri::HTML(HTTParty.get(input))
     self.name = doc.xpath("//b[@class='jobtitle']").text
     self.company = doc.xpath("//span[@class='company']").first.text
     self.url = input
