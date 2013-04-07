@@ -1,7 +1,3 @@
-require 'httparty'
-require 'nokogiri'
-
-
 
 ############ RUNNING CODE #################
 def seed_stable_database()
@@ -19,7 +15,7 @@ def seed_stable_database()
         r.map!{|g| g.gsub(/\"/,'')}
         c = Career.new(code:r[0],title:r[1..[(r.length-6),1].max].join(','),zone_num:r[-5])
           if c.save
-            puts "Added Career- " + Career.all.length.to_s
+            # puts "Added Career- " + Career.all.length.to_s
             puts Career.all[-1].title
              c.add_interests
              c.add_zone

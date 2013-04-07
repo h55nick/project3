@@ -6,6 +6,7 @@ gem 'jquery-rails'
 gem 'haml'
 gem 'bcrypt-ruby'
 gem 'httparty'
+gem 'nokogiri'
 gem 'thin'
 gem 'geocoder'
 

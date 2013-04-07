@@ -20,7 +20,7 @@ window.survey =
         question_val: q_val
         survey_id: s_id
 
-    $.ajax(settings).done(survey.checkenough)
+    $.ajax(settings)
 
   change_background: (question) ->
     bg = $(question).css('background')
