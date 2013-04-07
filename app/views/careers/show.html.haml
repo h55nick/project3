@@ -39,7 +39,7 @@
                 %td=job['company']
                 %td=job['formattedLocation']
                 %td=time_ago_in_words(job['date']) + " ago."
-                %td!=job['snippet'].gsub("<b>","")
+                / %td!=job['snippet'].gsub("<b>","")
                 %td!=link_to("View",job['url'],:id=>job['jobkey'] ,:target=>"_blank",:class=>'button tiny')
                 - if @auth.jobs.map(&:name).include?(job['jobtitle'])
                   %td Saved

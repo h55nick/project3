@@ -32,12 +32,12 @@ end
 
 #Comment this out if you want to keep the static database but reseed other
 ##### THIS WILL EFFECTIVELY WIPE THE "STATIC" DATABASE #####
-  Career.delete_all
-  Interest.delete_all
-  Zone.delete_all
-  Trend.delete_all
+  #Career.delete_all
+  #Interest.delete_all
+  #Zone.delete_all
+  #Trend.delete_all
 # # ## Create database
-  seed_stable_database
+  #seed_stable_database
 
 ### All "normal seeding" should go under this line: ###
 User.delete_all
