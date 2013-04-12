@@ -1,9 +1,9 @@
 class WelcomeController < ApplicationController
   before_filter :survey_completed, only: [:survey, :answer]
   before_filter :go_to_show_page, only: [:index]
-  layout 'survey_layout', only: [:survey]
 
   def index
+    render layout: 'splash'
   end
 
   def simple
@@ -11,6 +11,7 @@ class WelcomeController < ApplicationController
 
   def survey
     @questions = Question.all.shuffle - @auth.questions
+    render layout: 'survey_layout'
   end
 
   def answer

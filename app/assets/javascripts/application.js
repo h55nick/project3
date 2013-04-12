@@ -21,6 +21,7 @@
 //= require more
 //= require iso.min
 //= require knob
+//= require 'splash.js'
 //= require 'chart-master/Chart.min.js'
 //= require 'parallax.min.js'
 //= require careerfilter

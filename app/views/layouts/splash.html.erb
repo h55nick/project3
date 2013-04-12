@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Project3</title>
+  <%= javascript_include_tag "vendor/custom.modernizr" %>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <div class="nav-wrapper">
+    <%= render partial: 'shared/navigation' %>
+  </div>
+  <div class="splash-wrapper">
+    <div class="splash">
+    </div>
+    <div class="row callout" id="welcome">
+      <script>parallax.add( $('#welcome') )</script>
+      <div class="large-8 columns large-centered">
+        <h3>Find <span>&</span> Love Your Career</h3>
+        <div class="row">
+          <div class="large-6 columns large-centered">
+            <p>Project3 is your personal career matchmaker, taking into account your personality and current economic trends to match you up with the perfect job.</p>
+          </div>
+        </div>
+        <%= link_to('Start Now', new_user_path, :remote => true, class: 'button large') %>
+      </div>
+    </div>
+    <div class="row callout" id="login">
+      <script>parallax.add( $('#login') )</script>
+      <h3>Login <span>&</span> Find</h3>
+      <div class="large-6 columns large-centered">
+      </div>
+    </div>
+    <div class="row callout" id="create_user">
+      <script>parallax.add( $('#create_user') )</script>
+      <h3>Start <span>&</span> Succeed</h3>
+      <div class="large-6 columns large-centered">
+      </div>
+    </div>
+  </div>
+  <div class="row" style="margin-bottom: -50px;">
+    <div class="circle"></div>
+  </div>
+  <div class="row">
+    <div class="large-6 columns">
+      <h3>Your Interests, Your Future</h3>
+      <p>Lorem ipsum Mollit Duis non eiusmod mollit tempor proident aliquip aliqua enim enim Duis pariatur dolore anim Duis ut cillum voluptate nulla in sunt dolore esse id ea ut dolor reprehenderit enim id minim ut enim exercitation dolor proident ut eiusmod.</p>
+      <div class="row">
+        <div class="small-6 columns">
+          <div class="interest-selector realistic">
+            <p>Realistic</p>
+          </div>
+        </div>
+        <div class="small-6 columns">
+          <div class="interest-selector investigative">
+            <p>Investigative</p>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="small-6 columns">
+          <div class="interest-selector artistic">
+            <p>Artistic</p>
+          </div>
+        </div>
+        <div class="small-6 columns">
+          <div class="interest-selector social">
+            <p>Social</p>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="small-6 columns">
+          <div class="interest-selector conventional">
+            <p>Conventional</p>
+          </div>
+        </div>
+        <div class="small-6 columns">
+          <div class="interest-selector enterprising">
+            <p>Enterprising</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="large-6 columns">
+      <div class='interest-main interest'>
+        <div class='interest-image'>
+          <img src="http://i.istockimg.com/file_thumbview_approve/21815754/2/stock-photo-21815754-attractive-woman-in-an-art-gallery-xxxl.jpg" style='width: 100%; height: 100%; opacity: 0.7;'/>
+        </div>
+        <div>
+          <h3>Explore Careers</h3>
+          <p>Lorem ipsum Dolor deserunt Ut Duis minim anim in Ut labore adipisicing fugiat Duis ad amet reprehenderit deserunt proident Ut cillum officia cillum ex occaecat exercitation dolor eiusmod.</p>
+        </div>
+      </div>
+      <div class='interest-artistic interest'>
+        <div class='interest-image'>
+          <img src="http://i.istockimg.com/file_thumbview_approve/21815754/2/stock-photo-21815754-attractive-woman-in-an-art-gallery-xxxl.jpg" style='width: 100%; height: 100%; opacity: 0.7;'/>
+        </div>
+        <div>
+          <h3>Artistic Careers</h3>
+          <p>Lorem ipsum Dolor deserunt Ut Duis minim anim in Ut labore adipisicing fugiat Duis ad amet reprehenderit deserunt proident Ut cillum officia cillum ex occaecat exercitation dolor eiusmod.</p>
+        </div>
+      </div>
+      <div class='interest-enterprising interest'>
+        <div class='interest-image'>
+          <img src="http://i.istockimg.com/file_thumbview_approve/21815754/2/stock-photo-21815754-attractive-woman-in-an-art-gallery-xxxl.jpg" style='width: 100%; height: 100%; opacity: 0.7;'/>
+        </div>
+        <div>
+          <h3>Enterprising Careers</h3>
+          <p>Lorem ipsum Dolor deserunt Ut Duis minim anim in Ut labore adipisicing fugiat Duis ad amet reprehenderit deserunt proident Ut cillum officia cillum ex occaecat exercitation dolor eiusmod.</p>
+        </div>
+      </div>
+      <div class='interest-realistic interest'>
+        <div class='interest-image'>
+          <img src="http://i.istockimg.com/file_thumbview_approve/21815754/2/stock-photo-21815754-attractive-woman-in-an-art-gallery-xxxl.jpg" style='width: 100%; height: 100%; opacity: 0.7;'/>
+        </div>
+        <div>
+          <h3>Realistic Careers</h3>
+          <p>Lorem ipsum Dolor deserunt Ut Duis minim anim in Ut labore adipisicing fugiat Duis ad amet reprehenderit deserunt proident Ut cillum officia cillum ex occaecat exercitation dolor eiusmod.</p>
+        </div>
+      </div>
+      <div class='interest-investigative interest'>
+        <div class='interest-image'>
+          <img src="http://i.istockimg.com/file_thumbview_approve/21815754/2/stock-photo-21815754-attractive-woman-in-an-art-gallery-xxxl.jpg" style='width: 100%; height: 100%; opacity: 0.7;'/>
+        </div>
+        <div>
+          <h3>Investigative Careers</h3>
+          <p>Lorem ipsum Dolor deserunt Ut Duis minim anim in Ut labore adipisicing fugiat Duis ad amet reprehenderit deserunt proident Ut cillum officia cillum ex occaecat exercitation dolor eiusmod.</p>
+        </div>
+      </div>
+      <div class='interest-social interest'>
+        <div class='interest-image'>
+          <img src="http://i.istockimg.com/file_thumbview_approve/21815754/2/stock-photo-21815754-attractive-woman-in-an-art-gallery-xxxl.jpg" style='width: 100%; height: 100%; opacity: 0.7;'/>
+        </div>
+        <div>
+          <h3>Social Careers</h3>
+          <p>Lorem ipsum Dolor deserunt Ut Duis minim anim in Ut labore adipisicing fugiat Duis ad amet reprehenderit deserunt proident Ut cillum officia cillum ex occaecat exercitation dolor eiusmod.</p>
+        </div>
+      </div>
+      <div class='interest-conventional interest'>
+        <div class='interest-image'>
+          <img src="http://i.istockimg.com/file_thumbview_approve/21815754/2/stock-photo-21815754-attractive-woman-in-an-art-gallery-xxxl.jpg" style='width: 100%; opacity: 0.7;'/>
+        </div>
+        <div>
+          <h3>Conventional Careers</h3>
+          <p>Lorem ipsum Dolor deserunt Ut Duis minim anim in Ut labore adipisicing fugiat Duis ad amet reprehenderit deserunt proident Ut cillum officia cillum ex occaecat exercitation dolor eiusmod.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="large-12 columns">
+      <hr/>
+    </div>
+  </div>
+  <div class="row">
+    <div class="large-6 columns">
+      <h3>Compare Careers</h3>
+      <p>Lorem ipsum Mollit Duis non eiusmod mollit tempor proident aliquip aliqua enim enim Duis pariatur dolore anim Duis ut cillum voluptate nulla in sunt dolore esse id ea ut dolor reprehenderit enim id minim ut enim exercitation dolor proident ut eiusmod.</p>
+      <p>Lorem ipsum Mollit Duis non eiusmod mollit tempor proident aliquip aliqua enim enim Duis pariatur dolore anim Duis ut cillum voluptate nulla in sunt dolore esse id ea ut dolor reprehenderit enim id minim ut enim exercitation dolor proident ut eiusmod.</p>
+    </div>
+    <div class="large-6 columns dash-block">
+      <canvas id="bar" data-type="Bar" width="500" height="300" style="width: 500px; height: 300px;"></canvas>
+    </div>
+  </div>
+
+
+
+<%= render partial: 'shared/footer' %>
+  <script>
+    $('.interest-selector').on('click', window.splash.slide_interest_info);
+    $('.interest-main').fadeIn();
+    window.splash.load_graphs();
+    parallax.welcome.left(800);
+  </script>
+</body>
+</html>
