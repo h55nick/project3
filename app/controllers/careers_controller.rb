@@ -2,7 +2,7 @@ class CareersController < ApplicationController
   before_filter :logged_in
 
   def index
-    @careers = @auth.get_top_careers(5)
+    @careers = @auth.get_top_careers(50)
     @end = 5
   end
 
@@ -16,6 +16,7 @@ class CareersController < ApplicationController
   end
 
   def more
+    #gets more careers
     zone = params[:zone]
     @start = params[:start].to_i
     @end = @start+10

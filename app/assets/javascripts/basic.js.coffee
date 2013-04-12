@@ -29,15 +29,13 @@ class Basic
   @save_job: ->
     $(this).empty().text('Saved')
 
-window.filter_job_zone = (e) ->
-  e.preventDefault()
-  $(this).parent().parent().children().removeClass('active')
-  $(this).parent().addClass('active')
-  zone = $(this).text()
-  settings =
+
+
+
+ ### settings =
     dataType: 'script'
     method: 'GET'
-    url: "/careers/zone_filter?zone=#{zone}"
-  $.ajax(settings)
+    url: "/careers/zone_filter?zone=#{zone}"###
+  #$.ajax(settings)
 
 $(document).ready(Basic.document_ready)

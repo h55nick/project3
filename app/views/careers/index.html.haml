@@ -1,26 +1,39 @@
 .row
   .large-10.columns.large-centered
     %h1 Find the career that suits you
-    %p Below you will find careers that match your results from the <strong>Holland Code Personality Test,</strong> ordered by your top interest through your third. Scroll over each to see a bit of information about the career and use the buttons to save your careers for viewing later or remove from your list.
-    %p Click on one of the <strong>Education</strong> filters to only show careers that match that level of education. An Education level of 1 means you need little to no training while a 5 can include advanced degrees.
-
+    #something
+      <input type="text" value="10" class="dial" data-width="100" data-height="100" data-fgColor="black" data-skin="tron" data-thickness=".2" data-displayPrevious="true" data-linecap=round data-displayInput=false>
+      <input type="text" value="50" class="dial" data-width="100" data-height="100" data-fgColor="black" data-skin="tron" data-thickness=".2" data-displayPrevious="true" data-linecap=round data-displayInput=false>
+      <input type="text" value="90" class="dial" data-width="100" data-height="100" data-fgColor="black" data-skin="tron" data-thickness=".2" data-displayPrevious="true" data-linecap=round data-displayInput=false>
 .row
   .large-10.columns.large-centered
-    %dl.sub-nav
-      %dt Education Level:
-      %dd.active= link_to('All', '#')
-      %dd= link_to('1', '#list',:title=>"Select a Different Education Level")
-      %dd= link_to('2', '#list',:title=>"Select a Different Education Level")
-      %dd= link_to('3', '#list',:title=>"Select a Different Education Level")
-      %dd= link_to('4', '#list',:title=>"Select a Different Education Level")
-      %dd= link_to('5', '#list',:title=>"Select a Different Education Level")
-    #list.career-list
-      = render 'careerblock'
+    .large-5.columns
+      #filterblock.hide{'data-gfilter'=>"All", 'data-efilter'=>"All"}
+      %dl.sub-nav.edu
+        %dt Education Level:
+        %dd.active= link_to('All', '#')
+        %dd= link_to('1', '#list',:title=>"Select a Different Education Level")
+        %dd= link_to('2', '#list',:title=>"Select a Different Education Level")
+        %dd= link_to('3', '#list',:title=>"Select a Different Education Level")
+        %dd= link_to('4', '#list',:title=>"Select a Different Education Level")
+        %dd= link_to('5', '#list',:title=>"Select a Different Education Level")
+    .large-5.columns
+      %dl.sub-nav.growth
+        %dt Growth Prospects:
+        %dd.active= link_to('All', '#')
+        %dd= link_to('1', '#list',:title=>"Highest",:'data-gzone'=>1)
+        %dd= link_to('2', '#list',:title=>"Above Average",:'data-gzone'=>1)
+        %dd= link_to('3', '#list',:title=>"Average",:'data-gzone'=>1)
+        %dd= link_to('4', '#list',:title=>"Slightly Below Average",:'data-gzone'=>1)
+        %dd= link_to('5', '#list',:title=>"Low",:'data-gzone'=>1)
+    .large-2.columns
+      #more.title{ 'data-zone' => 0}
+        More
+.row
+  #list.large-12.columns.large-centered.career-list
     .row
-      .large-10.columns
-        .small-3.columns.large-centered
-          #more.title{ 'data-zone' => 0}
-            More
+      = render 'careerblock'
 %script
-  $('.sub-nav').on('click', 'dd a', window.filter_job_zone)
+  $('.sub-nav.edu').on('click', 'dd a', iso.filter_job_zone)
+  $('.sub-nav.growth').on('click', 'dd a', iso.filter_growth_zone)
   $('body').on('click',".job-nav.add", saver.save_career_to_user)

@@ -54,9 +54,18 @@ class User < ActiveRecord::Base
   end
 
   def get_top_careers(n = 10)
-    vals = self.get_top_interests
-    c = Career.readonly.joins(:interest).order("#{vals[0]} DESC").order("#{vals[1]} DESC").order("#{vals[2]} DESC").limit(n+10).to_a
-    c = c.uniq! {|d| d.title}[0..(n-1)]
+    set = []
+    c = Career.readonly.joins(:interest).to_a.uniq
+    i= self.interest
+    myinterest = {social:i.social,investigative:i.investigative,realistic:i.realistic,enterprising:i.enterprising,conventional:i.conventional,artistic:i.artistic}
+    c.each do |career|
+     i = career.interest
+     k = {social:i.social,investigative:i.investigative,realistic:i.realistic,enterprising:i.enterprising,conventional:i.conventional,artistic:i.artistic}
+    answer = k.map { |key, value| (value - myinterest[key]).abs}.inject(&:+) #With a + you want the reverse because the distance between the two is a bad thing.
+     set << [career,answer]
+    end
+    set = set.sort_by(&:last).map!{|a| a[0]}#here is were we reverse it
+    set = set.uniq! {|d| d.title}[0..(n-1)]
   end
 
   def get_top_interests()

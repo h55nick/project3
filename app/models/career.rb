@@ -37,6 +37,18 @@ def get_top_interests(length = 7)
     return k[0..length-1]
 end
 
+def tr_color
+      interest = self.get_top_interests(3)[(rand*3).to_i]
+      case interest
+        when 'conventional' ; return '#4D5360'
+        when 'enterprising' ; return '#FFC629'
+        when 'realistic' ; return '#FF2151'
+        when 'artistic' ; return '#FF7B29'
+        when 'social' ; return '#8B77B5'
+        when 'investigative' ; return '#7686C2'
+      end
+  end
+
 def growth_num
       z = self.trend ? self.trend.growth.split(' ').first.downcase  : "average"
     case z

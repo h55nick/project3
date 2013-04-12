@@ -1,13 +1,14 @@
-.row.career
-  .small-10.columns
-    .section-container.accordion{ :'data-section' => 'accordion' }
-      %section.section
-        %p.title
-          = link_to(career.title.gsub('"',''), '#')
-        .content
-          = render partial: 'career_summary', locals: { career: career }
-  .small-2.columns
-    - if !@auth.careers.include?(career)
-      .job-nav.add{ :'data-career-id' => career.id, :title=>"Add to My Careers"}= image_tag('/assets/bookmark.svg',:class=>'imglink')
-    -else
-      .job-nav.added{:'data-career-id'=>career.id}= image_tag('/assets/checkmark.svg')
+- data = {'data-zone'=>career.zone_num, 'data-social'=>career.interest.social, 'data-realistic'=>career.interest.investigative,'data-realistic'=>career.interest.realistic,'data-enterprising'=>career.interest.enterprising,'data-conventional'=>career.interest.conventional,'data-investigative'=>career.interest.investigative,'data-artistic'=>career.interest.artistic,'data-growth'=>career.growth_num,:class=>"g"+career.growth_num.to_s+" z"+career.zone_num.to_s+" zAll gAll item"}
+
+
+.large-4.small-4.columns.career{data}= link_to(career.title.gsub('"',''), career_path(career) )
+
+
+
+/ -  !@auth.careers.include?(career)
+/   .job-nav.add.inline{ :'data-career-id' => career.id, :title=>"Add to My Careers"}= image_tag('/assets/bookmark.svg',:class=>'imglink')
+/ -else
+/   .job-nav.added.inline{:'data-career-id'=>career.id}= image_tag('/assets/checkmark.svg')
+/   .content
+/= render partial: 'career_summary', locals: { career: career }
+/ .small-2.columns
