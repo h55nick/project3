@@ -5,6 +5,7 @@ window.survey =
     $('.survey-question').css('padding-top', ($(window).height()/4))
     $('.survey-question').on('click', 'li', survey.next_question)
     survey.change_background(question) for question in $('.question')
+    parallax.speed = 200
     parallax.q0.top()
 
   next_question: ->
@@ -26,4 +27,4 @@ window.survey =
     bg = $(question).css('background')
     img = '/assets/' + $(question).parent().parent().find('.hide').text() + '-1.jpg'
     $(question).parent().parent().css('background', bg)
-    $(question).parent().parent().parent().css('background', "url('#{img}') no-repeat center")
+    $(question).parent().parent().parent().css('background', "url('#{img}')")
