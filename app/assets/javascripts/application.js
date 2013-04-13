@@ -13,6 +13,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require foundation
+//= require 'chart-master/Chart.min.js'
+//= require 'parallax.min.js'
 //= require 'basic.js'
 //= require 'screen_sizing.js'
 //= require 'saving.js'
@@ -25,4 +27,7 @@
 //= require 'chart-master/Chart.min.js'
 //= require 'parallax.min.js'
 //= require careerfilter
+//= require 'more.js'
+//= require 'splash.js'
+//= require 'user_dashboard.js'
 $(document).foundation();

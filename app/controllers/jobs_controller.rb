@@ -15,4 +15,28 @@ class JobsController < ApplicationController
     @auth.jobs -= [Job.find(params[:id])]
     @auth.save
   end
+
+  def import
+    if params[:url].include?("authenticjobs.com/jobs/")
+      new_job = Job.new
+      new_job.add_from_authentic_jobs(params[:url])
+      @auth.tanks.first.jobs << new_job
+    end
+    if params[:url].include?("idealist.org")
+      new_job = Job.new
+      new_job.add_from_idealist(params[:url])
+      @auth.tanks.first.jobs << new_job
+    end
+    if params[:url].include?("indeed.com")
+      new_job = Job.new
+      new_job.add_from_indeed(params[:url])
+      @auth.tanks.first.jobs << new_job
+    end
+    if params[:url].include?("jobs.37signals.com/jobs")
+      new_job = Job.new
+      new_job.add_from_37signals(params[:url])
+      @auth.tanks.first.jobs << new_job
+    end
+    render nothing: true
+  end
 end

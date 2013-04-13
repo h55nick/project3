@@ -57,7 +57,6 @@ class Job < ActiveRecord::Base
     self.company = doc.xpath("//hgroup/h2").first.text.gsub(/[\t\n]/,"")
     self.url = input
     self.description = doc.xpath("//div[@class='role']/section[@id = 'description']").text.gsub("\t","")
-    self.job_type = doc.xpath("//section[@id='leader']/h4").text
     self.location = doc.xpath("//a[@id='location']/span").text
     self.website = doc.xpath("//div[@class = 'title ']/a").first.attributes['href'].text
     self.save

@@ -1,0 +1,31 @@
+.row.bookmarklet
+  .small-6.large-9.columns
+    %h3 Use Emma's Bookmarklet!
+    %p Drag this button up onto your toolbar. When you're on a job page for one of our supported sites, simply click it and Emma will save that job for you.
+  .small-6.large-3.columns{ style: 'margin-top: 35px;'}
+    = link_to 'Add to Emma', "javascript:(function(){location.href='http://localhost:3000/jobs/import?url='+encodeURIComponent(location.href)})();", class: 'button large'
+
+.row
+  .large-12.columns
+    .wide-color
+      .row
+        .large-6.columns
+          .sectional-block{ style: "background: #{@user.show_color(@user.get_top_interests[3])}" }
+            .sectional{ style: "background: url('/assets/folder.svg') no-repeat center; background-size: 14%;" }
+          %h5 Saved
+          %p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere nihil at labore accusantium error. Repudiandae beatae et laboriosam fugit velit soluta!
+          .row
+            .large-12.columns
+              .job
+                %h5 <strong>Rails Engineer</strong> - Fight for the Future
+                %p Deadline: March 3rd, 2013
+        .large-6.columns
+          .sectional-block{ style: "background: #{@user.show_color(@user.get_top_interests[4])}" }
+            .sectional{ style: "background: url('/assets/completed.svg') no-repeat center; background-size: 14%;" }
+          %h5 Applied
+          %p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos, molestias, nam explicabo voluptatum voluptatem laboriosam distinctio temporibus.
+          .row
+            .large-12.columns
+              .job
+                %h5 <strong>Rails Engineer</strong> - Fight for the Future
+                %p Deadline: March 3rd, 2013
