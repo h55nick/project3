@@ -26,6 +26,7 @@ Project3::Application.routes.draw do
   resources :jobs, :only => [:index, :destroy] do
     collection do
       post :add
+      get :import
       get '/search/' => 'jobs#search_jobs'
     end
   end

@@ -13,13 +13,16 @@
 //= require jquery
 //= require jquery_ujs
 //= require foundation
+//= require 'chart-master/Chart.min.js'
+//= require 'parallax.min.js'
 //= require 'basic.js'
 //= require 'screen_sizing.js'
 //= require 'saving.js'
 //= require 'search.js'
 //= require 'survey.js'
-//= require more
+//= require 'more.js'
 //= require 'splash.js'
-//= require 'chart-master/Chart.min.js'
-//= require 'parallax.min.js'
+//= require 'user_dashboard.js'
+
+
 $(document).foundation();

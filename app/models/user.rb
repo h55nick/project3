@@ -39,7 +39,7 @@ class User < ActiveRecord::Base
   end
 
   def show_color(interest)
-    if self.get_top_interests[0..2].include?(interest)
+    if self.get_top_interests.include?(interest)
       case interest
       when 'conventional' ; return '#4D5360'
       when 'enterprising' ; return '#FFC629'
