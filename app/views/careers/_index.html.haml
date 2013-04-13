@@ -1,7 +1,7 @@
 - data = {'data-zone'=>career.zone_num, 'data-social'=>career.interest.social, 'data-realistic'=>career.interest.investigative,'data-realistic'=>career.interest.realistic,'data-enterprising'=>career.interest.enterprising,'data-conventional'=>career.interest.conventional,'data-investigative'=>career.interest.investigative,'data-artistic'=>career.interest.artistic,'data-growth'=>career.growth_num,:class=>"g"+career.growth_num.to_s+" z"+career.zone_num.to_s+" zAll gAll item"}
 
 
-.large-4.small-4.columns.career{data}= link_to(career.title.gsub('"',''), career_path(career) )
+.large-12.columns.career{data}= link_to(career.title.gsub('"',''), career_path(career) )
 
 
 
