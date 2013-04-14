@@ -15,6 +15,7 @@ Project3::Application.routes.draw do
 
   resources :careers, :only => [:index, :show] do
     collection do
+      get :career_info
       get :zone_filter
       post :add_career
       delete :remove_career
@@ -26,6 +27,7 @@ Project3::Application.routes.draw do
   resources :jobs, :only => [:index, :destroy] do
     collection do
       post :add
+      post :apply
       get :import
       get '/search/' => 'jobs#search_jobs'
     end

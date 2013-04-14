@@ -25,3 +25,42 @@
             .sectional{ style: "background: url('/assets/#{@user.get_top_interests[2]}-icon.svg') no-repeat center;" }
           %h5= @user.get_top_interests[2]
           %p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos, molestias, nam explicabo voluptatum voluptatem laboriosam distinctio temporibus.
+.row
+  .small-4.large-5.columns
+    .survey-progress.progress.large-12.success
+      %span.meter{ style: "width: #{((@user.interest.realistic.to_f / @user.total) * 300).to_i}%; background: #{@user.show_color('realistic')};" }
+  .small-2.large-1.columns
+    .survey-numeric
+      %h3 x
+  .small-4.large-5.columns
+    .survey-progress.progress.large-12.success
+      %span.meter{ style: "width: #{((@user.interest.investigative.to_f / @user.total) * 300).to_i}%; background: #{@user.show_color('investigative')};" }
+  .small-2.large-1.columns
+    .survey-numeric
+      %h3 x
+.row
+  .small-4.large-5.columns
+    .survey-progress.progress.large-12.success
+      %span.meter{ style: "width: #{((@user.interest.artistic.to_f / @user.total) * 300).to_i}%; background: #{@user.show_color('artistic')};" }
+  .small-2.large-1.columns
+    .survey-numeric
+      %h3 x
+  .small-4.large-5.columns
+    .survey-progress.progress.large-12.success
+      %span.meter{ style: "width: #{((@user.interest.social.to_f / @user.total) * 300).to_i}%; background: #{@user.show_color('social')};" }
+  .small-2.large-1.columns
+    .survey-numeric
+      %h3 x
+.row
+  .small-4.large-5.columns
+    .survey-progress.progress.large-12.success
+      %span.meter{ style: "width: #{((@user.interest.enterprising.to_f / @user.total) * 300).to_i}%; background: #{@user.show_color('enterprising')};" }
+  .small-2.large-1.columns
+    .survey-numeric
+      %h3 x
+  .small-4.large-5.columns
+    .survey-progress.progress.large-12.success
+      %span.meter{ style: "width: #{((@user.interest.conventional.to_f / @user.total) * 300).to_i}%; background: #{@user.show_color('conventional')};" }
+  .small-2.large-1.columns
+    .survey-numeric
+      %h3 x

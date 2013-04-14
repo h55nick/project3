@@ -14,11 +14,12 @@
   .large-4.columns.dash-menu.jobs-menu-item
     %h3
       My Jobs
-      .label.secondary= @user.jobs.count
+      .label.secondary= @user.jobs.where( completed: false).count
 
-.my-interests
+.my-interests{ style: 'display: none;'}
   = render partial: 'my_interests'
 .my-careers
+  = render partial: 'my_careers'
 .my-jobs{ style: 'display: none;'}
   = render partial: 'my_jobs'
 

@@ -1,0 +1,14 @@
+- @auth.jobs.where( completed: true ).each do |job|
+  .job{ :'data-job-id' => job.id }
+    %h5
+      %strong= job.name
+      %br= job.company
+    .row{ style: 'margin: 10px 0; display: none;' }
+      .small-2.columns.small-offset-1
+        .job-details
+          .detail{ :'data-tooltip' => true, class: 'has-tip', title: "Applied about #{time_ago_in_words(job.updated_at)} ago", style: "background: url('/assets/time.svg') no-repeat center; background-size: 35%;" }
+      = render partial: 'users/my_jobs/details', locals: { :job => job }
+      .small-2.columns.left
+        .job-details
+          %a{ href: job_path(job), :'data-method' => 'DELETE', :'data-remote' => true }
+            .detail{ id: 'job-apply', :'data-tooltip' => true, class: 'has-tip', title: "Remove", style: "background: url('/assets/no.svg') no-repeat center; background-size: 50%;" }

@@ -1,0 +1,21 @@
+.row
+  - if @selected_careers
+    - @selected_careers.each do |career|
+      .large-4.columns
+        .the-titles-are-too-damn-long
+          %h4{ style: 'text-align: center;' }= career.title
+        .career-wrap
+          .salary
+            %h6= career.trend.wages.split(', ')[1].nil? ? career.trend.wages.split(', ')[0] : career.trend.wages.split(', ')[1].gsub(' annual','')
+            %p Average Salary
+          .growth
+            .row
+              .small-6.columns
+                %h2= career.zone_num
+                %p Prep Level
+              .small-6.columns
+                %h2= career.trend.growth[career.trend.growth.index('(')+1..career.trend.growth.index('%')]
+                %p Growth
+        .row
+          .large-12.columns
+            %p{ style: 'padding: 10px; font-style: italic; font-weight: 300; font-size: 0.9em;' }= career.tasks
