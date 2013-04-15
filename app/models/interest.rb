@@ -28,4 +28,18 @@ class Interest < ActiveRecord::Base
   has_one :career
   has_one :user
   has_one :question
+
+  def Interest.return_array_of_interests(object)
+    [object.interest.realistic,
+      object.interest.investigative,
+      object.interest.artistic,
+      object.interest.social,
+      object.interest.enterprising,
+      object.interest.conventional]
+  end
+
+  def Interest.humanize(array)
+    multiplier = (100/array.max.to_f)
+    array.map! { |x| x * multiplier }
+  end
 end

@@ -54,6 +54,13 @@
   }
 }
 
+.explainer {
+  padding: 10px;
+  margin-top: 25px;
+  margin-bottom: 25px;
+  border-bottom: 3px dotted #efefef;
+}
+
 //////////////////////////////
 /// PROGRESS BAR SPACING
 //////////////////////////////
@@ -72,13 +79,12 @@
 //////////////////////////////
 
 .wide-color {
-
+  overflow: hidden;
   .sectional-block {
-    background: $yellow;
+    background: #eee;
     padding: 10px;
     box-shadow: inset 0 0 5px #333;
     .sectional {
-      display: table;
       min-height: 100px;
       width: 100%;
       opacity: 0.5;
@@ -124,20 +130,164 @@
 }
 
 //////////////////////////////
-/// JOBS BOX STYLING
+/// CAREERS BOX STYLING
 //////////////////////////////
 
-.my-jobs {
-  & .bookmarklet {
-    padding: 10px;
-    margin-top: 25px;
-    margin-bottom: 25px;
-    border-bottom: 3px dotted #efefef;
+.the-titles-are-too-damn-long {
+  display: table;
+  height: 125px;
+  width: 100%;
+
+  h4 {
+    display: table-cell;
+    text-align: center;
+    height: 125px;
+    width: 100%;
+    overflow: scroll;
+    vertical-align: middle;
   }
 }
 
-.job {
-  text-align: center;
+.career-detail {
+  margin: 0;
+  background: #efefef;
   border-top: 1px solid #ddd;
+  border-right: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+  h5 { text-align: center; padding: 10px 0; }
+  &:first-child { border-left: 1px solid #ddd; }
+  &.selected {
+    background: none;
+    border-bottom: none;
+  }
+}
+
+.career-detail-panels {
+  border-right: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+  border-left: 1px solid #ddd;
+  & h3 { padding-top: 25px; text-align: center; }
+  h5 {
+    padding-top: 60px;
+    padding-left: 25px;
+  }
+  .row.career-job {
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    margin: 10px 0;
+    span {
+      font-size: 0.9em;
+      display: block;
+      padding: 20px 0;
+    }
+  }
+}
+
+.info-box {
+  width: 25px;
+  text-align: center;
+  margin: 0 auto;
+  height: 25px;
+}
+
+.has-tip.info {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.careers-list {
+  margin-bottom: 25px;
+  padding-bottom: 25px;
+  border-bottom: 3px dotted #efefef;
+  .selected { color: white; }
+  span {
+    display: inline-block;
+    padding: 10px;
+    background: #eee;
+    margin: 10px;
+  }
+}
+.career-wrap {
+  background: url('/assets/blurred/BlurredBackground5.jpg') no-repeat 100%;
+  border-radius: 5px;
+  .growth {
+    margin: 15px 0;
+    padding-bottom: 15px;
+    h2 {
+      color: white;
+      margin-bottom: 0;
+      text-align: center;
+    }
+    p {
+      color: white;
+      text-align: center;
+      font-size: 0.7em;
+      text-transform: uppercase;
+    }
+  }
+
+  .salary {
+    padding: 20px 20px 0;
+    text-align: center;
+
+    h6 {
+      font-size: 3em;
+      font-weight: 400;
+      color: white;
+      letter-spacing: 3px;
+      margin-bottom: 0px;
+    }
+
+    p {
+      text-transform: uppercase;
+      color: white;
+      letter-spacing: 2px;
+      font-weight: 300;
+      padding: 5px;
+      border-top: 1px solid white;
+      border-bottom: 1px solid white;
+      margin-top: 20px;
+      margin-bottom: 0;
+    }
+  }
+}
+
+.career-interests {
+  background: #fff;
+  padding: 25px;
+}
+
+//////////////////////////////
+/// JOBS BOX STYLING
+//////////////////////////////
+
+.saved-jobs-list, .applied-jobs-list {
+  opacity: 0.3;
+  -moz-webkit-transition: all 0.3s ease-in;
+  -ms-webkit-transition: all 0.3s ease-in;
+  -o-webkit-transition: all 0.3s ease-in;
+  -webkit-transition: all 0.3s ease-in;
+}
+
+.job {
+  border-top: 1px solid #ddd;
+  text-align: center;
+  padding: 20px 0;
+  .job-details {
+    background: white;
+    .detail {
+      height: 35px;
+      width: 100%;
+      opacity: 0.5;
+      -moz-webkit-transition: all 0.3s ease-in;
+      -ms-webkit-transition: all 0.3s ease-in;
+      -o-webkit-transition: all 0.3s ease-in;
+      -webkit-transition: all 0.3s ease-in;
+      &:hover {
+        opacity: 0.8;
+      }
+    }
+  }
   &:last-child { border-bottom: 1px solid #ddd; }
 }

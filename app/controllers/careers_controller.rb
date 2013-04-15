@@ -53,4 +53,9 @@ class CareersController < ApplicationController
     @auth.careers = @auth.careers - [@picked]
     @auth.save
   end
+
+  def career_info
+    @selected_careers = []
+    params[:careers].split(',').each { |id| @selected_careers << Career.find(id) }
+  end
 end

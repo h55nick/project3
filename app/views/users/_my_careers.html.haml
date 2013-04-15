@@ -1,0 +1,24 @@
+.row.explainer
+  .large-12.columns
+    %h3 Compare & Explore Careers
+    %p Select a career from the list to learn more detailed information about it. Or, select multiple careers and Emma will help you compare them to decide the best match.
+
+.row.careers-list{ :'data-color' => "#{@user.show_color(@user.get_top_interests[5])}" }
+  .large-12.columns
+    - @auth.careers.each do |career|
+      %span{ :'data-career-id' => career.id }= career.title
+.compare-careers
+  = render partial: 'users/my_careers/compare_careers'
+
+/ .career-interests
+/   .row.wide-color
+/     .small-4.columns
+/       .sectional-block{ style: "background: #{@user.show_color(@user.get_top_interests[0])}" }
+/         .sectional{ style: "background: url('/assets/#{@user.get_top_interests[0]}-icon.svg') no-repeat center; width: auto; min-height: 50px; background-size: 100%;" }
+/     .small-4.columns
+/       .sectional-block{ style: "background: #{@user.show_color(@user.get_top_interests[1])}" }
+/         .sectional{ style: "background: url('/assets/#{@user.get_top_interests[1]}-icon.svg') no-repeat center; width: auto; min-height: 50px; background-size: 100%;" }
+/     .small-4.columns
+/       .sectional-block{ style: "background: #{@user.show_color(@user.get_top_interests[2])}" }
+/         .sectional{ style: "background: url('/assets/#{@user.get_top_interests[2]}-icon.svg') no-repeat center; width: auto; min-height: 50px; background-size: 100%;" }
+

@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require foundation
+//= require 'underscore.js'
 //= require 'chart-master/Chart.min.js'
 //= require 'parallax.min.js'
 //= require 'basic.js'
@@ -24,7 +25,6 @@
 //= require iso.min
 //= require knob
 //= require 'splash.js'
-//= require 'chart-master/Chart.min.js'
 //= require 'parallax.min.js'
 //= require careerfilter
 //= require 'more.js'

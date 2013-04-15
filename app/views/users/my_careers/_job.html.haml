@@ -1,0 +1,10 @@
+- @response = Job.search(@auth, Career.first)
+  - if @response['results'].present?
+    - @response['results'].each do |job|
+      .row.career-job
+        .small-6.columns
+          %span= job['jobtitle']
+        .small-4.columns
+          %span= job['company']
+        .small-2.columns
+          %img{ src: '/assets/bookmark.svg', style: 'height: 25px; margin: 15px auto; width: 100%;' }
