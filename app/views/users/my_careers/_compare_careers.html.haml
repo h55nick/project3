@@ -26,35 +26,45 @@
           .large-12.columns
             %p{ style: 'padding: 10px; font-style: italic; font-weight: 300; font-size: 0.9em;' }= career.tasks
     - if @selected_careers.length == 1
+      - career = @selected_careers.first
       .large-8.columns
         .the-titles-are-too-damn-long
           %h4 Additional Details
         .row
-          .large-6.columns
-            <canvas id="myChart" width="auto" height="300" ></canvas>
-            %script
-              var data = {
-              labels : ["January","February","March","April","May","June","July"],
-              datasets : [
-              {
-              fillColor : "rgba(220,220,220,0.5)",
-              strokeColor : "rgba(220,220,220,1)",
-              data : [65,59,90,81,56,55,40,23]
-              }
-              ]
-              }
-              var ctx = document.getElementById("myChart").getContext("2d");
-              new Chart(ctx).Bar(data);
-          .large-6.columns
-            <canvas id="my2Chart" width="auto" height="300" style='margin-top: -25px;' ></canvas>
-            %script
-              = "user_dashboard.show_interests_overlap(#{Interest.return_array_of_interests(@selected_careers.first)}, #{Interest.humanize(Interest.return_array_of_interests(@auth))});"
+          .large-4.columns.career-detail.selected
+            %h5 Interests
+          .large-4.columns.career-detail
+            %h5 Meetups
+          .large-4.columns.career-detail
+            %h5 Jobs
         .row
-          .large-12.columns{ style: 'text-align: center;'}
-            %h4
-              %strong Top Industry
-            %h5= @selected_careers.first.trend.industries
+          .career-detail-panels
+            .row{ style: 'display: none;' }
+              .large-6.columns
+                %h5 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est, iusto, recusandae, quia perspiciatis laboriosam quae reiciendis provident nemo fugit ipsam sunt numquam dignissimos animi optio explicabo. Aspernatur provident iste nisi.
+              .large-6.columns
+                <canvas id="my2Chart" width="auto" height="300" style='margin: 0 auto; padding: 25px 15px;'></canvas>
+                %script
+                  = "user_dashboard.show_interests_overlap(#{Interest.return_array_of_interests(career)}, #{Interest.humanize(Interest.return_array_of_interests(@auth))});"
+            .row{ style: 'display: none;' }
+
+            .row
+              .large-10.columns.large-centered
+                %h3 Jobs in Your Area
+                %p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni, voluptate, eaque, optio repudiandae quae distinctio doloribus autem.
+                .row
+                  .small-6.columns
+                    %strong Post
+                  .small-4.columns
+                    %strong Company
+                  .small-2.columns
+                    %strong Save
+                / = render partial: 'users/my_careers/job'
+                .row
+                  .large-12.columns
+                    %p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod, eos, eveniet, consectetur, tempore consequuntur omnis.
+
 
   - else
-    .large-12.columns{ style: 'margin: 40px 0; text-align: center;'}
+    .large-12.columns{ style: 'margin: 100px 0 100px; text-align: center;'}
       %h1 Select a career from above to learn more.

@@ -32,7 +32,7 @@ class Job < ActiveRecord::Base
     limit = "100"
     url << "http://api.indeed.com/ads/apisearch?publisher=6311669519978301"
     url << "&q="+ query
-    url << "&l=" + u.location
+    url << "&l=" + 'New York, NY'
     url << "&format=json"
     url << "&radius="
     url << "&limit="+ limit

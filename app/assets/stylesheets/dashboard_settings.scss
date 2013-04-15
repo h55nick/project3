@@ -132,6 +132,7 @@
 //////////////////////////////
 /// CAREERS BOX STYLING
 //////////////////////////////
+
 .the-titles-are-too-damn-long {
   display: table;
   height: 125px;
@@ -144,6 +145,41 @@
     width: 100%;
     overflow: scroll;
     vertical-align: middle;
+  }
+}
+
+.career-detail {
+  margin: 0;
+  background: #efefef;
+  border-top: 1px solid #ddd;
+  border-right: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+  h5 { text-align: center; padding: 10px 0; }
+  &:first-child { border-left: 1px solid #ddd; }
+  &.selected {
+    background: none;
+    border-bottom: none;
+  }
+}
+
+.career-detail-panels {
+  border-right: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+  border-left: 1px solid #ddd;
+  & h3 { padding-top: 25px; text-align: center; }
+  h5 {
+    padding-top: 60px;
+    padding-left: 25px;
+  }
+  .row.career-job {
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    margin: 10px 0;
+    span {
+      font-size: 0.9em;
+      display: block;
+      padding: 20px 0;
+    }
   }
 }
 
