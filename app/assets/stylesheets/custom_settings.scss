@@ -30,8 +30,8 @@ $body-font-style: normal;
 $text-direction: ltr;
 
 // We use these as default colors throughout
-$primary-color: white;
-$secondary-color: darken(white, 20%);
+$primary-color: $body-font-color;
+$secondary-color: darken($body-font-color, 20%);
 $alert-color: $grey;
 $success-color: $orange;
 

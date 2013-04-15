@@ -1,9 +1,8 @@
 window.iso =
     init:->
       console.log('iso.init')
-      iso.update_hidden
       #LISTENERS
-      $('body').on('change',"#first_filter_choice",iso.reset)
+      #$('body').on('change',"#first_filter_choice",iso.reset)
       $('body').on('click','.obar', iso.toggle_selected_bar)
       $('body').on('click',"#refilter",iso.anajax)
       ## PRESETS
@@ -15,7 +14,6 @@ window.iso =
     toggle_selected_bar:->
       console.log('toggle_selected')
       $(this).attr('data-select',($(this).attr('data-select') != "true"))
-      iso.update_hidden
       $(this).toggleClass("bar_selected")
       growth_levels = $.makeArray($(".growth_filter[data-level]").map(->
           if $(this).attr('data-select') == "true"
@@ -27,8 +25,6 @@ window.iso =
         ))
       $('#growth_values').val(growth_levels)
       $('#prep_values').val(prep_levels)
-      console.log("Hidden Updated")
-    update_level:->
     anajax:->
       $('#careerblock').slideUp(3000);
     filter_job_zone:(e) ->
@@ -46,6 +42,9 @@ window.iso =
       attrs = iso.get_filter_attr()
       console.log("G: Filtering: "+ attrs)
       iso.all_filter(attrs)
+    filter_reset:->
+       attrs = iso.get_filter_attr()
+       iso.all_filter(attrs)
     all_filter:(attrs)->
       console.log("af: #{attrs}")
       $("#list").isotope
@@ -61,8 +60,7 @@ window.iso =
         return ".g#{growth}.z#{zone}"
     reset:->
         console.log("reset")
-
-    reget:->
+   ### reget:->
         console.log("reget-#{$(this).val()}")
         settings =
         dataType: 'script'
@@ -70,6 +68,6 @@ window.iso =
         url: '/careers/filter'
         data:
           filter_var: $(this).val()
-        $.ajax(settings)
+        $.ajax(settings)###
 
 $(document).ready(iso.init)
