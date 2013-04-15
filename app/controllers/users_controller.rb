@@ -25,6 +25,15 @@ class UsersController < ApplicationController
     else
       redirect_to root_path
     end
+    lat = @user.lat
+    lon = @user.lon
+    location = @user.location.split(' ').join()
+    topic = "healthcare"
+    #@user.careers.last.title.split(' ').first
+    url = "https://api.meetup.com/find/groups?key=3141755d2b143b6963614c186b75c5d&sign=true&zip=07030&text=#{topic}&page=20"
+    response = HTTParty.get("https://api.meetup.com/find/groups.json?key=3141755d2b143b6963614c186b75c5d&sign=true&text=#{topic}&location=#{location}&page=20")
+    response = HTTParty.get(url)
+    binding.pry
   end
 
   def answer_question

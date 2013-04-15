@@ -33,6 +33,10 @@ class User < ActiveRecord::Base
       self.lon = result.longitude
     end
   end
+  def zip_code
+    result = Geocoder.search(self.location).first
+    result.postal_code
+  end
 
   def ready_for_graph
     self.total >= 50
