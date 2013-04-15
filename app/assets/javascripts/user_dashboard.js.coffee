@@ -52,13 +52,16 @@ window.user_dashboard =
   ##########################
 
   select_career: ->
-    if user_dashboard.selected_careers.length < 3
-      user_dashboard.selected_careers.push( $(this).data('career-id') )
+    if !$(this).hasClass('selected')
+      if user_dashboard.selected_careers.length < 3
+        user_dashboard.selected_careers.push( $(this).data('career-id') )
+      else
+        user_dashboard.selected_careers.shift()
+        user_dashboard.selected_careers.push( $(this).data('career-id') )
     else
-      user_dashboard.selected_careers.shift()
-      user_dashboard.selected_careers.push( $(this).data('career-id') )
+      user_dashboard.selected_careers = _.without(user_dashboard.selected_careers, $(this).data('career-id') )
 
-    $('.careers-list span').css('background', '#eee').css('color', '#3E454C')
+    $('.careers-list span').css('background', '#eee').removeClass('selected')
     _.each(user_dashboard.selected_careers, user_dashboard.highlight_career)
 
     settings =
@@ -70,7 +73,29 @@ window.user_dashboard =
 
   highlight_career: (id) ->
     color = $('.careers-list').data('color')
-    $(".careers-list span[data-career-id=#{id}]").css('background', color).css('color', 'white')
+    $(".careers-list span[data-career-id=#{id}]").css('background', color).addClass('selected')
+
+  show_interests_overlap: (career, user) ->
+    career_data =
+      fillColor: "rgba(238,238,238,0.8)"
+      strokeColor: "rgba(255,255,255,1)"
+      pointColor: "rgba(238,238,238,1)"
+      pointStrokeColor : "#fff"
+      data: career
+
+    user_data =
+      fillColor: "rgba(255,123,41,0.8)"
+      strokeColor: "rgba(255,255,255,1)"
+      pointColor: "rgba(255,123,41,1)"
+      pointStrokeColor: "#fff"
+      data: user
+
+    data =
+      labels: ["R","I","A","S","E","C"]
+      datasets: [user_data, career_data]
+
+    ctx = document.getElementById("my2Chart").getContext("2d");
+    new Chart(ctx).Radar(data);
 
   ##########################
   ### my jobs dashboard

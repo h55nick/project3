@@ -139,6 +139,7 @@
 
   h4 {
     display: table-cell;
+    text-align: center;
     height: 125px;
     width: 100%;
     overflow: scroll;
@@ -146,10 +147,24 @@
   }
 }
 
+.info-box {
+  width: 25px;
+  text-align: center;
+  margin: 0 auto;
+  height: 25px;
+}
+
+.has-tip.info {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
 .careers-list {
   margin-bottom: 25px;
   padding-bottom: 25px;
   border-bottom: 3px dotted #efefef;
+  .selected { color: white; }
   span {
     display: inline-block;
     padding: 10px;
@@ -160,7 +175,6 @@
 .career-wrap {
   background: url('/assets/blurred/BlurredBackground5.jpg') no-repeat 100%;
   border-radius: 5px;
-
   .growth {
     margin: 15px 0;
     padding-bottom: 15px;

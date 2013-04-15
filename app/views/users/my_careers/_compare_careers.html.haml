@@ -1,21 +1,60 @@
 .row
-  - if @selected_careers
+  - if @selected_careers && @selected_careers.length > 0
     - @selected_careers.each do |career|
-      .large-4.columns
+      .large-4.columns{ style: 'float: left;' }
         .the-titles-are-too-damn-long
-          %h4{ style: 'text-align: center;' }= career.title
+          %h4= career.title
         .career-wrap
           .salary
-            %h6= career.trend.wages.split(', ')[1].nil? ? career.trend.wages.split(', ')[0] : career.trend.wages.split(', ')[1].gsub(' annual','')
+            %h6= number_to_currency(career.annual_salary)[0..-4]
             %p Average Salary
           .growth
             .row
               .small-6.columns
                 %h2= career.zone_num
-                %p Prep Level
+                %p
+                  Prep Level
+                  .info-box
+                    .info{ :'data-tooltip' => true, :'data-width' => 200, class: 'has-tip', title: 'Level of preparation or education needed to succeed in this career', style: "background: url('/assets/info.svg') no-repeat center; background-size: 28%;" }
               .small-6.columns
                 %h2= career.trend.growth[career.trend.growth.index('(')+1..career.trend.growth.index('%')]
-                %p Growth
+                %p
+                  Growth
+                  .info-box
+                    .info{ :'data-tooltip' => true, :'data-width' => 200, class: 'has-tip', title: 'Anticipated growth in demand for this career', style: "background: url('/assets/info.svg') no-repeat center; background-size: 28%;" }
         .row
           .large-12.columns
             %p{ style: 'padding: 10px; font-style: italic; font-weight: 300; font-size: 0.9em;' }= career.tasks
+    - if @selected_careers.length == 1
+      .large-8.columns
+        .the-titles-are-too-damn-long
+          %h4 Additional Details
+        .row
+          .large-6.columns
+            <canvas id="myChart" width="auto" height="300" ></canvas>
+            %script
+              var data = {
+              labels : ["January","February","March","April","May","June","July"],
+              datasets : [
+              {
+              fillColor : "rgba(220,220,220,0.5)",
+              strokeColor : "rgba(220,220,220,1)",
+              data : [65,59,90,81,56,55,40,23]
+              }
+              ]
+              }
+              var ctx = document.getElementById("myChart").getContext("2d");
+              new Chart(ctx).Bar(data);
+          .large-6.columns
+            <canvas id="my2Chart" width="auto" height="300" style='margin-top: -25px;' ></canvas>
+            %script
+              = "user_dashboard.show_interests_overlap(#{Interest.return_array_of_interests(@selected_careers.first)}, #{Interest.humanize(Interest.return_array_of_interests(@auth))});"
+        .row
+          .large-12.columns{ style: 'text-align: center;'}
+            %h4
+              %strong Top Industry
+            %h5= @selected_careers.first.trend.industries
+
+  - else
+    .large-12.columns{ style: 'margin: 40px 0; text-align: center;'}
+      %h1 Select a career from above to learn more.
