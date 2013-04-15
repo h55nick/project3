@@ -147,6 +147,30 @@ body { font-family: 'Lato', sans-serif; }
   }
 }
 
+/// EXPLORE PAGE
+.filters {
+  padding: 50px 0 10px;
+  h2 { padding-top: 9px; text-align: center; }
+  .preparation, .growth {
+    &:hover { background: #efefef; }
+  }
+}
+
+.preparation-dropdown, .growth-dropdown {
+  border-top: 3px dotted #ddd;
+  padding: 15px 0;
+  dd {
+    font-size: 1.5em;
+    margin: 0 10px;
+  }
+  .sub-nav {
+    margin: 0 auto;
+    padding-top: 15px;
+    padding-right: 60px;
+    dd { padding-top: 5px; }
+  }
+}
+
 /// SHAPELY
 .circle {
   width: 100px;

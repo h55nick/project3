@@ -35,16 +35,16 @@ end
 
 #Comment this out if you want to keep the static database but reseed other
 ##### THIS WILL EFFECTIVELY WIPE THE "STATIC" DATABASE #####
-  Career.delete_all
-  Interest.delete_all
-  Zone.delete_all
-  Trend.delete_all
-# # ## Create database
-  seed_stable_database
+#   Career.delete_all
+#   Interest.delete_all
+#   Zone.delete_all
+#   Trend.delete_all
+# # # ## Create database
+#   seed_stable_database
 
 ### All "normal seeding" should go under this line: ###
 #User.delete_all
-#Question.delete_all
+Question.delete_all
 #u1 = User.create(email:"h55nick@gmail.com",first:"Nick",password:'a',password_confirmation:'a', :location=>"New York")
 #u1.interest = Interest.create(social: 0,investigative:0, realistic:0,enterprising:0,conventional:0,artistic:0)
 #user = User.create( email: 'bwreid@gmail.com', password: 'x', password_confirmation: 'x', first: 'Bryan', last: 'Reid', education: "Bachelor's Degree", location: 'New York, NY', total: 0 )
