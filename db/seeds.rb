@@ -13,7 +13,14 @@ def seed_stable_database()
       rows[1..-1].each do |r| ##ADDING CAREERS
         puts r[1]
         r.map!{|g| g.gsub(/\"/,'')}
-        c = Career.new(code:r[0],title:r[1..[(r.length-6),1].max].join(','),zone_num:r[-5])
+        z_n = r.join(' ').match(/ \d /).to_s.to_i
+        if ![1,2,3,4,5].include?(z_n.to_i)
+          puts "__________ ALERT  Error on zone_num ____________"
+        else
+          (puts "ZONE===>#{z_n}")
+        end
+        c = Career.new(code:r[0],title:r[1..[(r.length-6),1].max].join(','),zone_num:z_n)
+        z_n = 0;
           if c.save
             # puts "Added Career- " + Career.all.length.to_s
             puts Career.all[-1].title
@@ -36,12 +43,12 @@ end
   seed_stable_database
 
 ### All "normal seeding" should go under this line: ###
-User.delete_all
-Question.delete_all
-u1 = User.create(email:"h55nick@gmail.com",first:"Nick",password:'a',password_confirmation:'a')
-u1.interest = Interest.create(social: 26,investigative:35, realistic:26,enterprising:25,conventional:23,artistic:25)
-user = User.create( email: 'bwreid@gmail.com', password: 'x', password_confirmation: 'x', first: 'Bryan', last: 'Reid', education: "Bachelor's Degree", location: 'New York, NY', total: 0 )
-user.interest = Interest.create( realistic: 0, investigative: 0, social: 0, artistic: 0, conventional: 0, enterprising: 0)
+#User.delete_all
+#Question.delete_all
+#u1 = User.create(email:"h55nick@gmail.com",first:"Nick",password:'a',password_confirmation:'a', :location=>"New York")
+#u1.interest = Interest.create(social: 0,investigative:0, realistic:0,enterprising:0,conventional:0,artistic:0)
+#user = User.create( email: 'bwreid@gmail.com', password: 'x', password_confirmation: 'x', first: 'Bryan', last: 'Reid', education: "Bachelor's Degree", location: 'New York, NY', total: 0 )
+#user.interest = Interest.create( realistic: 0, investigative: 0, social: 0, artistic: 0, conventional: 0, enterprising: 0)
 
 Question.ask('Test the quality of parts before shipment', 'realistic')
 Question.ask('Study the structure of the human body', 'investigative')

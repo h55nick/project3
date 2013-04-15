@@ -15,7 +15,7 @@ Project3::Application.routes.draw do
 
   resources :careers, :only => [:index, :show] do
     collection do
-      get :zone_filter
+      get :filter
       post :add_career
       delete :remove_career
       get :more

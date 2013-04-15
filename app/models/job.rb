@@ -29,10 +29,11 @@ class Job < ActiveRecord::Base
         ## Taking the first two words of the Career Title, and the first word of the top Industry
       query = c.title.gsub('and',"").split(" ")[0..1].join(" ").gsub(",","") +"  " +c.trend.industries.split(' ')[0]
     end
+    u.location.nil? ? location = "USA" : location = u.location
     limit = "100"
     url << "http://api.indeed.com/ads/apisearch?publisher=6311669519978301"
     url << "&q="+ query
-    url << "&l=" + u.location
+    url << "&l=" + location
     url << "&format=json"
     url << "&radius="
     url << "&limit="+ limit

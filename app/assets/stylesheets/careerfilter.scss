@@ -1,27 +1,70 @@
+@import "custom_settings.scss";
+.filter{
+  padding: 10px;
+}
 #list{
-
 }
 .item{
   display: inline-block;
-  padding-top: 20px;
   border-radius: 0 10px 0 10px;
-  box-shadow: 1px 1px 5px #111;
-  min-height: 50px;
+  border: 2px solid #E2F2F2;
+    min-height: 50px;
   margin: 0.5%;
-  white-space: nowrap;
-  /*width: 90%;*/
- /* text-align: center;*/
   a{
-      color: #eee !important;
+      color: $body-font-color !important;
       font-weight: bold;
+      font-size: 1.2em;
   }
 }
-.g5{
-  background-color: red;
+.bookmark{
+  height: 50px;
+  margin-top: 10px;
+  &:hover{
+    opacity: .6;
+  };
 }
-/*.g3{
-  background-color: red !important;
-}*/
+.obar{
+  border: 0.5px solid black;
+  background-color: #aaa;
+  display: inline-block;
+  width: 5px;
+  padding: 0 3px;
+  &.b1{
+    height: 5px;
+  }
+  &.b2{
+    height: 10px;
+  }
+  &.b3{
+    height: 15px;
+  }
+  &.b4{
+    height: 20px;
+  }
+  &.b5{
+    height: 25px;
+  }
+  &.bar_selected{
+    background-color: green;
+  }
+}
+.bnum{
+  font-size: 2.4em;
+  font-weight: bold;
+}
+.drag{
+  margin: 5px;
+  width: 20px;
+  height: 20px;
+}
+.vertinlinecareer{
+  padding-top: 30px;
+}
+.vertinlinenum{
+  padding-top: 20px;
+}
+
+/**** Isotope CSS3 transitions ****/
 
 .isotope-item {
   z-index: 2;
@@ -31,8 +74,6 @@
   pointer-events: none;
   z-index: 1;
 }
-
-/**** Isotope CSS3 transitions ****/
 
 .isotope,
 .isotope .isotope-item {

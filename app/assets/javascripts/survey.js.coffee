@@ -20,7 +20,6 @@ window.survey =
         question_id: q_id
         question_val: q_val
         survey_id: s_id
-
     $.ajax(settings)
 
   change_background: (question) ->

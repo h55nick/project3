@@ -20,7 +20,7 @@
 
 class Career < ActiveRecord::Base
   #Base
-  attr_accessible :code,:title,:zone_num, :tasks
+  attr_accessible :code,:title,:zone_num, :tasks,:growth_num
   #Adjunct.
   attr_accessible :interest_id
 
@@ -36,6 +36,10 @@ def get_top_interests(length = 7)
     k = k.sort_by { |n, a| a }.reverse.map!{|p| p[0].to_s}
     return k[0..length-1]
 end
+def self.get_interests_fast(career,i) #this needs to be passed interests with.
+    k = {social:i.social,investigative:i.investigative,realistic:i.realistic,enterprising:i.enterprising,conventional:i.conventional,artistic:i.artistic}
+    k = k.sort_by { |n, a| a }.reverse.map!{|p| p[0].to_s}
+end
 
 def tr_color
       interest = self.get_top_interests(3)[(rand*3).to_i]
@@ -49,7 +53,7 @@ def tr_color
       end
   end
 
-def growth_num
+def gconvert
       z = self.trend ? self.trend.growth.split(' ').first.downcase  : "average"
     case z
       when "little"
@@ -67,9 +71,15 @@ def growth_num
     end
 end
 
+
+
+#######  ADDING FILTER ######
+  def self.filter(auth = nil, options  = {})
+    Career.readonly.where(:zone_num =>options[:prep],:growth_num=>options[:growth]).limit(100).shuffle
+  end
+
+
 ########  DATABASE ADDING  FUNCTIONS ########
-
-
   def add_tasks
     self.tasks.present? ? self.tasks = nil : ""
     url =  'http://www.onetonline.org/' + "link/table/details/tk/"+self.code+"/Tasks_"+self.code+".csv?fmt=csv&amp;s=IM&amp;t=-10"
@@ -108,6 +118,7 @@ end
     s = Nokogiri::HTML(HTTParty.get(trend_url)).xpath('//table').last.text().split(/\r?\n/)
     params = {wages:s[1].gsub(/\"/,''),growth:s[5..6].join("").gsub(/\"/,''),openings:s[9].gsub(/\"/,''),industries:s[11].gsub(/\"/,'')}
     self.trend = Trend.create(params)
+    self.growth_num = self.gconvert
     self.save
   end
 

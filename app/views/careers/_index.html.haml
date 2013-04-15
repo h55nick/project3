@@ -1,14 +1,28 @@
 - data = {'data-zone'=>career.zone_num, 'data-social'=>career.interest.social, 'data-realistic'=>career.interest.investigative,'data-realistic'=>career.interest.realistic,'data-enterprising'=>career.interest.enterprising,'data-conventional'=>career.interest.conventional,'data-investigative'=>career.interest.investigative,'data-artistic'=>career.interest.artistic,'data-growth'=>career.growth_num,:class=>"g"+career.growth_num.to_s+" z"+career.zone_num.to_s+" zAll gAll item"}
-
-
-.large-12.columns.career{data}= link_to(career.title.gsub('"',''), career_path(career) )
-
-
-
-/ -  !@auth.careers.include?(career)
-/   .job-nav.add.inline{ :'data-career-id' => career.id, :title=>"Add to My Careers"}= image_tag('/assets/bookmark.svg',:class=>'imglink')
-/ -else
-/   .job-nav.added.inline{:'data-career-id'=>career.id}= image_tag('/assets/checkmark.svg')
-/   .content
-/= render partial: 'career_summary', locals: { career: career }
-/ .small-2.columns
+-divs = "<div class='i1'></div>"
+-text = divs + career.title
+-top3 = Career.get_interests_fast(career,career.interest)
+.large-11.small-centered.columns.career{data}
+  .row
+    .column.large-1.block.inline
+      .small-centered.column
+        .i1.drag{ style: "background: url('/assets/#{top3[0]}-icon.svg') no-repeat center; background-size: 100%;" }
+        .i2.drag{ style: "background: url('/assets/#{top3[1]}-icon.svg') no-repeat center; background-size: 100%;" }
+        .i3.drag{ style: "background: url('/assets/#{top3[2]}-icon.svg') no-repeat center; background-size: 100%;" }
+    .column.large-5.careername.inline.vertinlinecareer
+      =link_to(career.title,career_path(career))
+    .column.large-2.inline.preparationlevel.vertinlinenum
+      .bnum.inline=career.zone_num
+      .sayprep.inline
+        = "Preperation"
+        %br
+        ="Level"
+    .column.large-2.growthoutlook.inline.vertinlinenum
+      .bnum.inline=career.growth_num
+      .sayprep.inline
+        = "Growth"
+        %br
+        ="Prospects"
+    .column.large-2.inline
+      -if !@auth.careers.include?(career)
+        .bookmark{style: "background: url('/assets/bookmark.svg') no-repeat center; background-size:50%;", 'data-cid'=>career.id}
