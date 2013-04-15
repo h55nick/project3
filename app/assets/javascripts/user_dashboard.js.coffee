@@ -9,6 +9,7 @@ window.user_dashboard =
 
     # this is all for the careers panel
     $('.careers-list').on('click', 'span', user_dashboard.select_career)
+    $('.compare-careers').on('click', '.career-detail', user_dashboard.switch_career_details)
 
     # this is all for the jobs panel
     $('.wide-color').on('mouseover', '.job', user_dashboard.show_job_details)
@@ -96,6 +97,30 @@ window.user_dashboard =
 
     ctx = document.getElementById("my2Chart").getContext("2d");
     new Chart(ctx).Radar(data);
+
+  switch_career_details: ->
+    if $(this).hasClass('career-interests-panel')
+      $('.career-detail').removeClass('selected')
+      $('.career-interests-panel').addClass('selected')
+      user_dashboard.hide_all_career_details()
+      $('.career-interests-subpanel').show()
+
+    if $(this).hasClass('career-meetups-panel')
+      $('.career-detail').removeClass('selected')
+      $('.career-meetups-panel').addClass('selected')
+      user_dashboard.hide_all_career_details()
+      $('.career-meetups-subpanel').show()
+
+    if $(this).hasClass('career-jobs-panel')
+      $('.career-detail').removeClass('selected')
+      $('.career-jobs-panel').addClass('selected')
+      user_dashboard.hide_all_career_details()
+      $('.career-jobs-subpanel').show()
+
+  hide_all_career_details: ->
+    $('.career-interests-subpanel').hide()
+    $('.career-meetups-subpanel').hide()
+    $('.career-jobs-subpanel').hide()
 
   ##########################
   ### my jobs dashboard

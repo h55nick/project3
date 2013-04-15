@@ -1,8 +1,8 @@
 - data = {'data-zone'=>career.zone_num, 'data-social'=>career.interest.social, 'data-realistic'=>career.interest.investigative,'data-realistic'=>career.interest.realistic,'data-enterprising'=>career.interest.enterprising,'data-conventional'=>career.interest.conventional,'data-investigative'=>career.interest.investigative,'data-artistic'=>career.interest.artistic,'data-growth'=>career.growth_num,:class=>"g"+career.growth_num.to_s+" z"+career.zone_num.to_s+" zAll gAll item"}
--divs = "<div class='i1'></div>"
--text = divs + career.title
--top3 = Career.get_interests_fast(career,career.interest)
-.large-11.small-centered.columns.career{data}
+- divs = "<div class='i1'></div>"
+- text = divs + career.title
+- top3 = Career.get_interests_fast(career,career.interest)
+.large-11.large-centered.columns.career{data}
   .row
     .column.large-1.block.inline
       .small-centered.column

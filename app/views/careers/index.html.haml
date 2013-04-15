@@ -1,11 +1,50 @@
-.hide<img src='/assets/checkmark.svg'/>
--prep = (@auth.edconvert..5).to_a
--preplevels = prep.join(',')
-.row
-  .large-10.columns.large-centered
-    %h1 Find the career that suits you
-.row
-  .large-10.columns.large-centered
+.hide <img src='/assets/checkmark.svg'/>
+- prep = (@auth.edconvert..5).to_a
+- preplevels = prep.join(',')
+.row.full
+  .subhead-wrapper
+    .subhead.blue
+    .row.subheading
+      .large-12.columns
+        %h3.blue Find a Perfect Match
+.row.filters
+  .large-3.columns
+    %h1 Filter by:
+  .large-3.columns.preparation
+    %h2 Preparation
+  .large-3.columns.growth
+    %h2 Growth
+  .large-3.columns
+    %img{ src: '/assets/gear.svg', style: 'height: 35px; margin: 28px 10px;' }
+    %img{ src: '/assets/gear.svg', style: 'height: 35px; margin: 28px 10px;' }
+
+.row.preparation-dropdown{ style: 'border-top: 3px dotted #ddd;' }
+  .large-6.columns
+    %h6 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt ducimus quas unde qui debitis dolorum placeat expedita perspiciatis dignissimos obcaecati!
+  .large-6.columns
+    #filterblock.hide{'data-gfilter'=>"All", 'data-efilter'=>"All"}
+    %dl.sub-nav.edu.right
+      %dd.active= link_to('All', '#')
+      %dd= link_to('1', '#list',:title=>"Select a Different Education Level")
+      %dd= link_to('2', '#list',:title=>"Select a Different Education Level")
+      %dd= link_to('3', '#list',:title=>"Select a Different Education Level")
+      %dd= link_to('4', '#list',:title=>"Select a Different Education Level")
+      %dd= link_to('5', '#list',:title=>"Select a Different Education Level")
+
+.row.growth-dropdown{ style: 'border-top: 3px dotted #ddd;' }
+  .large-6.columns
+    %h6 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt ducimus quas unde qui debitis dolorum placeat expedita perspiciatis dignissimos obcaecati!
+  .large-6.columns
+    %dl.sub-nav.growth.right
+      %dd.active= link_to('All', '#')
+      %dd= link_to('1', '#list',:title=>"Highest",:'data-gzone'=>1)
+      %dd= link_to('2', '#list',:title=>"Above Average",:'data-gzone'=>1)
+      %dd= link_to('3', '#list',:title=>"Average",:'data-gzone'=>1)
+      %dd= link_to('4', '#list',:title=>"Slightly Below Average",:'data-gzone'=>1)
+      %dd= link_to('5', '#list',:title=>"Low",:'data-gzone'=>1)
+
+.row{ style: 'display: none;' }
+  .large-12.columns.large-centered
     .row
       .large-4.columns
         =form_tag "/careers/filter",:method=>'get',:remote=>true do
@@ -31,27 +70,27 @@
           .row
             .large-12.small-centered.columns
               =button_tag("Re-Filter",:class=>"button small", :id=>'refilter')
-      .large-2.columns
-      .large-2.columns
-        #filterblock.hide{'data-gfilter'=>"All", 'data-efilter'=>"All"}
-        %dl.sub-nav.edu
-          %dt Prep
-          %dd.active= link_to('All', '#')
-          %dd= link_to('1', '#list',:title=>"Select a Different Education Level")
-          %dd= link_to('2', '#list',:title=>"Select a Different Education Level")
-          %dd= link_to('3', '#list',:title=>"Select a Different Education Level")
-          %dd= link_to('4', '#list',:title=>"Select a Different Education Level")
-          %dd= link_to('5', '#list',:title=>"Select a Different Education Level")
-      .large-2.columns
-        %dl.sub-nav.growth
-          %dt Growth
-          %dd.active= link_to('All', '#')
-          %dd= link_to('1', '#list',:title=>"Highest",:'data-gzone'=>1)
-          %dd= link_to('2', '#list',:title=>"Above Average",:'data-gzone'=>1)
-          %dd= link_to('3', '#list',:title=>"Average",:'data-gzone'=>1)
-          %dd= link_to('4', '#list',:title=>"Slightly Below Average",:'data-gzone'=>1)
-          %dd= link_to('5', '#list',:title=>"Low",:'data-gzone'=>1)
-      .large-3.columns
+      / .large-2.columns
+      / .large-2.columns
+      /   #filterblock.hide{'data-gfilter'=>"All", 'data-efilter'=>"All"}
+      /   %dl.sub-nav.edu
+      /     %dt Prep
+      /     %dd.active= link_to('All', '#')
+      /     %dd= link_to('1', '#list',:title=>"Select a Different Education Level")
+      /     %dd= link_to('2', '#list',:title=>"Select a Different Education Level")
+      /     %dd= link_to('3', '#list',:title=>"Select a Different Education Level")
+      /     %dd= link_to('4', '#list',:title=>"Select a Different Education Level")
+      /     %dd= link_to('5', '#list',:title=>"Select a Different Education Level")
+      / .large-2.columns
+      /   %dl.sub-nav.growth
+      /     %dt Growth
+      /     %dd.active= link_to('All', '#')
+      /     %dd= link_to('1', '#list',:title=>"Highest",:'data-gzone'=>1)
+      /     %dd= link_to('2', '#list',:title=>"Above Average",:'data-gzone'=>1)
+      /     %dd= link_to('3', '#list',:title=>"Average",:'data-gzone'=>1)
+      /     %dd= link_to('4', '#list',:title=>"Slightly Below Average",:'data-gzone'=>1)
+      /     %dd= link_to('5', '#list',:title=>"Low",:'data-gzone'=>1)
+      / .large-3.columns
 .row
   #list.large-12.columns.career-list
     .row#careerblock
