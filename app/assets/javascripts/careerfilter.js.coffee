@@ -15,6 +15,7 @@ window.iso =
     # this is for selecting the filters
     $('.filters').on('click', '.preparation', iso.show_filters)
     $('.filters').on('click', '.growth', iso.show_filters)
+    $('.filters').on('click', '#advanced', iso.show_filters)
 
   toggle_selected_bar:->
     console.log('toggle_selected')
@@ -72,10 +73,19 @@ window.iso =
 
   show_filters: ->
     if $(this).hasClass('preparation')
-      console.log('prep')
+      $('.total-filter-dropdown').slideUp()
+      $('.growth-dropdown').slideUp()
+      $('.preparation-dropdown').slideDown()
 
     if $(this).hasClass('growth')
-      console.log('growth')
+      $('.total-filter-dropdown').slideUp()
+      $('.preparation-dropdown').slideUp()
+      $('.growth-dropdown').slideDown()
+
+    if $(this).attr('id') == 'advanced'
+      $('.preparation-dropdown').slideUp()
+      $('.growth-dropdown').slideUp()
+      $('.total-filter-dropdown').slideDown()
 
 
  ### reget:->

@@ -1,0 +1,2 @@
+$('a[id="<%= @job_id %>"]').prev().attr('src', '/assets/checkmark.svg');
+$('.saved-jobs-list').empty().append('<%=j render partial: 'users/my_jobs/my_list' %>');

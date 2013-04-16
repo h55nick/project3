@@ -19,6 +19,7 @@ window.user_dashboard =
     $('.applied-jobs').on('mouseover', user_dashboard.highlight_applied_jobs)
     $('.applied-jobs').on('mouseleave', user_dashboard.remove_highlight_applied_jobs)
     $('.saved-jobs').on('click', '#job-apply', user_dashboard.apply_to_job)
+    $('.compare-careers').on('click', '.save-job', user_dashboard.save_job)
 
   ##########################
   ### basic panel functions
@@ -149,6 +150,17 @@ window.user_dashboard =
   remove_highlight_applied_jobs: ->
     $('.applied-jobs').find('.sectional-block').css('background', '#eee')
     $('.applied-jobs-list').css('opacity','0.3')
+
+  save_job: ->
+    job_url = $(this).next().attr('href')
+    job_id = $(this).next().attr('id')
+    token = $('input[name=authenticity_token]').val()
+    settings =
+      dataType: 'script'
+      method: 'POST'
+      url: '/jobs/add'
+      data: { authenticity_token: token, job_url: job_url, job_id: job_id }
+    $.ajax(settings)
 
   apply_to_job: ->
     job_id = $(this).closest('.job').data('job-id')

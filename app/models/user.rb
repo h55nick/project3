@@ -34,6 +34,10 @@ class User < ActiveRecord::Base
     end
   end
 
+  def finished_all_questions
+    self.questions.count == Question.all.count
+  end
+
   def ready_for_graph
     self.total >= 50
   end
