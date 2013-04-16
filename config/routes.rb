@@ -39,4 +39,9 @@ Project3::Application.routes.draw do
   #AJAX Call for User_dashboard
   get '/meetups' => 'meetups#get_meetups'
   #this could be done on browser side with more time.
+
+
+  #### LINKEDIN OAuth #######
+  get '/oauth/login' => 'linkedin#index'
+  get '/oauth/callback'=> 'linkedin#callback'
 end

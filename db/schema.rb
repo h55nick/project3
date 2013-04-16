@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130415131622) do
+ActiveRecord::Schema.define(:version => 20130416190837) do
 
   create_table "careers", :force => true do |t|
     t.string   "code"
@@ -102,6 +102,7 @@ ActiveRecord::Schema.define(:version => 20130415131622) do
     t.integer  "total",           :default => 0
     t.datetime "created_at",                     :null => false
     t.datetime "updated_at",                     :null => false
+    t.string   "l_token"
   end
 
   create_table "zones", :force => true do |t|
