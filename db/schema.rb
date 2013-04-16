@@ -103,6 +103,7 @@ ActiveRecord::Schema.define(:version => 20130416190837) do
     t.datetime "created_at",                     :null => false
     t.datetime "updated_at",                     :null => false
     t.string   "l_token"
+    t.string   "l_secret"
   end
 
   create_table "zones", :force => true do |t|

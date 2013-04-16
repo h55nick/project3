@@ -22,7 +22,8 @@ class User < ActiveRecord::Base
   has_secure_password
   ### ATTR ACCESSIBLE
   attr_accessible :education, :email, :first, :last, :lat, :location, :lon
-  attr_accessible :password, :password_confirmation, :total, :l_token
+  attr_accessible :password, :password_confirmation, :total
+  attr_accessible :l_token, :l_secret
   #RELATIONS
   has_and_belongs_to_many :questions
   has_and_belongs_to_many :careers

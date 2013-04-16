@@ -1,8 +1,7 @@
 .index-form
   .row{ :style => 'padding: 15px 30px 30px;'}
     .large-12.columns
-      #linkedin
-        =link_to("LinkedIn",oauth_login_path, :class=>'button large')
+      =link_to("LinkedIn",oauth_login_path, :class=>'button large linkedin_login')
       = form_for @user, :remote => true, html: { :class => 'custom' } do |f|
         .row
           .large-4.columns
