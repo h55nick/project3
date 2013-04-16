@@ -15,18 +15,7 @@ class CareersController < ApplicationController
     end
   end
 
-  def more
-    #gets more careers
-      zone = params[:zone]
-      @start = params[:start].to_i
-      @end = @start+10
-      if zone == "0"
-        @careers = @auth.get_top_careers(@end+100)
-      else
-        @careers = @auth.get_top_careers(@end+900).reject {|d| d.zone_num != zone.to_s}
-        #Career.where(:zone_num => zone.to_s)[0..@end]
-      end
-  end
+
   def filter
     options = {growth:params[:growth][:values].split(','),prep:params[:prep][:values].split(',')}
    @careers = Career.filter(@auth, options)
@@ -36,10 +25,6 @@ class CareersController < ApplicationController
     @careers = @auth.careers
   end
 
-  # def test_search
-  #   @careers = @auth ? @auth.get_top_careers(5) : Career.all[1..5]
-  #   render :search
-  # end
 
   def add_career
     # this adds the clicked career to the users careers
