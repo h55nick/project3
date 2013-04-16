@@ -10,12 +10,6 @@
 </head>
 <body>
 
-<% if @auth && @auth.questions.length != Question.all.length %>
-  <a href='<%= survey_path %>'>
-    <div id="triangle-topleft" style="background: url('/assets/go-to-survey.png') no-repeat;"></div>
-  </a>
-<% end %>
-
 <div class="nav-wrapper">
   <%= render partial: 'shared/navigation' %>
 </div>

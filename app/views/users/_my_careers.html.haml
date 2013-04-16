@@ -9,16 +9,3 @@
       %span{ :'data-career-id' => career.id }= career.title
 .compare-careers
   = render partial: 'users/my_careers/compare_careers'
-
-/ .career-interests
-/   .row.wide-color
-/     .small-4.columns
-/       .sectional-block{ style: "background: #{@user.show_color(@user.get_top_interests[0])}" }
-/         .sectional{ style: "background: url('/assets/#{@user.get_top_interests[0]}-icon.svg') no-repeat center; width: auto; min-height: 50px; background-size: 100%;" }
-/     .small-4.columns
-/       .sectional-block{ style: "background: #{@user.show_color(@user.get_top_interests[1])}" }
-/         .sectional{ style: "background: url('/assets/#{@user.get_top_interests[1]}-icon.svg') no-repeat center; width: auto; min-height: 50px; background-size: 100%;" }
-/     .small-4.columns
-/       .sectional-block{ style: "background: #{@user.show_color(@user.get_top_interests[2])}" }
-/         .sectional{ style: "background: url('/assets/#{@user.get_top_interests[2]}-icon.svg') no-repeat center; width: auto; min-height: 50px; background-size: 100%;" }
-

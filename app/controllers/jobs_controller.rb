@@ -6,9 +6,10 @@ class JobsController < ApplicationController
   end
 
   def add
-    job = Job.new
-    job.transform_to_job( params[:url] )
-    @auth.jobs << job
+    @job = Job.new
+    @job.transform_to_job( params[:job_url] )
+    @auth.jobs << @job
+    @job_id = params[:job_id]
   end
 
   def destroy

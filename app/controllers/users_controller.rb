@@ -11,6 +11,7 @@ class UsersController < ApplicationController
       user.interest = Interest.create
       user.save
       @user = user
+      redirect_to(user)
     else
       flash[:notice] = 'Something went wrong.'
       flash[:notice] = 'Username already exists!' if User.where( username: params[:user][:username] ).first
