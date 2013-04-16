@@ -4,7 +4,7 @@
     %h5 Select a career from the list to learn more detailed information about it. Or, select multiple careers and Emma will help you compare them to decide the best match.
 
 .row.careers-list{ :'data-color' => "#{@user.show_color(@user.get_top_interests[5])}" }
-  .large-12.columns
+  .large-12.columns.career_span_block
     - @auth.careers.each do |career|
       %span{ :'data-career-id' => career.id }= career.title
 .compare-careers

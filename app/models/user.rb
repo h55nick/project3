@@ -33,6 +33,10 @@ class User < ActiveRecord::Base
       self.lon = result.longitude
     end
   end
+  def zip_code
+    result = Geocoder.search(self.location).first
+    result.postal_code
+  end
 
   def finished_all_questions
     self.questions.count == Question.all.count

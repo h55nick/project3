@@ -47,9 +47,11 @@
                 %script
                   = "user_dashboard.show_interests_overlap(#{Interest.return_array_of_interests(career)}, #{Interest.humanize(Interest.return_array_of_interests(@auth))});"
             .row.career-meetups-subpanel{ style: 'display: none;' }
-              .large-10.columns.large-centered
-                %h3 Meetups in Your Area
-                %h5 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni, voluptate, eaque, optio repudiandae quae distinctio doloribus autem.
+              .large-10.columns.large-centered#meetupbox
+                %script
+                  var cid = $($('.selected')[1]).data('career-id');
+                  user_dashboard.get_meetup_info(cid);
+                =# render partial: 'users/my_careers/meetups'
             .row.career-jobs-subpanel{ style: 'display: none;' }
               .large-10.columns.large-centered
                 %h3 Jobs in Your Area
