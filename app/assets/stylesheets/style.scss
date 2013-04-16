@@ -100,28 +100,30 @@ body { font-family: 'Lato', sans-serif; }
 }
 
 /// TOP SHELF
-// .top-bar {
-//   background: none;
-//   text-align: center;
-//   z-index: 2;
-//   margin-bottom: 0px;
-//   & ul {
-//     background: none;
-//     display: inline-block;
-//     padding: 10px 50px;
-//     & li a:not(.button) {
-//       background: none;
-//       color: #ddd;
-//       font-weight: 400;
-//       text-transform: uppercase;
-//       &:hover {
-//         color: $orange;
-//         background: none;
-//       }
-//     }
-//   }
-//   .center { margin: 0 auto; }
-// }
+.top-bar {
+  background: none;
+  text-align: center;
+  z-index: 2;
+  margin-bottom: 0px;
+  & .menu-icon {  }
+  & ul {
+    background: none;
+    // display: inline-block;
+    padding: 10px 50px;
+    & li a:not(.button) {
+      background: none;
+      color: #bbb;
+      font-weight: 400;
+      text-transform: uppercase;
+      &:hover {
+        color: $orange;
+        background: none;
+      }
+    }
+  }
+  .center { margin: 0 auto; }
+  & .toggle-topbar.menu-icon a { color: #bbb }
+}
 
 /// DASHING DASHBOARDS
 

@@ -10,7 +10,7 @@ window.user_dashboard =
     $('.jobs-menu-item').on('click', user_dashboard.switch_panel)
 
     # this is all for the careers panel
-    $('.careers-list').on('click', 'span', user_dashboard.select_career)
+    $('.my-careers').on('click', 'span', user_dashboard.select_career)
     $('.compare-careers').on('click', '.career-detail', user_dashboard.switch_career_details)
 
     # this is all for the jobs panel

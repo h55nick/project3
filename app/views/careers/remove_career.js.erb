@@ -1,1 +1,2 @@
-$('div').find('.job-nav[data-career-id="<%= @picked.id %>"]').parent().parent().fadeOut();
+$('.my-careers').empty().append('<%=j render partial: 'users/my_careers' %>');
+user_dashboard.selected_careers = []

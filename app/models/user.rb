@@ -18,8 +18,12 @@
 #
 
 class User < ActiveRecord::Base
+  #Security (DNR)
   has_secure_password
-  attr_accessible :education, :email, :first, :last, :lat, :location, :lon, :password, :password_confirmation, :total
+  ### ATTR ACCESSIBLE
+  attr_accessible :education, :email, :first, :last, :lat, :location, :lon
+  attr_accessible :password, :password_confirmation, :total, :l_token
+  #RELATIONS
   has_and_belongs_to_many :questions
   has_and_belongs_to_many :careers
   has_many :jobs

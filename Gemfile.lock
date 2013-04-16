@@ -84,6 +84,7 @@ GEM
       rspec (~> 2.11)
     haml (4.0.1)
       tilt
+    hashie (1.2.0)
     hike (1.2.1)
     httparty (0.10.2)
       multi_json (~> 1.0)
@@ -96,6 +97,10 @@ GEM
     json (1.7.7)
     launchy (2.2.0)
       addressable (~> 2.3)
+    linkedin (0.3.7)
+      hashie (~> 1.2)
+      multi_json (~> 1.0)
+      oauth (~> 0.4)
     listen (0.7.3)
     lumberjack (1.0.3)
     mail (2.5.3)
@@ -110,6 +115,7 @@ GEM
     multi_json (1.7.2)
     multi_xml (0.5.2)
     nokogiri (1.5.9)
+    oauth (0.4.7)
     pg (0.15.0)
     polyglot (0.3.3)
     pry (0.9.12)
@@ -223,6 +229,7 @@ DEPENDENCIES
   httparty
   jquery-rails
   launchy
+  linkedin
   meta_request
   nokogiri
   pg

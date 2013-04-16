@@ -49,9 +49,10 @@ class CareersController < ApplicationController
 
   def remove_career
     # this removes the clicked career to the users careers
-    @picked = Career.find( params[:career_id].to_i )
+    @picked = Career.find( params[:format].to_i )
     @auth.careers = @auth.careers - [@picked]
     @auth.save
+    @user = @auth
   end
 
   def career_info

@@ -30,4 +30,8 @@
 //= require 'more.js'
 //= require 'splash.js'
 //= require 'user_dashboard.js'
-$(document).foundation();
+
+$(function() {
+  $(document).foundation();
+});
+
