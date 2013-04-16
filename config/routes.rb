@@ -24,6 +24,7 @@ Project3::Application.routes.draw do
     end
   end
 
+  #### JOB RESOURCES ######
   resources :jobs, :only => [:index, :destroy] do
     collection do
       post :add
@@ -33,4 +34,9 @@ Project3::Application.routes.draw do
     end
   end
 
+  #### MEETUP RESOURCES ####
+
+  #AJAX Call for User_dashboard
+  get '/meetups' => 'meetups#get_meetups'
+  #this could be done on browser side with more time.
 end

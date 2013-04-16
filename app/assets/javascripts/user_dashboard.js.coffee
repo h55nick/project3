@@ -2,6 +2,8 @@ window.user_dashboard =
   selected_careers: []
 
   ready: ->
+    #this is to get the meetups based on
+
     # this is all for switching between the panels
     $('.interests-menu-item').on('click', user_dashboard.switch_panel)
     $('.careers-menu-item').on('click', user_dashboard.switch_panel)
@@ -51,6 +53,14 @@ window.user_dashboard =
   ##########################
   ### my careers dashboard
   ##########################
+
+  get_meetup_info: (cid) ->
+    console.log("getting meetup info: "+ cid)
+    settings =
+      dataType: 'script'
+      method: 'GET'
+      url: "/meetups?careerid=#{cid}"
+    $.ajax(settings)
 
   select_career: ->
     if !$(this).hasClass('selected')
