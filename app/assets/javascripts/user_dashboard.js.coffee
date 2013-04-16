@@ -14,8 +14,8 @@ window.user_dashboard =
     $('.compare-careers').on('click', '.career-detail', user_dashboard.switch_career_details)
 
     # this is all for the jobs panel
-    $('.wide-color').on('mouseover', '.job', user_dashboard.show_job_details)
-    $('.wide-color').on('mouseleave', '.job', user_dashboard.hide_job_details)
+    # $('.wide-color').on('mouseover', '.job', user_dashboard.show_job_details)
+    # $('.wide-color').on('mouseleave', '.job', user_dashboard.hide_job_details)
     $('.saved-jobs').on('mouseover', user_dashboard.highlight_saved_jobs)
     $('.saved-jobs').on('mouseleave', user_dashboard.remove_highlight_saved_jobs)
     $('.applied-jobs').on('mouseover', user_dashboard.highlight_applied_jobs)
