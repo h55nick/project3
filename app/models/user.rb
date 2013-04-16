@@ -67,44 +67,47 @@ class User < ActiveRecord::Base
   end
 
 
-def edconvert
+  def edconvert
     z = self.education
-      case z
-      when "little"
-        return 1
-      when "slower"
-        return 2
-      when "average"
-        return 3
-      when "faster"
-        return 4
-      when 'much'
-        return 5
-      else
-        return 3
+    case z
+    when "little"
+      return 1
+    when "slower"
+      return 2
+    when "average"
+      return 3
+    when "faster"
+      return 4
+    when 'much'
+      return 5
+    else
+      return 3
     end
-end
-
-  def get_top_careers(n = 100)
-    Career.sort_careers(self.get_related_careers(n).to_a)
   end
+
+  def get_top_careers
+    Career.sort_careers(self.get_related_careers.to_a)
+  end
+
+  def get_related_careers
+    Career.readonly.joins(:interest).order("#{self.get_top_interests(1)[0]} DESC",) #.limit(n)
+  end
+
   def sort_careers(careers, n = careers.length)
     set = []
     c = careers
     i= self.interest
     myinterest = {social:i.social,investigative:i.investigative,realistic:i.realistic,enterprising:i.enterprising,conventional:i.conventional,artistic:i.artistic}
     c.each do |career|
-       i = career.interest
-       k = {social:i.social,investigative:i.investigative,realistic:i.realistic,enterprising:i.enterprising,conventional:i.conventional,artistic:i.artistic}
+      i = career.interest
+      k = {social:i.social,investigative:i.investigative,realistic:i.realistic,enterprising:i.enterprising,conventional:i.conventional,artistic:i.artistic}
       answer = k.map { |key, value| (value - myinterest[key]).abs}.inject(&:+) #With a + you want the reverse because the distance between the two is a bad thing.
-       set << [career,answer]
+      set << [career,answer]
     end
     set = set.sort_by(&:last).map!{|a| a[0]}[0..(n-1)]#here is were we reverse it and get rid of the num.
     #set = set.uniq! {|d| d.title}[0..(n-1)]
   end
-  def get_related_careers(n = 100)
-     Career.readonly.joins(:interest).order("#{self.get_top_interests(1)[0]} DESC",).limit(n)
-   end
+
   def get_top_interests(n = 0)
     i = self.interest
     k = {social:i.social,investigative:i.investigative,realistic:i.realistic,enterprising:i.enterprising,conventional:i.conventional,artistic:i.artistic}

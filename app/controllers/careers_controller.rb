@@ -2,8 +2,8 @@ class CareersController < ApplicationController
   before_filter :logged_in
 
   def index
-    options = {growth: ('1'..'5').to_a,prep:(@auth.edconvert.to_s.."5").to_a}
-    @careers = @auth.sort_careers(Career.filter(@auth, options))
+    # options = {growth: ('1'..'5').to_a,prep:(@auth.edconvert.to_s.."5").to_a}
+    # @careers = @auth.sort_careers(Career.filter(@auth, options))
   end
 
   def show
@@ -29,7 +29,7 @@ class CareersController < ApplicationController
   end
   def filter
     options = {growth:params[:growth][:values].split(','),prep:params[:prep][:values].split(',')}
-   @careers = Career.filter(@auth, options)
+   @careers = @auth.sort_careers(Career.filter(@auth, options))
   end
 
   def mycareers

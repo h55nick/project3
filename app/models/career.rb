@@ -77,7 +77,7 @@ def gconvert
 
 #######  ADDING FILTER ######
   def self.filter(auth = nil, options  = {})
-    Career.readonly.where(:zone_num =>options[:prep],:growth_num=>options[:growth]).limit(100)
+    Career.readonly.where(:zone_num =>options[:prep],:growth_num=>options[:growth]) #.limit(1000)
   end
 
 
