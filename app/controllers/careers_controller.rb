@@ -29,7 +29,7 @@ class CareersController < ApplicationController
   end
   def filter
     options = {growth:params[:growth][:values].split(','),prep:params[:prep][:values].split(',')}
-   @careers = @auth.sort_careers(Career.filter(@auth, options))
+    @careers = @auth.sort_careers(Career.filter(@auth, options)).uniq(&:title)
   end
 
   def mycareers

@@ -1,5 +1,7 @@
 var newitems = "<%=j render :partial => 'careerblock'%>"
 $('#careerblock').empty().append(newitems).slideDown(3000)
 $('#list').isotope( 'reloadItems' );
+$('.career-list').animate({opacity:1}, 400)
+$('#loading').slideUp()
 iso.filter_reset();
 //.isotope({ sortBy: 'original-order' })

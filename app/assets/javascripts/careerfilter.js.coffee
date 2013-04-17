@@ -5,6 +5,10 @@ window.iso =
     #$('body').on('change',"#first_filter_choice",iso.reset)
     $('body').on('click','.obar', iso.toggle_selected_bar)
     $('body').on('click',"#refilter",iso.anajax)
+
+    $('#careerblock').on('mouseover', '.career', iso.show_additional_details)
+    $('#careerblock').on('mouseleave', '.career', iso.hide_additional_details)
+
     ## PRESETS
     $(".dial").knob({'min':0,'max':100})
     $('#list').isotope({
@@ -31,8 +35,18 @@ window.iso =
       ))
     $('#growth_values').val(growth_levels)
     $('#prep_values').val(prep_levels)
+
   anajax:->
+    $('.additional-career-details').slideUp()
+    $('#loading').remove()
+    if $('#careerblock').children().length > 0
+      $('.career-list').animate({opacity:0.2}, 400)
+      $('.career-list').parent().prepend("<h3 id='loading' style='text-align: center; margin: 50px 0; display:none;'>Loading...</h3>")
+      $('#loading').delay(400).slideDown()
+    else
+      $('.career-list').parent().prepend("<h3 id='loading' style='text-align: center; margin: 50px 0;'>Loading...</h3>")
     $('#careerblock').slideUp(3000);
+
   filter_job_zone:(e) ->
     e.preventDefault()
     $(this).parent().parent().children().removeClass('active')
@@ -40,7 +54,8 @@ window.iso =
     $('#filterblock').attr('data-efilter',$(this).text())
     attrs = iso.get_filter_attr()
     iso.all_filter(attrs)
-   filter_growth_zone:(e) ->
+
+  filter_growth_zone:(e) ->
     e.preventDefault()
     $(this).parent().parent().children().removeClass('active')
     $(this).parent().addClass('active')
@@ -48,9 +63,11 @@ window.iso =
     attrs = iso.get_filter_attr()
     console.log("G: Filtering: "+ attrs)
     iso.all_filter(attrs)
+
   filter_reset:->
-     attrs = iso.get_filter_attr()
-     iso.all_filter(attrs)
+    attrs = iso.get_filter_attr()
+    iso.all_filter(attrs)
+
   all_filter:(attrs)->
     console.log("af: #{attrs}")
     $("#list").isotope
@@ -59,13 +76,21 @@ window.iso =
         id = @attr("id")
         len = $items.length
         console.log "Isotope has filtered for " + len + " items in #" + id
+
   get_filter_attr:->
       growth = $('#filterblock').attr('data-gfilter');
       zone = $('#filterblock').attr('data-efilter');
       zone = "" if zone == "1"
       return ".g#{growth}.z#{zone}"
+
   reset:->
       console.log("reset")
+
+  show_additional_details: ->
+    $(this).find('.additional-career-details').css('opacity', 1)
+
+  hide_additional_details: ->
+    $(this).find('.additional-career-details').css('opacity', 0.3)
 
   ##########################
   ### selecting filters

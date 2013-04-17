@@ -11,17 +11,16 @@ window.user_dashboard =
 
     # this is all for the careers panel
     $('.my-careers').on('click', 'span', user_dashboard.select_career)
-    $('.compare-careers').on('click', '.career-detail', user_dashboard.switch_career_details)
+    $('.my-careers').on('click', '.save-job', user_dashboard.save_job)
+    $('body').on('click', '.career-detail', user_dashboard.switch_career_details)
 
     # this is all for the jobs panel
-    # $('.wide-color').on('mouseover', '.job', user_dashboard.show_job_details)
-    # $('.wide-color').on('mouseleave', '.job', user_dashboard.hide_job_details)
     $('.saved-jobs').on('mouseover', user_dashboard.highlight_saved_jobs)
     $('.saved-jobs').on('mouseleave', user_dashboard.remove_highlight_saved_jobs)
     $('.applied-jobs').on('mouseover', user_dashboard.highlight_applied_jobs)
     $('.applied-jobs').on('mouseleave', user_dashboard.remove_highlight_applied_jobs)
     $('.saved-jobs').on('click', '#job-apply', user_dashboard.apply_to_job)
-    $('.compare-careers').on('click', '.save-job', user_dashboard.save_job)
+
 
   ##########################
   ### basic panel functions
@@ -136,12 +135,6 @@ window.user_dashboard =
   ##########################
   ### my jobs dashboard
   ##########################
-
-  show_job_details: ->
-    $(this).children('.row').slideDown()
-
-  hide_job_details: ->
-    $(this).children('.row').slideUp()
 
   highlight_saved_jobs: ->
     color = $('.saved-jobs').find('.sectional-block').data('color')
