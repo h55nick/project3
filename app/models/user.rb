@@ -97,8 +97,11 @@ class User < ActiveRecord::Base
       answer = k.map { |key, value| (value - myinterest[key]).abs}.inject(&:+) #With a + you want the reverse because the distance between the two is a bad thing.
       set << [career,answer]
     end
-    set = set.sort_by(&:last).map!{|a| a[0]}[0..(n-1)]#here is were we reverse it and get rid of the num.
+    set = set.sort_by(&:last).map!{|a| a[0]}#here is were we reverse it and get rid of the num.
+    puts "----FILTERED DOWN(abc) TO --- #{set.to_a.count} "
     set = set.uniq! {|d| d.title}
+    puts "----FILTERED DOWN(efg) TO --- #{set.to_a.count} "
+    set
   end
 
   def get_top_interests(n = 0)
