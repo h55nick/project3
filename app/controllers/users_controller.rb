@@ -12,7 +12,10 @@ class UsersController < ApplicationController
       user.interest = Interest.create
       user.save
       @user = user
-      redirect_to(user)
+
+      session[:user_id] = @user.id
+      authentication
+      redirect_to(root_path)
     else
       flash[:notice] = 'Something went wrong.'
       flash[:notice] = 'Username already exists!' if User.where( username: params[:user][:username] ).first
