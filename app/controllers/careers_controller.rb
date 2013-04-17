@@ -2,8 +2,8 @@ class CareersController < ApplicationController
   before_filter :logged_in
 
   def index
-    options = {growth: ('1'..'5').to_a,prep:(@auth.edconvert.to_s.."5").to_a}
-    @careers = @auth.sort_careers(Career.filter(@auth, options))
+    # options = {growth: ('1'..'5').to_a,prep:(@auth.edconvert.to_s.."5").to_a}
+    # @careers = @auth.sort_careers(Career.filter(@auth, options))
   end
 
   def show
@@ -18,7 +18,7 @@ class CareersController < ApplicationController
 
   def filter
     options = {growth:params[:growth][:values].split(','),prep:params[:prep][:values].split(',')}
-   @careers = Career.filter(@auth, options)
+   @careers = @auth.sort_careers(Career.filter(@auth, options))
   end
 
   def mycareers
@@ -34,9 +34,10 @@ class CareersController < ApplicationController
 
   def remove_career
     # this removes the clicked career to the users careers
-    @picked = Career.find( params[:career_id].to_i )
+    @picked = Career.find( params[:format].to_i )
     @auth.careers = @auth.careers - [@picked]
     @auth.save
+    @user = @auth
   end
 
   def career_info

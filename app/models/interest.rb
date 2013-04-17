@@ -42,4 +42,17 @@ class Interest < ActiveRecord::Base
     multiplier = (100/array.max.to_f)
     array.map! { |x| x * multiplier }
   end
+
+  def self.definition(interest)
+    case interest
+        when 'conventional' ; return {adj:"Organizers", descrip:"Conventional people like rules and regulations and emphasize self-control. They like structure and order, and dislike unstructured or unclear work and interpersonal situations."}
+        when 'enterprising' ; return {adj:"Persuaders",descrip:"Enterprising people are good talkers, and use this skill to lead or persuade others. They also value reputation, power, money and status, and will usually go after it."}
+        when 'realistic' ; return {adj:"Doers",descip:"Realistic people are usually assertive and competitive, and are interested in activities requiring motor coordination, skill and strength.They like concrete approaches to problem solving, rather than abstract theory."}
+        when 'artistic' ; return {adj:"Creators", descrip:"Artistic people are usually creative, open, inventive, original, perceptive, sensitive, independent and emotional. They like to think, organize and understand artistic and cultural areas."}
+        when 'social' ; return {adj:"Helpers", descrip:"Social people seem to satisfy their needs in teaching or helping situations. They are different than realistic and investigative types because they are drawn more to seek close relationships with other people."}
+        when 'investigative' ; return {adj:"Thinkers",descrip:"Investigative people like to think and observe rather than act, to organize and understand information rather than to persuade. They tend to prefer individual rather than people oriented sactivities."}
+    end
+  end
+
 end
+

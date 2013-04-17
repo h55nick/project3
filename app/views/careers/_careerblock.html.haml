@@ -1,2 +1,3 @@
-- @careers.each_with_index do |career, index|
-  = render 'index', :career => career
+- if @careers
+  - @careers.each_with_index do |career, index|
+    = render 'index', :career => career
