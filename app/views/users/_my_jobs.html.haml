@@ -1,9 +1,9 @@
 .row.explainer
   .small-6.large-9.columns
-    %h3 Use Emma's Bookmarklet!
-    %p Drag this button up onto your toolbar. When you're on a job page for one of our supported sites, simply click it and Emma will save that job for you.
+    %h3 Use Project3's Bookmarklet!
+    %p Drag this button up onto your toolbar. When you're on a job page for one of our supported sites, simply click it and Project3 will save that job for you.
   .small-6.large-3.columns{ style: 'margin-top: 35px;'}
-    = link_to 'Add to Emma', "javascript:(function(){location.href='http://localhost:3000/jobs/import?url='+encodeURIComponent(location.href)})();", class: 'button large'
+    = link_to 'Add to Project3', "javascript:(function(){location.href='http://project3-wdi.herokuapp.com/jobs/import?url='+encodeURIComponent(location.href)})();", class: 'button large'
 
 .row
   .large-12.columns
