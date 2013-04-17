@@ -1,6 +1,5 @@
 window.iso =
   init:->
-    console.log('iso.init')
     #LISTENERS
     #$('body').on('change',"#first_filter_choice",iso.reset)
     $('body').on('click','.obar', iso.toggle_selected_bar)
@@ -20,6 +19,8 @@ window.iso =
     $('.filters').on('click', '.preparation', iso.show_filters)
     $('.filters').on('click', '.growth', iso.show_filters)
     $('.filters').on('click', '#advanced', iso.show_filters)
+
+    console.log('iso.init')
 
   toggle_selected_bar:->
     console.log('toggle_selected')
