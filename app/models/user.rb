@@ -88,10 +88,6 @@ class User < ActiveRecord::Base
     i= self.interest
     myinterest = {social:i.social,investigative:i.investigative,realistic:i.realistic,enterprising:i.enterprising,conventional:i.conventional,artistic:i.artistic}
     c.each do |career|
-       i = career.interest
-       k = {social:i.social,investigative:i.investigative,realistic:i.realistic,enterprising:i.enterprising,conventional:i.conventional,artistic:i.artistic}
-       answer = k.map { |key, value| (value - myinterest[key]).abs}.inject(&:+) #With a + you want the reverse because the distance between the two is a bad thing.
-       set << [career,answer]
       i = career.interest
       k = {social:i.social,investigative:i.investigative,realistic:i.realistic,enterprising:i.enterprising,conventional:i.conventional,artistic:i.artistic}
       answer = k.map { |key, value| (value - myinterest[key]).abs}.inject(&:+) #With a + you want the reverse because the distance between the two is a bad thing.
@@ -107,7 +103,7 @@ class User < ActiveRecord::Base
   def get_top_interests(n = 0)
     i = self.interest
     k = {social:i.social,investigative:i.investigative,realistic:i.realistic,enterprising:i.enterprising,conventional:i.conventional,artistic:i.artistic}
-    k = k.sort_by { |n, a| a }.reverse.map!{|p| p[0].to_s}
+    k = k.sort_by { |n, a| -a }.map!{|p| p[0].to_s}
     return k[0..(n-1)]
   end
 
