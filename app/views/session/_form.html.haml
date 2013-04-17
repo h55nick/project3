@@ -1,11 +1,14 @@
 .sign-in-form
   .row{ :style => 'padding: 15px 30px 30px;'}
-    .large-12.columns
-      %h2 Login
-      = form_tag '/login' do
-        = label_tag 'Email'
-        = text_field_tag 'email', nil, :autofocus => true
-        = label_tag 'Password'
-        = password_field_tag 'password'
-        = submit_tag 'Login!', :class => 'button'
-        = link_to('Cancel', '#', :'data-clear-form' => true, :class => 'button secondary right')
+    .large-8.columns.large-centered
+      .row
+        .large-12.columns
+          = form_tag '/login' do
+            = text_field_tag 'email', nil, :placeholder => 'email', :autofocus => true
+            = password_field_tag 'password', nil, :placeholder => 'password'
+            .row
+              .large-6.columns
+                = submit_tag 'Login!', :class => 'button'
+              .large-6.columns
+                %a.linkedinbutton.button{:href=>oauth_login_path}
+                  =image_tag('linkedin.png',:id=>'linkimage')

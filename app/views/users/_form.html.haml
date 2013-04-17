@@ -1,34 +1,23 @@
 .index-form
   .row{ :style => 'padding: 15px 30px 30px;'}
     .large-12.columns
-      %h2 Register
       = form_for @user, :remote => true, html: { :class => 'custom' } do |f|
         .row
           .large-4.columns
-            = f.label :first, "First Name"
-            = f.text_field :first
+            = f.text_field :first, placeholder: 'first name'
           .large-4.columns
-            = f.label :last, "Last Name"
-            = f.text_field :last
+            = f.text_field :last, placeholder: 'last name'
           .large-4.columns
-            = f.label :email
-            = f.text_field :email
+            = f.text_field :email, placeholder: 'email'
         .row
           .large-6.columns
-            = f.label :location
-            = f.text_field :location, placeholder: 'City, State'
+            = f.password_field :password, placeholder: 'password'
           .large-6.columns
-            - options = ["Some Highschool","Highschool/ GED", "College Degree","Masters","Phd"]
-            = f.label :education
-            = select :user, :education, options, {:include_blank => true}, :class => 'custom xlarge dropdown'
+            = f.password_field :password_confirmation, placeholder: 'password confirmation'
         .row
           .large-6.columns
-            = f.label :password
-            = f.password_field :password
+            = f.submit nil, :class => 'button right'
           .large-6.columns
-            = f.label :password_confirmation, 'Password Confirmation'
-            = f.password_field :password_confirmation
-        .row
-          .large-12.columns
-            = f.submit nil, :class => 'button'
-            = link_to('Cancel', '#', :'data-clear-form' => true, :class => 'button secondary right')
+            %a.linkedinbutton.button.left{:href=>oauth_login_path}
+              =image_tag('linkedin.png',:id=>'linkimage')
+            / = link_to('Cancel', '#', :'data-clear-form' => true, :class => 'button secondary right')

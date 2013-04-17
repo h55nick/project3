@@ -1,6 +1,6 @@
 @import url(http://fonts.googleapis.com/css?family=Lato:300,400,700,900);
 @import url(http://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700);
-@import url(http://fonts.googleapis.com/css?family=Vollkorn:400italic);
+@import url(http://fonts.googleapis.com/css?family=Vollkorn:400italic,400,700);
 @import url(http://fonts.googleapis.com/css?family=Abril+Fatface);
 @import url(http://fonts.googleapis.com/css?family=Old+Standard+TT);
 
@@ -8,99 +8,130 @@
 @import "foundation.scss";
 
 /// TYPOGRAPHY
-h1, h2, h3, h4, h5, h6 { font-family: 'PT Sans Narrow', sans-serif; font-weight: 400; color: $body-font-color; }
+h1, h2, h3, h4, h5, h6 { font-family: 'Lato', sans-serif; font-weight: 300; color: $body-font-color; }
+
 h1 {
   &.hero { font-size: 5em; text-align: center; }
   span { font-weight: 700; }
 }
 
+a, a:visited, a:active { color: $orange; }
+
+.transitions {
+  -moz-webkit-transition: all 0.3s ease-in;
+  -ms-webkit-transition: all 0.3s ease-in;
+  -o-webkit-transition: all 0.3s ease-in;
+  -webkit-transition: all 0.3s ease-in;
+}
+
 /// BODY LANGUAGE
 body { font-family: 'Lato', sans-serif; }
+.row.full { margin: 0; max-width: 100%; }
+
+/// SPLASH PAGE
+.splash-wrapper {
+  background: url('/assets/wearemadeinnewyork.png') no-repeat center;
+  .row.callout {
+      padding-top: 150px;
+      text-align: center;
+      width: 100%;
+      max-width: none;
+      & h3 {
+        font-family: 'Vollkorn', serif;
+        font-size: 4.5em;
+        font-weight: 400;
+        color: white;
+        margin-bottom: 0px;
+        span {
+          font-family: 'Abril Fatface', cursive;
+        }
+      }
+      & p {
+        color: white;
+        font-family: 'Lato', sans-serif;
+        font-weight: 300;
+      }
+    }
+  .splash {
+    background: $orange;
+    margin: 15px 0 30px;
+    height: 500px;
+    opacity: 0.7;
+    & h3 {
+      padding: 200px 0;
+      font-size: 2em;
+      color: white;
+    }
+  }
+}
+
+.interest {
+  display: none;
+}
+
+.interest-image {
+  background: $grey;
+}
+
+.interest-selector {
+  width: 100%;
+  background: #efefef;
+  p {
+    padding: 20px 5px;
+    text-align: center;
+    font-size: emCalc(24px);
+  }
+  &.realistic:hover { background: $red; color: white; }
+  &.investigative:hover { background: $blue; }
+  &.social:hover { background: $purple; color: white; }
+  &.artistic:hover { background: $orange; }
+  &.conventional:hover { background: $grey; color: white; }
+  &.enterprising:hover { background: $yellow; }
+}
+
+.job-card {
+  @include panel(lighten($orange, 40%), 20px);
+  border: none;
+  h1, h3, p { color: lighten($body-font-color, 10%); }
+  h1, h3 {
+    font-family: 'Vollkorn', serif;
+    font-weight: 400;
+  }
+}
 
 /// TOP SHELF
 .top-bar {
   background: none;
   text-align: center;
-  border-top: 1px solid #DDD;
-  border-bottom: 1px solid #DDD;
+  z-index: 2;
+  margin-bottom: 0px;
+  & .menu-icon {  }
   & ul {
     background: none;
-    display: inline-block;
+    // display: inline-block;
+    padding: 10px 50px;
     & li a:not(.button) {
       background: none;
-      color: lighten($body-font-color, 10%);
+      color: #bbb;
       font-weight: 400;
       text-transform: uppercase;
       &:hover {
-        background: $purple;
-        color: #FFF;
+        color: $orange;
+        background: none;
       }
     }
   }
   .center { margin: 0 auto; }
+  & .toggle-topbar.menu-icon a { color: #bbb }
 }
 
 /// DASHING DASHBOARDS
-.dash-block {
-  padding: 10px;
-  text-align: center;
-  h6 { margin-top: 0; }
-  canvas { display: block; margin: 0 auto; }
-  ul { list-style: none; }
-  li {
-    text-align: center;
-    margin: 5px;
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    -ms-border-radius: 5px;
-    -o-border-radius: 5px;
-    border-radius:5px;
-  }
-}
 
-.down-button {
-  position: fixed;
-  bottom: 0;
-  right: 50px;
-  height: 50px;
-  width: 50px;
-  background: $yellow;
-}
+@import "dashboard_settings.scss";
 
-.wide-color-below {
-  padding: 20px 0;
-  background: darken($yellow, 5%);
-  & a { color: $grey; }
-}
+/// SURVEY STYLES
 
-.wide-color {
-  margin: 50px 0 0;
-  background: $yellow;
-  .sectional-block {
-    background: $yellow;
-    padding: 10px;
-    -webkit-transition: all 0.3s linear;
-    -moz-transition: all 0.3s linear;
-    -ms-transition: all 0.3s linear;
-    -o-transition: all 0.3s linear;
-    transition: all 0.3s linear;
-    &.hover { background: #333; }
-    .sectional {
-      display: table;
-      min-height: 300px;
-      width: 100%;
-      h3 {
-        display: table-cell;
-        vertical-align: middle;
-        text-align: center;
-        color: #fff;
-        font-weight: 900;
-        text-transform: uppercase;
-        letter-spacing: 0.3em;
-      }
-    }
-  }
-}
+@import "survey_settings.scss";
 
 /// JOB NAVIGATION
 .job-nav {
@@ -118,88 +149,49 @@ body { font-family: 'Lato', sans-serif; }
   }
 }
 
-/// SURVEY STYLES
-#triangle-topleft {
-  width: 80px;
-  height: 80px;
-  position: fixed;
-  left: 0;
-  top: 0;
-  z-index: 99;
+/// EXPLORE PAGE
+.filters {
+  padding: 50px 0 10px;
+  h2 { padding-top: 9px; text-align: center; }
+  .preparation, .growth {
+    &:hover { background: #efefef; }
+  }
 }
 
-.background-image {
-  height: 100%;
-  width: 100%;
+.preparation-dropdown, .growth-dropdown, .total-filter-dropdown {
+  border-top: 3px dotted #ddd;
+  padding: 15px 0;
+  dd {
+    font-size: 1.5em;
+    margin: 0 10px;
+  }
+  .sub-nav {
+    margin: 0 auto;
+    padding-top: 15px;
+    padding-right: 60px;
+    dd { padding-top: 5px; }
+  }
 }
-.survey-wrapper {
-  opacity: 0.9;
-  width: 100%;
-  text-align: center;
-  & .question {
-    padding: 50px 0;
-    text-align: center;
-    &.intro {
-      h3 { text-align: left; color: $red; }
-      font-size: 1.1em;
-      text-align: left;
-      background: white;
-      color: $grey;
-    }
-    &.serious {
-      background: $beige;
-      color: $grey;
-      font-size: 1.5em;
-      font-style: italic;
-      font-family: 'Vollkorn', serif;
-    }
-    &.modern {
-      background: $orange;
-      color: white;
-      font-size: 2.5em;
-      font-family: 'Lato', sans-serif;
-      font-weight: 300;
-      letter-spacing: 5px;
-      text-transform: uppercase;
-    }
-    &.classic {
-      background: white;
-      color: $grey;
-      font-size: 3em;
-      font-family: 'Abril Fatface', cursive;
-    }
-    &.bookish {
-      background: $yellow;
-      color: white;
-      font-size: 2.5em;
-      font-family: 'Old Standard TT', serif;
-      letter-spacing: 5px;
-      text-transform: uppercase;
-    }
-  }
-  & div.survey-question {
-    // display: table-cell;
-    vertical-align: middle;
-    padding: 0 20%;
-    min-height: 300px;
-    & ul {
-      list-style: none;
-      margin: 15px 0;
-      li {
-        display: inline-block;
-        &.choice {
-          background: #222;
-          padding: 15px 25px;
-          margin: 15px;
-          font-weight: 900;
-          color: #FFF;
-          opacity: 0.5;
-          -webkit-transition: opacity 0.5s linear;
-          &:hover {
-            opacity: 0.7;
-          }
-        }
-      }
-    }
-  }
+
+/// SHAPELY
+.circle {
+  width: 100px;
+  height: 100px;
+  background: white;
+  -moz-border-radius: 50px;
+  -webkit-border-radius: 50px;
+  border-radius: 50px;
+  margin: 0 auto;
+  position: relative;
+  top: -75px;
+}
+
+.sm-circle {
+  width: 100px;
+  height: 100px;
+  background: $blue;
+  -moz-border-radius: 50px;
+  -webkit-border-radius: 50px;
+  border-radius: 50px;
+  margin: 10px 0 20px;
 }

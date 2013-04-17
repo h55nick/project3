@@ -29,10 +29,11 @@ class Job < ActiveRecord::Base
         ## Taking the first two words of the Career Title, and the first word of the top Industry
       query = c.title.gsub('and',"").split(" ")[0..1].join(" ").gsub(",","") +"  " +c.trend.industries.split(' ')[0]
     end
+    u.location.nil? ? location = "USA" : location = u.location
     limit = "100"
     url << "http://api.indeed.com/ads/apisearch?publisher=6311669519978301"
     url << "&q="+ query
-    url << "&l=" + u.location
+    url << "&l=" + location
     url << "&format=json"
     url << "&radius="
     url << "&limit="+ limit
@@ -57,7 +58,6 @@ class Job < ActiveRecord::Base
     self.company = doc.xpath("//hgroup/h2").first.text.gsub(/[\t\n]/,"")
     self.url = input
     self.description = doc.xpath("//div[@class='role']/section[@id = 'description']").text.gsub("\t","")
-    self.job_type = doc.xpath("//section[@id='leader']/h4").text
     self.location = doc.xpath("//a[@id='location']/span").text
     self.website = doc.xpath("//div[@class = 'title ']/a").first.attributes['href'].text
     self.save

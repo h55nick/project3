@@ -1,0 +1,12 @@
+-if @response.present?
+  %h3 Meetups in Your Area
+  -@response.each do |result|
+    %p=link_to(result['name'],result['link'],:target=>"_blank")
+-else
+  %h3 No Meetups Found.
+%p
+  Visit
+  =link_to("Meetup.com","http://www.meetup.com", :target=>"_blank")
+  for more details.
+
+

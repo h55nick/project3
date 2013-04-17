@@ -1,0 +1,135 @@
+@import "custom_settings.scss";
+
+.row .large-12 .career {
+  width: 98%;
+  padding: 25px;
+  .preparationlevel, .growthoutlook { padding: 20px 0 0 30px;  }
+}
+
+#refilter{
+  margin: auto auto;
+}
+#dropdown{
+  border-top: 1px grey solid;
+}
+.filter{
+  padding: 10px;
+}
+
+.item{
+  display: inline-block;
+  border: 1px solid #EFEFEF;
+  overflow: hidden;
+  margin: 10px 0;
+
+  .career-table { display: table; height: 75px; width: 100%; text-align: center; }
+  h4 {
+      display: table-cell;
+      vertical-align: middle;
+      color: $body-font-color !important;
+      font-weight: bold;
+      text-align: center;
+  }
+}
+
+.bookmark{
+  height: 25px;
+  opacity: 0.6;
+  &:hover{
+    opacity: 1;
+  };
+}
+
+.obar{
+  border: 0.5px solid black;
+  background-color: #aaa;
+  display: inline-block;
+  width: 5px;
+  padding: 0 3px;
+  &.b1{
+    height: 5px;
+  }
+  &.b2{
+    height: 10px;
+  }
+  &.b3{
+    height: 15px;
+  }
+  &.b4{
+    height: 20px;
+  }
+  &.b5{
+    height: 25px;
+  }
+  &.bar_selected{
+    background-color: green;
+  }
+}
+.bnum{
+  font-size: 2.4em;
+  font-weight: bold;
+}
+.drag{
+  margin: 5px auto;
+  width: 20px;
+  padding: 10px;
+}
+
+.vertinlinenum{
+  padding-top: 20px;
+}
+
+.additional-career-details {
+  padding: 20px 0 0;
+  opacity: 0.3;
+  -webkit-transition: opacity 0.5s linear;
+  -moz-transition: opacity 0.5s linear;
+  -ms-transition: opacity 0.5s linear;
+  -o-transition: opacity 0.5s linear;
+  transition: opacity 0.5s linear;
+  & p { margin-bottom: 0; }
+  & h6 {
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 0.8em;
+    margin: 0;
+    padding-top: 10px;
+  }
+}
+
+/**** Isotope CSS3 transitions ****/
+
+.isotope-item {
+  z-index: 2;
+}
+
+.isotope-hidden.isotope-item {
+  pointer-events: none;
+  z-index: 1;
+}
+
+.isotope,
+.isotope .isotope-item {
+  -webkit-transition-duration: 0.8s;
+     -moz-transition-duration: 0.8s;
+      -ms-transition-duration: 0.8s;
+       -o-transition-duration: 0.8s;
+          transition-duration: 0.8s;
+}
+
+.isotope {
+  -webkit-transition-property: height, width;
+     -moz-transition-property: height, width;
+      -ms-transition-property: height, width;
+       -o-transition-property: height, width;
+          transition-property: height, width;
+}
+
+.isotope .isotope-item {
+  -webkit-transition-property: -webkit-transform, opacity;
+     -moz-transition-property:    -moz-transform, opacity;
+      -ms-transition-property:     -ms-transform, opacity;
+       -o-transition-property:      -o-transform, opacity;
+          transition-property:         transform, opacity;
+}

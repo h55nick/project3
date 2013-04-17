@@ -1,4 +1,17 @@
 @import "custom_settings.scss";
+#linkimage{
+  width: 40px;
+  height: 40px;
+}
+.linkedinbutton{
+  color: white;
+  line-height: 1em;
+  display: inline-block;
+  height: 43px;
+  width: 43px;
+  margin: 0 0 0 0 !important;
+  padding: 0 0 10px 0 !important;
+}
 
 .inline{
   display: inline-block;
@@ -10,21 +23,6 @@
   margin: 10px 0;
 }
 
-.growth1{
-  color: $red;
-
-}.growth2{
-  color: $red;
-}
-.growth3{
-  color: $blue;
-}
-.growth4{
-  color: darken($blue, 10%);
-}
-.growth5{
-  color: darken($blue, 20%);
-}
 .interestbox{
   margin-bottom: 3px;
   padding: 5px;

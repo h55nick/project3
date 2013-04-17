@@ -1,0 +1,15 @@
+- @response = Job.search(@auth, career)
+- if @response['results'].present?
+  - @response['results'][0, 5].each do |job|
+    .row.career-job
+      .small-6.columns
+        %span= job['jobtitle']
+      .small-4.columns
+        %span= job['company']
+      .small-2.columns
+        %img{ class: 'save-job', src: '/assets/bookmark.svg', style: 'height: 25px; margin: 15px auto;' }
+        %a{ href: job['url'], id: job['jobkey'], target: '_blank' }
+          %img{ src: '/assets/link.svg', style: 'height: 15px; margin: 21px auto;' }
+  %h4{ style: 'padding: 15px 0;' } This is just a recent sampling of jobs in your area. Search for more on <a href='http://www.indeed.com'>Indeed.com</a> or another job website.
+- else
+  %h4{ style: 'padding-top: 15px;' } No jobs were found for this career in the area! Try your own search on <a href='http://www.indeed.com'>Indeed.com</a> or another job website.

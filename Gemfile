@@ -9,6 +9,7 @@ gem 'httparty'
 gem 'nokogiri'
 gem 'thin'
 gem 'geocoder'
+gem 'linkedin'
 
 group :assets do
   gem 'sass-rails'

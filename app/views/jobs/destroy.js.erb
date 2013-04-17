@@ -1,8 +1,2 @@
-
-<% if @auth.jobs.length !=0 %>
-  $('tr.jobs').empty();
-  $('table').append("<%=j render :partial => 'jobs' %>");
-<% else %>
-  $('#jobhome').empty();
-  $('#jobhome').append('<h4> You currently have no Jobs saved! </h4>');
-<%end%>
+$('.applied-jobs-list').empty().append('<%=j render partial: 'users/my_jobs/completed_list' %>');
+$('.tooltip').remove()

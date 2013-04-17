@@ -18,8 +18,13 @@
 #
 
 class User < ActiveRecord::Base
+  #Security (DNR)
   has_secure_password
-  attr_accessible :education, :email, :first, :last, :lat, :location, :lon, :password, :password_confirmation, :total
+  ### ATTR ACCESSIBLE
+  attr_accessible :education, :email, :first, :last, :lat, :location, :lon
+  attr_accessible :password, :password_confirmation, :total
+  attr_accessible :l_token, :l_secret
+  #RELATIONS
   has_and_belongs_to_many :questions
   has_and_belongs_to_many :careers
   has_many :jobs
@@ -34,12 +39,17 @@ class User < ActiveRecord::Base
     end
   end
 
+
+  def finished_all_questions
+    self.questions.count == Question.all.count
+  end
+
   def ready_for_graph
     self.total >= 50
   end
 
   def show_color(interest)
-    if self.get_top_interests[0..2].include?(interest)
+    if self.get_top_interests.include?(interest)
       case interest
       when 'conventional' ; return '#4D5360'
       when 'enterprising' ; return '#FFC629'
@@ -53,17 +63,49 @@ class User < ActiveRecord::Base
     end
   end
 
-  def get_top_careers(n = 10)
-    vals = self.get_top_interests
-    c = Career.readonly.joins(:interest).order("#{vals[0]} DESC").order("#{vals[1]} DESC").order("#{vals[2]} DESC").limit(n+10).to_a
-    c = c.uniq! {|d| d.title}[0..(n-1)]
+
+  def edconvert
+    z = self.education
+    case z
+    when "little"
+      return 1
+    when "slower"
+      return 2
+    when "average"
+      return 3
+    when "faster"
+      return 4
+    when 'much'
+      return 5
+    else
+      return 3
+    end
   end
 
-  def get_top_interests()
+  def sort_careers(careers, n = careers.length)
+    set = []
+    c = careers.to_a
+    i= self.interest
+    myinterest = {social:i.social,investigative:i.investigative,realistic:i.realistic,enterprising:i.enterprising,conventional:i.conventional,artistic:i.artistic}
+    c.each do |career|
+       i = career.interest
+       k = {social:i.social,investigative:i.investigative,realistic:i.realistic,enterprising:i.enterprising,conventional:i.conventional,artistic:i.artistic}
+       answer = k.map { |key, value| (value - myinterest[key]).abs}.inject(&:+) #With a + you want the reverse because the distance between the two is a bad thing.
+       set << [career,answer]
+      i = career.interest
+      k = {social:i.social,investigative:i.investigative,realistic:i.realistic,enterprising:i.enterprising,conventional:i.conventional,artistic:i.artistic}
+      answer = k.map { |key, value| (value - myinterest[key]).abs}.inject(&:+) #With a + you want the reverse because the distance between the two is a bad thing.
+      set << [career,answer]
+    end
+    set = set.sort_by(&:last).map!{|a| a[0]}[0..(n-1)]#here is were we reverse it and get rid of the num.
+    set = set.uniq! {|d| d.title}
+  end
+
+  def get_top_interests(n = 0)
     i = self.interest
     k = {social:i.social,investigative:i.investigative,realistic:i.realistic,enterprising:i.enterprising,conventional:i.conventional,artistic:i.artistic}
     k = k.sort_by { |n, a| a }.reverse.map!{|p| p[0].to_s}
-    return k
+    return k[0..(n-1)]
   end
 
 end

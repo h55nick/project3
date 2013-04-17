@@ -1,13 +1,43 @@
-.row.career
-  .small-10.columns
-    .section-container.accordion{ :'data-section' => 'accordion' }
-      %section.section
-        %p.title
-          = link_to(career.title.gsub('"',''), '#')
-        .content
-          = render partial: 'career_summary', locals: { career: career }
-  .small-2.columns
-    - if !@auth.careers.include?(career)
-      .job-nav.add{ :'data-career-id' => career.id, :title=>"Add to My Careers"}= image_tag('/assets/bookmark.svg',:class=>'imglink')
-    -else
-      .job-nav.added{:'data-career-id'=>career.id}= image_tag('/assets/checkmark.svg')
+- data = {'data-zone'=>career.zone_num, 'data-social'=>career.interest.social, 'data-realistic'=>career.interest.investigative,'data-realistic'=>career.interest.realistic,'data-enterprising'=>career.interest.enterprising,'data-conventional'=>career.interest.conventional,'data-investigative'=>career.interest.investigative,'data-artistic'=>career.interest.artistic,'data-growth'=>career.growth_num,:class=>"g"+career.growth_num.to_s+" z"+career.zone_num.to_s+" zAll gAll item"}
+- divs = "<div class='i1'></div>"
+- text = divs + career.title
+- top3 = Career.get_interests_fast(career,career.interest)
+- user_top3 = @auth.get_top_interests[0..2]
+.large-12.columns.career{data}
+  .row
+    .large-6.columns.careername
+      .career-table
+        %h4= career.title
+    .large-2.columns.preparationlevel
+      .bnum.inline=career.zone_num
+      .sayprep.inline
+        = "Preperation"
+        %br
+        ="Level"
+    .large-2.columns.growthoutlook
+      .bnum.inline=career.growth_num
+      .sayprep.inline
+        = "Growth"
+        %br
+        ="Prospects"
+    .large-2.columns{ style: 'padding-top: 30px;' }
+      -if !@auth.careers.include?(career)
+        .bookmark{style: "background: url('/assets/bookmark.svg') no-repeat center; background-size:25%;", 'data-cid'=>career.id}
+  .row.additional-career-details
+    .large-6.columns
+      %p= truncate(career.tasks, length: 255, separator: ' ')
+    .large-6.columns
+      .row
+        .wide-color
+          .small-4.columns
+            .sectional-block{ style: "padding: 10px 0; background: #{@auth.show_color(top3[0]) if user_top3.include?(top3[0])}" }
+              .i1.drag{ style: "background: url('/assets/#{top3[0]}-icon.svg') no-repeat center center; background-size: 100%;" }
+            %h6= top3[0]
+          .small-4.columns
+            .sectional-block{ style: "padding: 10px 0; background: #{@auth.show_color(top3[1]) if user_top3.include?(top3[1])}" }
+              .i2.drag{ style: "background: url('/assets/#{top3[1]}-icon.svg') no-repeat center center; background-size: 100%;" }
+            %h6= top3[1]
+          .small-4.columns
+            .sectional-block{ style: "padding: 10px 0; background: #{@auth.show_color(top3[2]) if user_top3.include?(top3[2])}" }
+              .i3.drag{ style: "background: url('/assets/#{top3[2]}-icon.svg') no-repeat center center; background-size: 100%;" }
+            %h6= top3[2]

@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_filter :logged_in, :only => [:answer_question]
   before_filter :survey_says, :only => [:show]
+
   def new
     @user = User.new
   end
@@ -11,6 +12,7 @@ class UsersController < ApplicationController
       user.interest = Interest.create
       user.save
       @user = user
+      redirect_to(user)
     else
       flash[:notice] = 'Something went wrong.'
       flash[:notice] = 'Username already exists!' if User.where( username: params[:user][:username] ).first
@@ -37,6 +39,6 @@ class UsersController < ApplicationController
 
   private
   def survey_says
-    redirect_to(survey_path) if !@auth.ready_for_graph
+    redirect_to(survey_path) if @auth.present? && !@auth.ready_for_graph
   end
 end

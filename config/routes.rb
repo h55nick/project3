@@ -15,7 +15,8 @@ Project3::Application.routes.draw do
 
   resources :careers, :only => [:index, :show] do
     collection do
-      get :zone_filter
+      get :filter
+      get :career_info
       post :add_career
       delete :remove_career
       get :more
@@ -23,11 +24,24 @@ Project3::Application.routes.draw do
     end
   end
 
+  #### JOB RESOURCES ######
   resources :jobs, :only => [:index, :destroy] do
     collection do
       post :add
+      post :apply
+      get :import
       get '/search/' => 'jobs#search_jobs'
     end
   end
 
+  #### MEETUP RESOURCES ####
+
+  #AJAX Call for User_dashboard
+  get '/meetups' => 'meetups#get_meetups'
+  #this could be done on browser side with more time.
+
+
+  #### LINKEDIN OAuth #######
+  get '/oauth/login' => 'linkedin#index'
+  get '/oauth/callback'=> 'linkedin#callback'
 end
