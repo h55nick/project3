@@ -1,4 +1,11 @@
 @import "custom_settings.scss";
+
+.row .large-12 .career {
+  width: 98%;
+  padding: 25px;
+  .preparationlevel, .growthoutlook { padding: 20px 0 0 30px;  }
+}
+
 #refilter{
   margin: auto auto;
 }
@@ -8,27 +15,31 @@
 .filter{
   padding: 10px;
 }
-#list{
-}
+
 .item{
   display: inline-block;
-  border-radius: 0 10px 0 10px;
-  border: 2px solid #E2F2F2;
-    min-height: 50px;
-  margin: 0.5%;
-  a{
+  border: 1px solid #EFEFEF;
+  overflow: hidden;
+  margin: 10px 0;
+
+  .career-table { display: table; height: 75px; width: 100%; text-align: center; }
+  h4 {
+      display: table-cell;
+      vertical-align: middle;
       color: $body-font-color !important;
       font-weight: bold;
-      font-size: 1.2em;
+      text-align: center;
   }
 }
+
 .bookmark{
-  height: 50px;
-  margin-top: 10px;
+  height: 25px;
+  opacity: 0.6;
   &:hover{
-    opacity: .6;
+    opacity: 1;
   };
 }
+
 .obar{
   border: 0.5px solid black;
   background-color: #aaa;
@@ -59,15 +70,32 @@
   font-weight: bold;
 }
 .drag{
-  margin: 5px;
+  margin: 5px auto;
   width: 20px;
-  height: 20px;
+  padding: 10px;
 }
-.vertinlinecareer{
-  padding-top: 30px;
-}
+
 .vertinlinenum{
   padding-top: 20px;
+}
+
+.additional-career-details {
+  padding: 20px 0 0;
+  opacity: 0.3;
+  -webkit-transition: opacity 0.5s linear;
+  -moz-transition: opacity 0.5s linear;
+  -ms-transition: opacity 0.5s linear;
+  -o-transition: opacity 0.5s linear;
+  transition: opacity 0.5s linear;
+  & p { margin-bottom: 0; }
+  & h6 {
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 0.8em;
+    margin: 0;
+    padding-top: 10px;
+  }
 }
 
 /**** Isotope CSS3 transitions ****/

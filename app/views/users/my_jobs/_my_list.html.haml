@@ -3,10 +3,10 @@
     %h5
       %strong= job.name
       %br= job.company
-    .row{ style: 'margin: 10px 0; display: none;' }
+    .row{ style: 'margin: 10px 0;' }
       .small-2.columns.small-offset-1
         .job-details
-          .detail{ :'data-tooltip' => true, class: 'has-tip', title: "Added about #{time_ago_in_words(job.created_at)} ago", style: "background: url('/assets/time.svg') no-repeat center; background-size: 35%;" }
+          .detail{ :'data-tooltip' => true, class: 'has-tip', title: "Added #{time_ago_in_words(job.created_at)} ago", style: "background: url('/assets/time.svg') no-repeat center; background-size: 35%;" }
       = render partial: 'users/my_jobs/details', locals: { :job => job }
       .small-2.columns.left
         .job-details

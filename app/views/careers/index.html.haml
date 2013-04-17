@@ -16,7 +16,7 @@
     %h2 Growth
   .large-3.columns
     %img{ id: 'advanced', src: '/assets/gear.svg', style: 'height: 35px; margin: 28px 10px;' }
-    %img{ src: '/assets/gear.svg', style: 'height: 35px; margin: 28px 10px;' }
+    / %img{ src: '/assets/gear.svg', style: 'height: 35px; margin: 28px 10px;' }
 
 .row.preparation-dropdown{ style: 'display: none;' }
   .large-6.columns
@@ -43,87 +43,40 @@
       %dd= link_to('4', '#list',:title=>"Slightly Below Average",:'data-gzone'=>1)
       %dd= link_to('5', '#list',:title=>"Low",:'data-gzone'=>1)
 
-.row.total-filter-dropdown{ style: 'display: none;' }
-  .large-5.columns
-    %h6 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt ducimus quas unde qui debitis dolorum placeat expedita perspiciatis dignissimos obcaecati!
-  .large-6.columns.left
-    =form_tag "/careers/filter",:method=>'get',:remote=>true do
-      .row
-        .large-6.columns
-          .filter.inline
-            Preparation Level
-            .obar.b1.prep_filter{'data-select'=>"#{prep.include?(1).to_s}",'data-level'=>1,:class=>"#{prep.include?(1) ? 'bar_selected' : ''}"}
-            .obar.b2.prep_filter{'data-select'=>"#{prep.include?(2).to_s}",'data-level'=>2,:class=>"#{prep.include?(2) ? 'bar_selected' : ''}"}
-            .obar.b3.prep_filter{'data-select'=>"#{prep.include?(3).to_s}",'data-level'=>3,:class=>"#{prep.include?(3) ? 'bar_selected' : ''}"}
-            .obar.b4.prep_filter{'data-select'=>"#{prep.include?(4).to_s}",'data-level'=>4,:class=>"#{prep.include?(4) ? 'bar_selected' : ''}"}
-            .obar.b5.prep_filter{'data-select'=>"#{prep.include?(5).to_s}",'data-level'=>5,:class=>"#{prep.include?(5) ? 'bar_selected' : ''}"}
-            =hidden_field(:prep,:values)
-        .large-6.columns
-          .filter.inline
-            Growth Filter
-            .obar.b1.bar_selected.growth_filter{'data-select'=>"true",'data-level'=>1}
-            .obar.b2.bar_selected.growth_filter{'data-select'=>"true",'data-level'=>2}
-            .obar.b3.bar_selected.growth_filter{'data-select'=>"true",'data-level'=>3}
-            .obar.b4.bar_selected.growth_filter{'data-select'=>"true",'data-level'=>4}
-            .obar.b5.bar_selected.growth_filter{'data-select'=>"true",'data-level'=>5}
-            =hidden_field(:growth,:values)
-      .row
-        .large-12.columns.large-centered
-          =button_tag("Re-Filter",:class=>"button tiny expand", :id=>'refilter')
-
-/ .row{ style: 'display: none;' }
-/   .large-12.columns.large-centered
-/     .row
-/       .large-4.columns
-/         =form_tag "/careers/filter",:method=>'get',:remote=>true do
-/           .row
-/             .filters.inline
-/               .filter.inline
-/                 Growth Filter
-/                 .obar.b1.bar_selected.growth_filter{'data-select'=>"true",'data-level'=>1}
-/                 .obar.b2.bar_selected.growth_filter{'data-select'=>"true",'data-level'=>2}
-/                 .obar.b3.bar_selected.growth_filter{'data-select'=>"true",'data-level'=>3}
-/                 .obar.b4.bar_selected.growth_filter{'data-select'=>"true",'data-level'=>4}
-/                 .obar.b5.bar_selected.growth_filter{'data-select'=>"true",'data-level'=>5}
-/                 =hidden_field(:growth,:values)
-/           .row
-/             .filter.inline
-/               Preparation Level
-/               .obar.b1.prep_filter{'data-select'=>"#{prep.include?(1).to_s}",'data-level'=>1,:class=>"#{prep.include?(1) ? 'bar_selected' : ''}"}
-/               .obar.b2.prep_filter{'data-select'=>"#{prep.include?(2).to_s}",'data-level'=>2,:class=>"#{prep.include?(2) ? 'bar_selected' : ''}"}
-/               .obar.b3.prep_filter{'data-select'=>"#{prep.include?(3).to_s}",'data-level'=>3,:class=>"#{prep.include?(3) ? 'bar_selected' : ''}"}
-/               .obar.b4.prep_filter{'data-select'=>"#{prep.include?(4).to_s}",'data-level'=>4,:class=>"#{prep.include?(4) ? 'bar_selected' : ''}"}
-/               .obar.b5.prep_filter{'data-select'=>"#{prep.include?(5).to_s}",'data-level'=>5,:class=>"#{prep.include?(5) ? 'bar_selected' : ''}"}
-/             =hidden_field(:prep,:values)
-/ .large-2.columns
-/ .large-2.columns
-/   #filterblock.hide{'data-gfilter'=>"All", 'data-efilter'=>"All"}
-/   %dl.sub-nav.edu
-/     %dt Prep
-/     %dd.active= link_to('All', '#')
-/     %dd= link_to('1', '#list',:title=>"Select a Different Education Level")
-/     %dd= link_to('2', '#list',:title=>"Select a Different Education Level")
-/     %dd= link_to('3', '#list',:title=>"Select a Different Education Level")
-/     %dd= link_to('4', '#list',:title=>"Select a Different Education Level")
-/     %dd= link_to('5', '#list',:title=>"Select a Different Education Level")
-/ .large-2.columns
-/   %dl.sub-nav.growth
-/     %dt Growth
-/     %dd.active= link_to('All', '#')
-/     %dd= link_to('1', '#list',:title=>"Highest",:'data-gzone'=>1)
-/     %dd= link_to('2', '#list',:title=>"Above Average",:'data-gzone'=>1)
-/     %dd= link_to('3', '#list',:title=>"Average",:'data-gzone'=>1)
-/     %dd= link_to('4', '#list',:title=>"Slightly Below Average",:'data-gzone'=>1)
-/     %dd= link_to('5', '#list',:title=>"Low",:'data-gzone'=>1)
-/ .large-3.columns
+.row.total-filter-dropdown
+  =form_tag "/careers/filter",:method=>'get',:remote=>true do
+    .large-4.columns
+      .filter.inline
+        Preparation Level
+        .obar.b1.prep_filter{'data-select'=>"#{prep.include?(1).to_s}",'data-level'=>1,:class=>"#{prep.include?(1) ? 'bar_selected' : ''}"}
+        .obar.b2.prep_filter{'data-select'=>"#{prep.include?(2).to_s}",'data-level'=>2,:class=>"#{prep.include?(2) ? 'bar_selected' : ''}"}
+        .obar.b3.prep_filter{'data-select'=>"#{prep.include?(3).to_s}",'data-level'=>3,:class=>"#{prep.include?(3) ? 'bar_selected' : ''}"}
+        .obar.b4.prep_filter{'data-select'=>"#{prep.include?(4).to_s}",'data-level'=>4,:class=>"#{prep.include?(4) ? 'bar_selected' : ''}"}
+        .obar.b5.prep_filter{'data-select'=>"#{prep.include?(5).to_s}",'data-level'=>5,:class=>"#{prep.include?(5) ? 'bar_selected' : ''}"}
+        =hidden_field(:prep,:values)
+    .large-4.columns
+      .filter.inline
+        Growth Filter
+        .obar.b1.growth_filter{'data-select'=>"false",'data-level'=>1}
+        .obar.b2.growth_filter{'data-select'=>"false",'data-level'=>2}
+        .obar.b3.growth_filter{'data-select'=>"false",'data-level'=>3}
+        .obar.b4.bar_selected.growth_filter{'data-select'=>"true",'data-level'=>4}
+        .obar.b5.bar_selected.growth_filter{'data-select'=>"true",'data-level'=>5}
+        =hidden_field(:growth,:values)
+    .large-4.columns
+      =button_tag("Start Matching!",:class=>"button expand", :id=>'refilter')
 .row
   #list.large-12.columns.career-list
     .row#careerblock
-      = render 'careerblock'
+      - if @careers
+        = render partial: 'careerblock'
+.row
+  .large-12.columns
+    %h3{ id: 'loading', style: 'text-align: center; margin: 50px 0;' } Use the filter settings to pull in careers sorted by your interests.
 %script
   $('.sub-nav.edu').on('click', 'dd a', iso.filter_job_zone)
   $('.sub-nav.growth').on('click', 'dd a', iso.filter_growth_zone)
-  $('#growth_values').val('1,2,3,4,5')
+  $('#growth_values').val('4,5')
   $('#prep_values').val("#{preplevels}")
 
 
