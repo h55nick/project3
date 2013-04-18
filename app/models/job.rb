@@ -43,7 +43,7 @@ class Job < ActiveRecord::Base
   end
 
   def add_from_idealist(input)
-    doc = Nokogiri::HTML(open(input))
+    doc = Nokogiri::HTML(open(input.to_s))
     self.name = doc.xpath("//div[@id='contentHeader']/h1").text
     self.company = doc.xpath("//p[@id='listing-sub-title']/a").text
     self.url = input
@@ -53,7 +53,7 @@ class Job < ActiveRecord::Base
   end
 
   def add_from_authentic_jobs(input)
-    doc = Nokogiri::HTML(open(input))
+    doc = Nokogiri::HTML(open(input.to_s))
     self.name = doc.xpath("//div[@class='role']/h1").text
     self.company = doc.xpath("//hgroup/h2").first.text.gsub(/[\t\n]/,"")
     self.url = input
@@ -64,7 +64,7 @@ class Job < ActiveRecord::Base
   end
 
   def add_from_indeed(input)
-    doc = Nokogiri::HTML(open(input))
+    doc = Nokogiri::HTML(open(input.to_s))
     self.name = doc.xpath("//b[@class='jobtitle']").text
     self.company = doc.xpath("//span[@class='company']").text
     self.url = input
@@ -85,7 +85,7 @@ class Job < ActiveRecord::Base
   end
 
   def add_from_37signals(input)
-    doc = Nokogiri::HTML(open(input))
+    doc = Nokogiri::HTML(open(input.to_s))
     self.name = doc.xpath("//div[@class='listing-header-container']/h1").text
     self.company = doc.xpath("//span[@class='company']").text
     self.url = input

@@ -27,7 +27,7 @@ class JobsController < ApplicationController
       new_job.add_from_authentic_jobs(params[:url])
       @auth.jobs << new_job
     end
-    if params[:url].include?("idealist.org/view/job")
+    if params[:url].include?("idealist.org/view/")
       new_job = Job.new
       new_job.add_from_idealist(params[:url])
       @auth.jobs << new_job
