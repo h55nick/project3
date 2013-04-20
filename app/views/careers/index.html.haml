@@ -48,21 +48,15 @@
     .large-4.columns
       .filter.inline
         Preparation Level
-        .obar.b1.prep_filter{'data-select'=>"#{prep.include?(1).to_s}",'data-level'=>1,:class=>"#{prep.include?(1) ? 'bar_selected' : ''}"}
-        .obar.b2.prep_filter{'data-select'=>"#{prep.include?(2).to_s}",'data-level'=>2,:class=>"#{prep.include?(2) ? 'bar_selected' : ''}"}
-        .obar.b3.prep_filter{'data-select'=>"#{prep.include?(3).to_s}",'data-level'=>3,:class=>"#{prep.include?(3) ? 'bar_selected' : ''}"}
-        .obar.b4.prep_filter{'data-select'=>"#{prep.include?(4).to_s}",'data-level'=>4,:class=>"#{prep.include?(4) ? 'bar_selected' : ''}"}
-        .obar.b5.prep_filter{'data-select'=>"#{prep.include?(5).to_s}",'data-level'=>5,:class=>"#{prep.include?(5) ? 'bar_selected' : ''}"}
         =hidden_field(:prep,:values)
+        <input type="text" id="prep-amount" style="border: 0; color: #f6931f; font-weight: bold;" />
+        #prep-range
     .large-4.columns
       .filter.inline
         Growth Filter
-        .obar.b1.growth_filter{'data-select'=>"false",'data-level'=>1}
-        .obar.b2.growth_filter{'data-select'=>"false",'data-level'=>2}
-        .obar.b3.growth_filter{'data-select'=>"false",'data-level'=>3}
-        .obar.b4.bar_selected.growth_filter{'data-select'=>"true",'data-level'=>4}
-        .obar.b5.bar_selected.growth_filter{'data-select'=>"true",'data-level'=>5}
         =hidden_field(:growth,:values)
+        <input type="text" id="growth-amount" style="border: 0; color: #f6931f; font-weight: bold;" />
+        #growth-range
     .large-4.columns
       =button_tag("Start Matching!",:class=>"button expand", :id=>'refilter')
 .row

@@ -22,6 +22,7 @@
 //= require 'search.js'
 //= require 'survey.js'
 //= require more
+//= require jquery-ui
 //= require iso.min
 //= require knob
 //= require 'splash.js'

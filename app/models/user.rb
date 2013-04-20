@@ -67,47 +67,32 @@ class User < ActiveRecord::Base
   def edconvert
     z = self.education
     case z
-    when "little"
-      return 1
-    when "slower"
-      return 2
-    when "average"
-      return 3
-    when "faster"
-      return 4
-    when 'much'
-      return 5
-    else
-      return 3
+    when "little" ; return 1
+    when "slower" ; return 2
+    when "average" ; return 3
+    when "faster" ; return 4
+    when 'much' ; return 5
+    else ; return 3
     end
   end
 
   def sort_careers(careers, n = careers.length)
     set = []
-    c = careers.to_a
-    i= self.interest
+    i = self.interest
     myinterest = {social:i.social,investigative:i.investigative,realistic:i.realistic,enterprising:i.enterprising,conventional:i.conventional,artistic:i.artistic}
-    c.each do |career|
+    careers.each do |career|
        i = career.interest
        k = {social:i.social,investigative:i.investigative,realistic:i.realistic,enterprising:i.enterprising,conventional:i.conventional,artistic:i.artistic}
        answer = k.map { |key, value| (value - myinterest[key]).abs}.inject(&:+) #With a + you want the reverse because the distance between the two is a bad thing.
        set << [career,answer]
-      i = career.interest
-      k = {social:i.social,investigative:i.investigative,realistic:i.realistic,enterprising:i.enterprising,conventional:i.conventional,artistic:i.artistic}
-      answer = k.map { |key, value| (value - myinterest[key]).abs}.inject(&:+) #With a + you want the reverse because the distance between the two is a bad thing.
-      set << [career,answer]
     end
-    set = set.sort_by(&:last).map!{|a| a[0]}#here is were we reverse it and get rid of the num.
-    puts "----FILTERED DOWN(abc) TO --- #{set.to_a.count} "
-    set = set.uniq! {|d| d.title}
-    puts "----FILTERED DOWN(efg) TO --- #{set.to_a.count} "
-    set
+    set = set.sort_by(&:last).map!{|a| a[0]}.uniq! {|d| d.title}#here is were we reverse it and get rid of the num.
   end
 
   def get_top_interests(n = 0)
     i = self.interest
     k = {social:i.social,investigative:i.investigative,realistic:i.realistic,enterprising:i.enterprising,conventional:i.conventional,artistic:i.artistic}
-    k = k.sort_by { |n, a| a }.reverse.map!{|p| p[0].to_s}
+    k = k.sort_by { |n, a| -a }.map!{|p| p[0].to_s}
     return k[0..(n-1)]
   end
 
