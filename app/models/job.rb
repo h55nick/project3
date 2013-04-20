@@ -43,20 +43,20 @@ class Job < ActiveRecord::Base
   end
 
   def add_from_idealist(input)
-    doc = Nokogiri::HTML(open(input))
+    doc = Nokogiri::HTML(open(input.to_s))
     self.name = doc.xpath("//div[@id='contentHeader']/h1").text
     self.company = doc.xpath("//p[@id='listing-sub-title']/a").text
-    self.url = input
+    self.url = input.to_s
     self.description = doc.xpath("//div[@id='listing-description']").text.gsub("\t","") + doc.xpath("//div[@id='listing-instructions']").text.gsub("\t","")
     self.location = doc.xpath("//div[@id='box-Location']/div[@class='body']/div[@class='contentGroup']/div[@class='content']/dl/dd").text
     self.save
   end
 
   def add_from_authentic_jobs(input)
-    doc = Nokogiri::HTML(open(input))
+    doc = Nokogiri::HTML(open(input.to_s))
     self.name = doc.xpath("//div[@class='role']/h1").text
     self.company = doc.xpath("//hgroup/h2").first.text.gsub(/[\t\n]/,"")
-    self.url = input
+    self.url = input.to_s
     self.description = doc.xpath("//div[@class='role']/section[@id = 'description']").text.gsub("\t","")
     self.location = doc.xpath("//a[@id='location']/span").text
     self.website = doc.xpath("//div[@class = 'title ']/a").first.attributes['href'].text
@@ -64,10 +64,10 @@ class Job < ActiveRecord::Base
   end
 
   def add_from_indeed(input)
-    doc = Nokogiri::HTML(open(input))
+    doc = Nokogiri::HTML(open(input.to_s))
     self.name = doc.xpath("//b[@class='jobtitle']").text
     self.company = doc.xpath("//span[@class='company']").text
-    self.url = input
+    self.url = input.to_s
     self.description = doc.xpath("//span[@class='summary']").text
     self.location = doc.xpath("//span[@class='location']").text
     self.save
@@ -77,7 +77,7 @@ class Job < ActiveRecord::Base
     doc = Nokogiri::HTML(HTTParty.get(input))
     self.name = doc.xpath("//b[@class='jobtitle']").text
     self.company = doc.xpath("//span[@class='company']").first.text
-    self.url = input
+    self.url = input.to_s
     self.description = doc.xpath("//span[@class='summary']").text.squish
     self.location = doc.xpath("//span[@class='location']").first.text.squish
     self.save
@@ -85,10 +85,10 @@ class Job < ActiveRecord::Base
   end
 
   def add_from_37signals(input)
-    doc = Nokogiri::HTML(open(input))
+    doc = Nokogiri::HTML(open(input.to_s))
     self.name = doc.xpath("//div[@class='listing-header-container']/h1").text
     self.company = doc.xpath("//span[@class='company']").text
-    self.url = input
+    self.url = input.to_s
     self.description = doc.xpath("//div[@class='listing-container']").text
     self.location = doc.xpath("//span[@class='location']").text.split(': ')[1]
     self.save

@@ -10,6 +10,7 @@ gem 'nokogiri'
 gem 'thin'
 gem 'geocoder'
 gem 'linkedin'
+require 'open-uri'
 
 group :assets do
   gem 'sass-rails'
