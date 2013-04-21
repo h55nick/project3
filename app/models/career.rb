@@ -107,9 +107,8 @@ def gconvert
   end
   def add_zone
     puts "+ Zone"
-    #career.zone.present? ? career.zone.delete : ""
     onet_base_url =  'http://www.onetonline.org/'
-    zonscv = "link/table/details/jz/" + self.code + "/Job_Zone_"+ self.code+"47-5041-00.csv?fmt=csv"
+    zonscv = "link/table/details/jz/"+ self.code + "/Job_Zone_"+ self.code+"47-5041-00.csv?fmt=csv"
     z = HTTParty.get(onet_base_url  + zonscv).split(/\r?\n/).map!{|d| d.split(",")}
     params ={title:z[1][1],education:z[2][1].gsub(/\"/,''),experience:z[3][1..-1].join(",").gsub(/\"/,''),training:z[4][1..-1].join(',').gsub(/\"/,'')}
     self.zone = Zone.create(params)

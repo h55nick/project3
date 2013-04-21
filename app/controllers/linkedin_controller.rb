@@ -30,7 +30,7 @@ class LinkedinController < ApplicationController
     @profile = client.profile
     #Find or create!
     user = User.find_or_create_by_l_token(l_token:session[:atoken],l_secret:session[:asecret],first:@profile[:first_name],last:@profile[:last_name],password:"a",password_confirmation:"a")
-    user.interest = Interest.create
+    user.interest ||= Interest.create
     user.save
     ### LOGIN ###
     if user.present?
