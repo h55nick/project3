@@ -4,13 +4,14 @@
   margin-top: 3px;
   font-size: 1.3em;
   font-weight: bold;
-  border: 1px solid #ddd;
+  border: 2px solid #ddd;
   border-radius: 50%;
   width: 35px;
   height: 35px;
   line-height: 1.5em;
   background-color: rgba(white,.1);
   text-align: center;
+  margin: 0 auto;
   &:hover{background-color: rgba(black,.1);};
 }
 
