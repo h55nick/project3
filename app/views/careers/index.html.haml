@@ -1,4 +1,4 @@
-.hide <img src='/assets/checkmark.svg'/>
+/ .hide <img src='/assets/checkmark.svg'/>// NB COMMENTED OUT. Ready for Deletion?
 - prep = (@auth.edconvert..5).to_a
 - preplevels = prep.join(',')
 .row.full.hide-for-medium-down
@@ -7,69 +7,75 @@
     .row.subheading
       .large-12.columns
         %h3.blue Find a Perfect Match
-.row.filters
-  .large-3.columns
-    %h1 Filter by:
-  .large-3.columns.preparation
-    %h2 Preparation
-  .large-3.columns.growth
-    %h2 Growth
-  .large-3.columns
-    %img{ id: 'advanced', src: '/assets/gear.svg', style: 'height: 35px; margin: 28px 10px;' }
-    / %img{ src: '/assets/gear.svg', style: 'height: 35px; margin: 28px 10px;' }
+#filterblock.hide{'data-gfilter'=>"All", 'data-efilter'=>"All"}
+.row
+  .large-12.columns.instructions_filter
+    #loading.border_filter
+      %h3.inline{ style: 'text-align: center; margin: 50px 0;' } Use the filter settings to pull in careers sorted by your interests.
 
-.row.preparation-dropdown{ style: 'display: none;' }
-  .large-6.columns
-    %h6 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt ducimus quas unde qui debitis dolorum placeat expedita perspiciatis dignissimos obcaecati!
-  .large-6.columns
-    #filterblock.hide{'data-gfilter'=>"All", 'data-efilter'=>"All"}
-    %dl.sub-nav.edu.right
-      %dd.active= link_to('All', '#')
-      %dd= link_to('1', '#list',:title=>"Select a Different Education Level")
-      %dd= link_to('2', '#list',:title=>"Select a Different Education Level")
-      %dd= link_to('3', '#list',:title=>"Select a Different Education Level")
-      %dd= link_to('4', '#list',:title=>"Select a Different Education Level")
-      %dd= link_to('5', '#list',:title=>"Select a Different Education Level")
+      // ## NB Commented. Ready for deletion?
+/ .row.filters
+/   .large-3.columns
+/     %h1 Filter by:
+/   .large-3.columns.preparation
+/     %h2 Preparation
+/   .large-3.columns.growth
+/     %h2 Growth
+/   .large-3.columns
+/     %img{ id: 'advanced', src: '/assets/gear.svg', style: 'height: 35px; margin: 28px 10px;' }
+/     / %img{ src: '/assets/gear.svg', style: 'height: 35px; margin: 28px 10px;' }
 
-.row.growth-dropdown{ style: 'display: none;' }
-  .large-6.columns
-    %h6 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt ducimus quas unde qui debitis dolorum placeat expedita perspiciatis dignissimos obcaecati!
-  .large-6.columns
-    %dl.sub-nav.growth.right
-      %dd.active= link_to('All', '#')
-      %dd= link_to('1', '#list',:title=>"Highest",:'data-gzone'=>1)
-      %dd= link_to('2', '#list',:title=>"Above Average",:'data-gzone'=>1)
-      %dd= link_to('3', '#list',:title=>"Average",:'data-gzone'=>1)
-      %dd= link_to('4', '#list',:title=>"Slightly Below Average",:'data-gzone'=>1)
-      %dd= link_to('5', '#list',:title=>"Low",:'data-gzone'=>1)
+/ .row.preparation-dropdown{ style: 'display: none;' }
+/   .large-6.columns
+/     %h6 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt ducimus quas unde qui debitis dolorum placeat expedita perspiciatis dignissimos obcaecati!
+/   .large-6.columns
+
+/     %dl.sub-nav.edu.right
+/       %dd.active= link_to('All', '#')
+/       %dd= link_to('1', '#list',:title=>"Select a Different Education Level")
+/       %dd= link_to('2', '#list',:title=>"Select a Different Education Level")
+/       %dd= link_to('3', '#list',:title=>"Select a Different Education Level")
+/       %dd= link_to('4', '#list',:title=>"Select a Different Education Level")
+/       %dd= link_to('5', '#list',:title=>"Select a Different Education Level")
+
+/ .row.growth-dropdown{ style: 'display: none;' }
+/   .large-6.columns
+/     %h6 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt ducimus quas unde qui debitis dolorum placeat expedita perspiciatis dignissimos obcaecati!
+/   .large-6.columns
+/     %dl.sub-nav.growth.right
+/       %dd.active= link_to('All', '#')
+/       %dd= link_to('1', '#list',:title=>"Highest",:'data-gzone'=>1)
+/       %dd= link_to('2', '#list',:title=>"Above Average",:'data-gzone'=>1)
+/       %dd= link_to('3', '#list',:title=>"Average",:'data-gzone'=>1)
+/       %dd= link_to('4', '#list',:title=>"Slightly Below Average",:'data-gzone'=>1)
+/       %dd= link_to('5', '#list',:title=>"Low",:'data-gzone'=>1)
 
 .row.total-filter-dropdown
   =form_tag "/careers/filter",:method=>'get',:remote=>true do
-    .large-4.columns
-      .filter.inline
-        Preparation Level
-        =hidden_field(:prep,:values)
-        <input type="text" id="prep-amount" style="border: 0; color: #f6931f; font-weight: bold;" />
-        #prep-range
-    .large-4.columns
-      .filter.inline
-        Growth Filter
-        =hidden_field(:growth,:values)
-        <input type="text" id="growth-amount" style="border: 0; color: #f6931f; font-weight: bold;" />
-        #growth-range
-    .large-4.columns
+    .large-4.columns.filter.inline{'data-intro'=>"Restrict careers to certain levels of preperation where 1 is highschool and 5 is a PhD.", 'data-position'=>"top"}
+      Preparation Level
+      =hidden_field(:prep,:values)
+      %input{type:"text", id:"prep-amount", style:"border: 0; color: #f6931f; font-weight: bold;"}
+      #prep-range
+    .large-4.columns.filter.inline{'data-intro'=>"Filter by growth requirements where 1 is negitive growth and 5 is high (30% + ) growth.", 'data-position'=>"top"}
+      Growth Filter
+      =hidden_field(:growth,:values)
+      %input{type:"text", id:"growth-amount", style:"border: 0; color: #f6931f; font-weight: bold;"}
+      #growth-range
+    .large-3.columns
       =button_tag("Start Matching!",:class=>"button expand", :id=>'refilter')
+    .large-1.columns
+      #more_info
+        ?
 .row
   #list.large-12.columns.career-list
     .row#careerblock
-      - if @careers
-        = render partial: 'careerblock'
-.row
-  .large-12.columns
-    %h3{ id: 'loading', style: 'text-align: center; margin: 50px 0;' } Use the filter settings to pull in careers sorted by your interests.
+      = render partial: 'careerblock' if @careers
+
+
 %script
-  $('.sub-nav.edu').on('click', 'dd a', iso.filter_job_zone)
-  $('.sub-nav.growth').on('click', 'dd a', iso.filter_growth_zone)
+  /$('.sub-nav.edu').on('click', 'dd a', iso.filter_job_zone)
+  /$('.sub-nav.growth').on('click', 'dd a', iso.filter_growth_zone)
   $('#growth_values').val('4,5')
   $('#prep_values').val("#{preplevels}")
 

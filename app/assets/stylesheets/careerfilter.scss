@@ -1,10 +1,30 @@
 @import "custom_settings.scss";
 
+#more_info{
+  margin-top: 3px;
+  font-size: 1.3em;
+  font-weight: bold;
+  border: 1px solid #ddd;
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  line-height: 1.5em;
+  background-color: rgba(white,.1);
+  text-align: center;
+  &:hover{background-color: rgba(black,.1);};
+}
+
 .row .large-12 .career {
   width: 98%;
   @media only screen and (max-width: 1280px) { width: 92%; }
   padding: 25px;
   .preparationlevel, .growthoutlook { padding: 20px 0 0 30px;  }
+}
+.border_filter{
+   border-bottom: 3px dotted #ddd;
+}
+.total-filter-dropdown{
+  margin: 40px auto;
 }
 
 #refilter{

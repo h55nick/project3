@@ -4,6 +4,7 @@ window.iso =
     #$('body').on('change',"#first_filter_choice",iso.reset)
     $('body').on('click','.obar', iso.toggle_selected_bar)
     $('body').on('click',"#refilter",iso.anajax)
+    $('body').on('click','#more_info',-> $('body').chardinJs('start');)
 
     $('#careerblock').on('mouseover', '.career', iso.show_additional_details)
     $('#careerblock').on('mouseleave', '.career', iso.hide_additional_details)
@@ -16,28 +17,26 @@ window.iso =
       layoutMode : 'fitRows'
     });
     #JQUERY-UI
-    $ ->
-      $("#prep-range").slider
-        range: true
-        min: 1
-        max: 5
-        values: [3, 5]
-        slide: (event, ui) ->
-          $("#prep-amount").val "" + ui.values[0] + " - " + ui.values[1]
-          prep_levels = _.range(ui.values[0], ui.values[1]+1);
-          $('#prep_values').val(prep_levels)
-      $("#prep-amount").val "" + $("#prep-range").slider("values", 0) + " - " + $("#prep-range").slider("values", 1)
-    $ ->
-      $("#growth-range").slider
-        range: true
-        min: 1
-        max: 5
-        values: [3, 5]
-        slide: (event, ui) ->
-          $("#growth-amount").val "" + ui.values[0] + " - " + ui.values[1]
-          growth_levels = _.range(ui.values[0], ui.values[1]+1);
-          $('#growth_values').val(growth_levels)
-      $("#growth-amount").val "" + $("#growth-range").slider("values", 0) + " - " + $("#growth-range").slider("values", 1)
+    $("#prep-range").slider
+      range: true
+      min: 1
+      max: 5
+      values: [3, 5]
+      slide: (event, ui) ->
+        $("#prep-amount").val "" + ui.values[0] + " - " + ui.values[1]
+        prep_levels = _.range(ui.values[0], ui.values[1]+1);
+        $('#prep_values').val(prep_levels)
+    $("#prep-amount").val "" + $("#prep-range").slider("values", 0) + " - " + $("#prep-range").slider("values", 1)
+    $("#growth-range").slider
+      range: true
+      min: 1
+      max: 5
+      values: [3, 5]
+      slide: (event, ui) ->
+        $("#growth-amount").val "" + ui.values[0] + " - " + ui.values[1]
+        growth_levels = _.range(ui.values[0], ui.values[1]+1);
+        $('#growth_values').val(growth_levels)
+    $("#growth-amount").val "" + $("#growth-range").slider("values", 0) + " - " + $("#growth-range").slider("values", 1)
 
 
     # this is for selecting the filters

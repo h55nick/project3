@@ -1,32 +1,39 @@
 - data = {'data-zone'=>career.zone_num, 'data-social'=>career.interest.social, 'data-realistic'=>career.interest.investigative,'data-realistic'=>career.interest.realistic,'data-enterprising'=>career.interest.enterprising,'data-conventional'=>career.interest.conventional,'data-investigative'=>career.interest.investigative,'data-artistic'=>career.interest.artistic,'data-growth'=>career.growth_num,:class=>"g"+career.growth_num.to_s+" z"+career.zone_num.to_s+" zAll gAll item"}
-- divs = "<div class='i1'></div>"
-- text = divs + career.title
+/ - divs = "<div class='i1'></div>" #NB COMMENTED OUT. Ready for deletion?
+/- text = divs + career.title #NB COMMENTED OUT. Ready for deletion?
 - top3 = Career.get_interests_fast(career,career.interest)
 - user_top3 = @auth.get_top_interests[0..2]
+// INTO STUFF
+- if career == @careers.first
+  - title_ex  =  {'data-intro'=>"A top career for you.<br>Take more survey questions to get better responses.", 'data-position'=>"bottom"}
+  - prep_ex =   {'data-intro'=>"Filter by growth requirements where 1 is negitive growth and 5 is high (30% + ) growth prospects.", 'data-position'=>"bottom"}
+  - int_ex = {'data-intro'=>"These are the top interests of the career.", 'data-position'=>"bottom"}
+-else
+  -title_ex = int_ex = prep_ex = {}
+
+// IMPORTANT VIEW
 .large-12.columns.career{data}
   .row
     .large-6.small-12.columns.careername
-      .career-table
+      .career-table{title_ex}
         %h4= career.title
     .large-2.small-4.columns.preparationlevel
       .bnum.inline=career.zone_num
       .sayprep.inline
         = "Preparation"
-        %br
-        ="Level"
+        %br="Level"
     .large-2.small-4.columns.growthoutlook
       .bnum.inline=career.growth_num
       .sayprep.inline
         = "Growth"
-        %br
-        ="Prospects"
+        %br="Prospects"
     .large-2.small-4.columns{ style: 'padding-top: 30px;' }
       -if !@auth.careers.include?(career)
         .bookmark{style: "", 'data-cid'=>career.id}
   .row.additional-career-details
     .large-6.columns
       %p{ style: 'margin-bottom: 10px;' }= truncate(career.tasks, length: 255, separator: ' ')
-    .large-6.columns
+    .large-6.columns.list{int_ex}
       .row
         .wide-color
           .small-4.columns

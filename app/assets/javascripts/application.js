@@ -25,7 +25,6 @@
 //= require jquery-ui
 //= require iso.min
 //= require knob
-//= require 'splash.js'
 //= require 'parallax.min.js'
 //= require careerfilter
 //= require 'more.js'
