@@ -30,6 +30,7 @@
 //= require 'more.js'
 //= require 'splash.js'
 //= require 'user_dashboard.js'
+//= require chardinjs
 
 $(function() {
   $(document).foundation();

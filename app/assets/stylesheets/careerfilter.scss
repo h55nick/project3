@@ -2,6 +2,7 @@
 
 .row .large-12 .career {
   width: 98%;
+  @media only screen and (max-width: 1280px) { width: 92%; }
   padding: 25px;
   .preparationlevel, .growthoutlook { padding: 20px 0 0 30px;  }
 }
@@ -36,6 +37,9 @@
 .bookmark{
   height: 25px;
   opacity: 0.6;
+  background: url('/assets/bookmark.svg') no-repeat center;
+  background-size: 25%;
+  @media only screen and (max-width: 1280px) { height: 50px; background-size: 85%; }
   &:hover{
     opacity: 1;
   };

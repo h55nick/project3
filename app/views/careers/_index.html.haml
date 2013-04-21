@@ -5,27 +5,27 @@
 - user_top3 = @auth.get_top_interests[0..2]
 .large-12.columns.career{data}
   .row
-    .large-6.columns.careername
+    .large-6.small-12.columns.careername
       .career-table
         %h4= career.title
-    .large-2.columns.preparationlevel
+    .large-2.small-4.columns.preparationlevel
       .bnum.inline=career.zone_num
       .sayprep.inline
         = "Preperation"
         %br
         ="Level"
-    .large-2.columns.growthoutlook
+    .large-2.small-4.columns.growthoutlook
       .bnum.inline=career.growth_num
       .sayprep.inline
         = "Growth"
         %br
         ="Prospects"
-    .large-2.columns{ style: 'padding-top: 30px;' }
+    .large-2.small-4.columns{ style: 'padding-top: 30px;' }
       -if !@auth.careers.include?(career)
-        .bookmark{style: "background: url('/assets/bookmark.svg') no-repeat center; background-size:25%;", 'data-cid'=>career.id}
+        .bookmark{style: "", 'data-cid'=>career.id}
   .row.additional-career-details
     .large-6.columns
-      %p= truncate(career.tasks, length: 255, separator: ' ')
+      %p{ style: 'margin-bottom: 10px;' }= truncate(career.tasks, length: 255, separator: ' ')
     .large-6.columns
       .row
         .wide-color

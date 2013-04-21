@@ -10,6 +10,7 @@ gem 'nokogiri'
 gem 'thin'
 gem 'geocoder'
 gem 'linkedin'
+gem 'chardinjs-rails'
 require 'open-uri'
 
 group :assets do
