@@ -2,7 +2,7 @@ window.survey =
   document_ready: ->
     $('.background-image').height( $(window).height() )
     $('.survey-wrapper').height( $(window).height() )
-    $('.survey-question').css('padding-top', ($(window).height()/4))
+    $('.survey-question').css('padding-top', ($(window).height()/2))
     $('.survey-question').on('click', 'li', survey.next_question)
     survey.change_background(question) for question in $('.question')
     parallax.speed = 200

@@ -16,8 +16,9 @@
             = f.password_field :password_confirmation, placeholder: 'password confirmation'
         .row
           .large-6.columns
-            = f.submit nil, :class => 'button right'
+            = f.submit 'Signup with Your Email', :class => 'button expand', style: 'min-height: 43px;'
           .large-6.columns
-            %a.linkedinbutton.button.left{:href=>oauth_login_path}
-              =image_tag('linkedin.png',:id=>'linkimage')
+            %a.left{ :href=> oauth_login_path, class: 'button expand', style: 'color: #222;' }
+              %span{ style: 'margin-top: 5px;' } Signup with LinkedIn
+              = image_tag('linkedin.png',:id=>'linkimage', class: 'right')
             / = link_to('Cancel', '#', :'data-clear-form' => true, :class => 'button secondary right')

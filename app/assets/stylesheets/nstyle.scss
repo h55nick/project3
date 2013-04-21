@@ -1,16 +1,12 @@
 @import "custom_settings.scss";
 #linkimage{
-  width: 40px;
-  height: 40px;
+  position: absolute;
+  top: -3px;
+  right: -3px;
 }
+
 .linkedinbutton{
-  color: white;
-  line-height: 1em;
-  display: inline-block;
-  height: 43px;
-  width: 43px;
-  margin: 0 0 0 0 !important;
-  padding: 0 0 10px 0 !important;
+
 }
 
 .inline{

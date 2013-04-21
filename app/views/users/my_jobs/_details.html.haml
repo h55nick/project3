@@ -4,8 +4,8 @@
 .small-2.columns
   .job-details
     %a{ href: job.website, target: '_blank' }
-      .detail{ :'data-tooltip' => true, class: 'has-tip', title: ( job.website.present? ? "Go to Website" : "No website available"), style: "background: url('/assets/home.svg') no-repeat center; background-size: 35%;" }
+      .detail{ :'data-tooltip' => true, class: 'has-tip', title: ( job.website.present? ? link_to("Go to Website", job.website) : "No website available"), style: "background: url('/assets/home.svg') no-repeat center; background-size: 35%;" }
 .small-2.columns
   .job-details
     %a{ href: job.url, target: '_blank' }
-      .detail{ :'data-tooltip' => true, class: 'has-tip', title: "Go to Posting", style: "background: url('/assets/link.svg') no-repeat center; background-size: 35%;" }
+      .detail{ :'data-tooltip' => true, class: 'has-tip', title: link_to('Go to Posting', job.url), style: "background: url('/assets/link.svg') no-repeat center; background-size: 35%;" }

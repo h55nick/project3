@@ -32,13 +32,15 @@ body { font-family: 'Lato', sans-serif; }
 .splash-wrapper {
   background: url('/assets/wearemadeinnewyork.png') no-repeat center;
   .row.callout {
-      padding-top: 150px;
+      padding-top: 100px;
+      @media only screen and (min-width: 1280px) { padding-top: 150px; }
       text-align: center;
       width: 100%;
       max-width: none;
       & h3 {
         font-family: 'Vollkorn', serif;
         font-size: 4.5em;
+        @media only screen and (max-width: 1280px) { font-size: 2em; }
         font-weight: 400;
         color: white;
         margin-bottom: 0px;
@@ -54,7 +56,7 @@ body { font-family: 'Lato', sans-serif; }
     }
   .splash {
     background: $orange;
-    margin: 15px 0 30px;
+    @media only screen and (min-width: 1280px) { margin: 15px 0 30px; }
     height: 500px;
     opacity: 0.7;
     & h3 {
@@ -79,7 +81,7 @@ body { font-family: 'Lato', sans-serif; }
   p {
     padding: 20px 5px;
     text-align: center;
-    font-size: emCalc(24px);
+    @media only screen and (min-width: 1280px) {font-size: emCalc(24px); }
   }
   &.realistic:hover { background: $red; color: white; }
   &.investigative:hover { background: $blue; }
@@ -98,6 +100,8 @@ body { font-family: 'Lato', sans-serif; }
     font-weight: 400;
   }
 }
+
+.index-form a span, .index-form input[type="submit"], .sign-in-form a span, .sign-in-form input[type="submit"] { font-size: 12px; }
 
 /// TOP SHELF
 .top-bar {
@@ -123,6 +127,24 @@ body { font-family: 'Lato', sans-serif; }
   }
   .center { margin: 0 auto; }
   & .toggle-topbar.menu-icon a { color: #bbb }
+}
+
+@media only screen and (max-width: 1280px) {
+  .top-bar {
+    border-bottom: 1px solid #ddd;
+    ul {
+      padding: 0;
+      &.right li {
+        background: #efefef;
+        & a { color: $body-font-color; }
+      }
+    }
+    .right li { border-top: 1px solid #ddd; }
+    &.expanded {
+      .title-area { background: white; }
+    }
+    .toggle-topbar.menu-icon a { text-indent: -75px; }
+  }
 }
 
 /// DASHING DASHBOARDS
@@ -184,6 +206,7 @@ body { font-family: 'Lato', sans-serif; }
   margin: 0 auto;
   position: relative;
   top: -75px;
+  @media only screen and (max-width: 1280px) { z-index: -99; }
 }
 
 .sm-circle {
