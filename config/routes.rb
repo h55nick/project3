@@ -3,6 +3,7 @@ Project3::Application.routes.draw do
   get '/simple' => 'welcome#simple'
   get '/survey' => 'welcome#survey'
   post '/survey' => 'welcome#answer'
+  post '/extra' => 'users#extra'
   get '/login' => 'session#new'
   post '/login' => 'session#create'
   delete '/login' => 'session#destroy'

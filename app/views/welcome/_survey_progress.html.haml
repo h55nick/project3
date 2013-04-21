@@ -1,0 +1,13 @@
+.row{ style: 'color: white;' }
+  - if @auth.total > 49
+    .small-4.large-2.columns
+      .survey-numeric
+        %h3= link_to('Leave', root_path, style: 'color: white;')
+        %strong Survey
+  .large-8.columns{ class: (@auth.total < 49 ? 'small-8 push-2' : 'small-4' ) }
+    .survey-progress.progress.large-12.primary
+      %span.meter{ style: "width: #{((@auth.questions.length.to_f / Question.all.length) * 100).to_i}%;" }
+  .small-4.large-2.columns
+    .survey-numeric
+      %h3{ style: 'color: white;' }= "#{((@auth.questions.length.to_f / Question.all.length) * 100).to_i}%"
+      %strong Completed

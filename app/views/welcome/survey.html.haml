@@ -2,21 +2,22 @@
   #triangle-topleft{ style: "background: url('/assets/leave-survey.png') no-repeat;" , :class=> 'hide'}
 
 - count = 0
-.background-image{ id: "q0" }
-  .survey-wrapper
-    .survey-question
-      .question{ class: 'intro', style: 'margin-top: -75px;' }
-        %h3= @auth.total == 0 ? "Welcome to Project3, #{@auth.first}." : "Welcome back, #{@auth.first}."
-        %span{ :'data-question-id' => '0' }
-        %p= @auth.total == 0 ? "It's so nice to meet you." : "It's good to see you again."
-        %p <strong>Project3</strong> uses The Holland Codes to help you find your career. The Holland Codes are a system of personality typology developed by the pyschologist John L. Holland with the idea that peoples personalities are analogous to the types of occupations they prefer. The system measures people on six seperate scales of which the three highest scores in order represent an individuals type.
-        %p The test conists of 48 example tasks that you will have to rate by how much you would enjoy performing each on a <strong>scale of 1 to 5, where 1 represents dislike and 5 represents enjoy.</strong>
-        %p The test is short, but you may leave after some time if you like!
-        %ul
-          %li.choice{ style: 'margin-left: 0;'} Begin Survey
-        .hide= 'artistic'
-    %script
-      = "parallax.add( $('#q0') )"
+- if @auth.total == 0
+  = render partial: 'new_user'
+- else
+  .background-image{ id: "intro1" }
+    .survey-wrapper
+      .survey-question
+        .question{ class: 'intro' }
+          %h3= "Welcome back, #{@auth.first}."
+          %span{ :'data-question-id' => '0' }
+          %p It's good to see you again.
+          %p Remember, selecting 1 means you would hate doing the selected task and 5 would mean you'd love it. Feel free to begin as soon as you're ready.
+          %ul
+            %li.choice{ style: 'margin-left: 0;'} Begin Survey
+          .hide= 'artistic'
+      %script
+        = "parallax.add( $('#intro1') )"
 
 - @questions.each do |question|
   .background-image{ id: "q#{(count += 1)}" }
@@ -24,6 +25,9 @@
       = render partial: 'question', locals: { question: question }
       %script
         = "parallax.add( $('#q#{count}') )"
+
+#show-survey-progress
+  = render partial: 'survey_progress'
 
 %script
   var menu_count = 0

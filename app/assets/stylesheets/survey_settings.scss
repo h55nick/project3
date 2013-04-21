@@ -10,57 +10,49 @@
 .background-image {
   height: 100%;
   width: 100%;
+  background-size: 100%;
 }
 .survey-wrapper {
   opacity: 0.9;
   width: 100%;
   text-align: center;
+  color: white;
   & .question {
-    padding: 50px 0;
     text-align: center;
+    font-size: 1.5em;
+    padding: 35px 0;
+    p { color: white; }
+    @media only screen and (min-width: 1280px) { font-size: 3em; padding: 50px 0; }
     &.intro {
-      h3 { text-align: left; color: $red; }
+      h3 { text-align: left; color: white; font-weight: bold; }
+      h5 { color: white; }
       font-size: 1.1em;
       text-align: left;
-      background: white;
-      color: $grey;
+      @media only screen and (min-width: 1280px) { margin-top: -75px; }
     }
     &.serious {
-      background: $beige;
-      color: $grey;
-      font-size: 1.5em;
       font-style: italic;
       font-family: 'Vollkorn', serif;
     }
     &.modern {
-      background: $orange;
-      color: white;
-      font-size: 2.5em;
       font-family: 'Lato', sans-serif;
       font-weight: 300;
       letter-spacing: 5px;
       text-transform: uppercase;
     }
     &.classic {
-      background: white;
-      color: $grey;
-      font-size: 3em;
       font-family: 'Abril Fatface', cursive;
     }
     &.bookish {
-      background: $yellow;
-      color: white;
-      font-size: 2.5em;
       font-family: 'Old Standard TT', serif;
       letter-spacing: 5px;
       text-transform: uppercase;
     }
   }
   & div.survey-question {
-    // display: table-cell;
-    vertical-align: middle;
-    padding: 0 20%;
+    padding: 0 10px;
     min-height: 300px;
+    @media only screen and (min-width: 1280px) { padding: 0 20%; }
     & ul {
       list-style: none;
       margin: 15px 0;
@@ -74,6 +66,7 @@
           color: #FFF;
           opacity: 0.5;
           -webkit-transition: opacity 0.5s linear;
+          @media only screen and (max-width: 1280px) { padding: 5px 15px; margin: 5px; }
           &:hover {
             opacity: 0.7;
           }
