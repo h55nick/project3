@@ -15,7 +15,7 @@ class WelcomeController < ApplicationController
   end
 
   def answer
-    if params[:survey_id] != 'q0'
+    if params[:question_id] != '0'
       question = Question.find( params[:question_id].to_i )
       Question.up_score(@auth, question.topic, params[:question_val].to_i )
       @auth.questions << question

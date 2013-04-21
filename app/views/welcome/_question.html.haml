@@ -1,10 +1,13 @@
 .survey-question
-  .question{ class: Question.choose_class }
+  .question{ class: 'modern', :'data-intro' => 'Is this something you think would be fun to do? Don\'t worry about whether or not you\'re good at it now!', :'data-position' => 'top' }
     %span{ :'data-question-id' => question.id }= question.q
-  %ul
+  %ul{ :'data-intro' => 'Select 1 if you would not like to do it and 5 if you would.', :'data-position' => 'top' }
     %li.choice 1
     %li.choice 2
     %li.choice 3
     %li.choice 4
     %li.choice 5
   .hide= question.topic
+.row
+  .large-12.columns
+    #more_info ?

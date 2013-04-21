@@ -1,0 +1,36 @@
+.background-image{ id: "intro1" }
+  .survey-wrapper
+    .survey-question
+      .question{ class: 'intro' }
+        %h3= "Welcome to Project3, #{@auth.first}."
+        %span{ :'data-question-id' => '0' }
+        %p It's nice to meet you.
+        %p <strong>Project3</strong> will help you find a perfect career fit. Before, we get started, why don't you let us know a bit about you:
+        = form_tag extra_path, class: 'custom', remote: true do
+          .row
+            .large-6.columns
+              %h5 What is your level of education?
+              = select_tag('education', options_for_select( [ ['Some Highschool', 'some_highschool'], ['Completed Highschool', 'highschool'], ['Some College', 'some_college'], ['Completed College', 'college'], ['Some/Completed Graduate School', 'graduate'] ] ), class: 'custom dropdown medium' )
+            .large-6.columns
+              %h5 Where do you live?
+              = text_field_tag 'location'
+          .row
+            .large-12.columns
+              = submit_tag 'Continue', class: 'button'
+        .hide= 'artistic'
+    %script
+      = "parallax.add( $('#intro1') )"
+
+.background-image{ id: "intro2" }
+  .survey-wrapper
+    .survey-question
+      .question{ class: 'intro' }
+        %span{ :'data-question-id' => '0' }
+        %h5 Now we're going to ask you about how much you would like doing a number of completely different activities.
+        %h5 Answer with a 5 if you'd like doing that activity, a 1 if you would dislike it, or anywhere between.
+        %h5 Don't worry about <strong>how good you think you'd be</strong> at completing that task! Just if you'd like it or not.
+      %ul
+        %li.choice{ style: 'margin-left: 0;'} Begin Survey
+        .hide= 'artistic'
+    %script
+      = "parallax.add( $('#intro2') )"

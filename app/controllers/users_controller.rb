@@ -40,6 +40,10 @@ class UsersController < ApplicationController
     end
   end
 
+  def extra
+    @auth.update_attributes( location: params[:location], education: params[:education] )
+  end
+
   private
   def survey_says
     redirect_to(survey_path) if @auth.present? && !@auth.ready_for_graph

@@ -2,11 +2,11 @@ window.survey =
   document_ready: ->
     $('.background-image').height( $(window).height() )
     $('.survey-wrapper').height( $(window).height() )
-    $('.survey-question').css('padding-top', ($(window).height()/2))
+    $('.survey-question').css('padding-top', ($(window).height()/4))
     $('.survey-question').on('click', 'li', survey.next_question)
     survey.change_background(question) for question in $('.question')
     parallax.speed = 200
-    parallax.q0.top()
+    parallax.intro1.top()
 
   next_question: ->
     q_id = $(this).parent().prev().children('span').first().data('questionId')
@@ -24,6 +24,6 @@ window.survey =
 
   change_background: (question) ->
     bg = $(question).css('background')
-    img = '/assets/' + $(question).parent().parent().find('.hide').text() + '-1.jpg'
+    img = '/assets/blurred/' + $(question).parent().parent().find('.hide').text() + '-1.jpg'
     $(question).parent().parent().css('background', bg)
-    $(question).parent().parent().parent().css('background', "url('#{img}')")
+    $('body').css('background', "url('#{img}')")
