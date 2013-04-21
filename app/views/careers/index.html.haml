@@ -52,12 +52,12 @@
 
 .row.total-filter-dropdown
   =form_tag "/careers/filter",:method=>'get',:remote=>true do
-    .large-4.columns.filter.inline{'data-intro'=>"Restrict careers to certain levels of preperation where 1 is highschool and 5 is a PhD.", 'data-position'=>"top"}
+    .large-4.columns.filter.inline{'data-intro'=>"Restrict careers to certain levels of preparation where 1 is little training and 5 usually indicates at least a masters.", 'data-position'=>"top"}
       Preparation Level
       =hidden_field(:prep,:values)
       %input{type:"text", id:"prep-amount", style:"border: 0; color: #f6931f; font-weight: bold;"}
       #prep-range
-    .large-4.columns.filter.inline{'data-intro'=>"Filter by growth requirements where 1 is negitive growth and 5 is high (30% + ) growth.", 'data-position'=>"top"}
+    .large-4.columns.filter.inline{'data-intro'=>"Filter by growth requirements where 1 is negative growth and 5 is very high growth.", 'data-position'=>"top"}
       Growth Filter
       =hidden_field(:growth,:values)
       %input{type:"text", id:"growth-amount", style:"border: 0; color: #f6931f; font-weight: bold;"}
