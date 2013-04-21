@@ -32,7 +32,7 @@ class LinkedinController < ApplicationController
 
     #All OAUTH DONE.
     @profile = client.profile
-    binding.pry
+    #binding.pry
     #Find or create!
     user = User.find_or_create_by_l_token(l_token:session[:atoken],l_secret:session[:asecret],first:@profile[:first_name],last:@profile[:last_name],password:"a",password_confirmation:"a")
     user.interest ||= Interest.create
