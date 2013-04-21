@@ -49,13 +49,13 @@
       .filter.inline
         Preparation Level
         =hidden_field(:prep,:values)
-        <input type="text" id="prep-amount" style="border: 0; color: #f6931f; font-weight: bold;" />
+        %input{type:"text", id:"prep-amount", style:"border: 0; color: #f6931f; font-weight: bold;"}
         #prep-range
     .large-4.columns
       .filter.inline
         Growth Filter
         =hidden_field(:growth,:values)
-        <input type="text" id="growth-amount" style="border: 0; color: #f6931f; font-weight: bold;" />
+        %input{type:"text", id:"growth-amount", style:"border: 0; color: #f6931f; font-weight: bold;"}
         #growth-range
     .large-4.columns
       =button_tag("Start Matching!",:class=>"button expand", :id=>'refilter')

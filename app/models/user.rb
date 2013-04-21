@@ -80,13 +80,13 @@ class User < ActiveRecord::Base
     set = []
     i = self.interest
     myinterest = {social:i.social,investigative:i.investigative,realistic:i.realistic,enterprising:i.enterprising,conventional:i.conventional,artistic:i.artistic}
-    careers.each do |career|
+    careers.uniq! {|d| d.title}.each do |career|
        i = career.interest
        k = {social:i.social,investigative:i.investigative,realistic:i.realistic,enterprising:i.enterprising,conventional:i.conventional,artistic:i.artistic}
-       answer = k.map { |key, value| (value - myinterest[key]).abs}.inject(&:+) #With a + you want the reverse because the distance between the two is a bad thing.
+       answer = k.map { |key, value| (value - 10*myinterest[key]).abs}.inject(&:+) #With a + you want the reverse because the distance between the two is a bad thing.
        set << [career,answer]
     end
-    set = set.sort_by(&:last).map!{|a| a[0]}.uniq! {|d| d.title}#here is were we reverse it and get rid of the num.
+    set = set.sort_by(&:last).map!{|a| a[0]}#here is were we reverse it and get rid of the num.
   end
 
   def get_top_interests(n = 0)
