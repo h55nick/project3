@@ -2,8 +2,8 @@ class CareersController < ApplicationController
   before_filter :logged_in
 
   def index
-    # options = {growth: ('1'..'5').to_a,prep:(@auth.edconvert.to_s.."5").to_a}
-    # @careers = @auth.sort_careers(Career.filter(@auth, options))
+     options = {growth: ('4'..'5').to_a,prep:(@auth.edconvert.to_s.."5").to_a}
+    @careers = @auth.sort_careers(Career.filter(@auth, options))[0..5]
   end
 
   def show
