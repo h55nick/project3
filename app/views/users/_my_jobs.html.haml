@@ -14,7 +14,7 @@
           .sectional-block.transitions{ :'data-color' => @user.show_color(@user.get_top_interests[3]) }
             .sectional{ style: "background: url('/assets/folder.svg') no-repeat center; background-size: 14%;" }
           %h5 Saved
-          %p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere nihil at labore accusantium error. Repudiandae beatae et laboriosam fugit velit soluta!
+          %p These are jobs you have yet to apply to and have saved through Project3 or from our Bookmarklet. Click the checkmark once you've applied!
           .row
             .large-12.columns.saved-jobs-list
               = render partial: 'users/my_jobs/my_list'
@@ -22,7 +22,7 @@
           .sectional-block.transitions{ :'data-color' => @user.show_color(@user.get_top_interests[4]) }
             .sectional{ style: "background: url('/assets/completed.svg') no-repeat center; background-size: 14%;" }
           %h5 Applied
-          %p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos, molestias, nam explicabo voluptatum voluptatem laboriosam distinctio temporibus.
+          %p Below are those jobs you've marked as applied. After two weeks, it's typical to follow-up with an email or call depending on the position!
           .row
             .large-12.columns.applied-jobs-list
               = render partial: 'users/my_jobs/completed_list'
