@@ -1,4 +1,4 @@
-<% if @auth.questions.length != Question.all.length %>
+<% if current_user.questions.length != Question.all.length %>
     parallax.q<%= @next_question %>.right();
     $('#show-survey-progress').empty().append('<%=j render partial: 'survey_progress' %>');
 <% else %>

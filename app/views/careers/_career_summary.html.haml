@@ -4,7 +4,7 @@
       = career.tasks
   .columns.large-4
     -career.get_top_interests(3).each do |int|
-      .interestbox{ :style => "background: #{@auth.show_color(int)}" }=int.capitalize
+      .interestbox{ :style => "background: #{current_user.show_color(int)}" }=int.capitalize
 .row
   .columns.large-12
     %p
@@ -19,4 +19,4 @@
       %strong Top Industry:
       = career.trend.industries
     %p
-      = link_to(">>> Find Jobs in #{@auth.location}", career_path(career))
+      = link_to(">>> Find Jobs in #{current_user.location}", career_path(career))

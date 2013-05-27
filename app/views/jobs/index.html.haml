@@ -1,6 +1,6 @@
 .row
   .large-10.columns.large-centered#jobhome
-    -if @auth.jobs.present?
+    -if current_user.jobs.present?
       %h1 My jobs
       %table
         %th Title

@@ -1,4 +1,4 @@
-- @auth.jobs.where( completed: false ).each do |job|
+- current_user.jobs.where( completed: false ).each do |job|
   .job{ :'data-job-id' => job.id }
     %h5
       %strong= job.name

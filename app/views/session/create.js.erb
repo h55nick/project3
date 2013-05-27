@@ -1,4 +1,4 @@
-<% if @auth.nil? %>
+<% if current_user.nil? %>
   $('#user_form').effect('shake', 500).append('<%=j render(:partial => 'form')%>');
 <% else %>
   $('#user_form').fadeOut(400);

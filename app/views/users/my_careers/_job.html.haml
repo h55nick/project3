@@ -1,4 +1,4 @@
-- @response = Job.search(@auth, career)
+- @response = Job.search(current_user, career)
 - if @response['results'].present?
   - @response['results'][0, 5].each do |job|
     .row.career-job

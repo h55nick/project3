@@ -1,4 +1,6 @@
 Project3::Application.routes.draw do
+  devise_for :users, controllers: {omniauth_callbacks: "omniauth_callbacks"}
+
   root :to => 'welcome#index'
   get '/simple' => 'welcome#simple'
   get '/survey' => 'welcome#survey'

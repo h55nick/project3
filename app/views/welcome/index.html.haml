@@ -6,6 +6,6 @@
     %p
     You are one Project closer to finding the perfect career and the perfect job!
   .large-6.columns
-    -if @auth.nil?
+    -if current_user.nil?
       #user_form
         =render :partial => 'session/form'

@@ -46,7 +46,7 @@
               .large-6.columns
                 <canvas id="my2Chart" width="auto" height="300" style='margin: 0 auto; padding: 25px 15px;'></canvas>
                 %script
-                  = "user_dashboard.show_interests_overlap(#{Interest.return_array_of_interests(career)}, #{Interest.humanize(Interest.return_array_of_interests(@auth))});"
+                  = "user_dashboard.show_interests_overlap(#{Interest.return_array_of_interests(career)}, #{Interest.humanize(Interest.return_array_of_interests(current_user))});"
             .row.career-meetups-subpanel{ style: 'display: none;' }
               .large-10.columns.large-centered#meetupbox
                 %script

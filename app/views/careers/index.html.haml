@@ -1,5 +1,5 @@
 / .hide <img src='/assets/checkmark.svg'/>// NB COMMENTED OUT. Ready for Deletion?
-- prep = (@auth.edconvert..5).to_a
+- prep = (current_user.edconvert..5).to_a
 - preplevels = prep.join(',')
 .row.full.hide-for-medium-down
   .subhead-wrapper

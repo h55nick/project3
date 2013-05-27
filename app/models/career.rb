@@ -16,6 +16,7 @@
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
 #  tasks        :text
+#  growth_num   :integer
 #
 
 class Career < ActiveRecord::Base

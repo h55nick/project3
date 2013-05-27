@@ -2,7 +2,7 @@
 / - divs = "<div class='i1'></div>" #NB COMMENTED OUT. Ready for deletion?
 /- text = divs + career.title #NB COMMENTED OUT. Ready for deletion?
 - top3 = Career.get_interests_fast(career,career.interest)
-- user_top3 = @auth.get_top_interests[0..2]
+- user_top3 = current_user.get_top_interests[0..2]
 // INTO STUFF
 - if career == @careers.first
   - title_ex  =  {'data-intro'=>"A top career for you.<br>Take more survey questions to get better responses.", 'data-position'=>"bottom"}
@@ -28,7 +28,7 @@
         = "Growth"
         %br="Prospects"
     .large-2.small-4.columns{ style: 'padding-top: 30px;' }
-      -if !@auth.careers.include?(career)
+      -if !current_user.careers.include?(career)
         .bookmark{style: "", 'data-cid'=>career.id}
   .row.additional-career-details
     .large-6.columns
@@ -37,14 +37,14 @@
       .row
         .wide-color
           .small-4.columns
-            .sectional-block{ style: "padding: 10px 0; background: #{@auth.show_color(top3[0]) if user_top3.include?(top3[0])}" }
+            .sectional-block{ style: "padding: 10px 0; background: #{current_user.show_color(top3[0]) if user_top3.include?(top3[0])}" }
               .i1.drag{ style: "background: url('/assets/#{top3[0]}-icon.svg') no-repeat center center; background-size: 100%;" }
             %h6= top3[0]
           .small-4.columns
-            .sectional-block{ style: "padding: 10px 0; background: #{@auth.show_color(top3[1]) if user_top3.include?(top3[1])}" }
+            .sectional-block{ style: "padding: 10px 0; background: #{current_user.show_color(top3[1]) if user_top3.include?(top3[1])}" }
               .i2.drag{ style: "background: url('/assets/#{top3[1]}-icon.svg') no-repeat center center; background-size: 100%;" }
             %h6= top3[1]
           .small-4.columns
-            .sectional-block{ style: "padding: 10px 0; background: #{@auth.show_color(top3[2]) if user_top3.include?(top3[2])}" }
+            .sectional-block{ style: "padding: 10px 0; background: #{current_user.show_color(top3[2]) if user_top3.include?(top3[2])}" }
               .i3.drag{ style: "background: url('/assets/#{top3[2]}-icon.svg') no-repeat center center; background-size: 100%;" }
             %h6= top3[2]

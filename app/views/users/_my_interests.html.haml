@@ -1,10 +1,10 @@
 .row
-  - if !@auth.finished_all_questions
+  - if !current_user.finished_all_questions
     .small-4.large-2.columns
       .survey-numeric
         %h3= link_to('Return', survey_path)
         %strong To Survey
-  .large-8.columns{ class: (@auth.finished_all_questions ? 'small-8 push-2' : 'small-4' ) }
+  .large-8.columns{ class: (current_user.finished_all_questions ? 'small-8 push-2' : 'small-4' ) }
     .survey-progress.progress.large-12.success
       %span.meter{ style: "width: #{((@user.questions.length.to_f / Question.all.length) * 100).to_i}%;" }
   .small-4.large-2.columns

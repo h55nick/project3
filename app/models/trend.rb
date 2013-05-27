@@ -10,6 +10,7 @@
 #  career_id  :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  growth_num :integer
 #
 
 class Trend < ActiveRecord::Base

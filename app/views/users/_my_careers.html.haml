@@ -5,8 +5,8 @@
 
 .row.careers-list{ :'data-color' => "#{@user.show_color(@user.get_top_interests[5])}" }
   .large-12.columns.career_span_block
-    - if @auth.careers.count > 0
-      - @auth.careers.each do |career|
+    - if current_user.careers.count > 0
+      - current_user.careers.each do |career|
         %span{ :'data-career-id' => career.id }= career.title
     - else
       %h3

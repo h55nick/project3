@@ -2,14 +2,14 @@
   #triangle-topleft{ style: "background: url('/assets/leave-survey.png') no-repeat;" , :class=> 'hide'}
 
 - count = 0
-- if @auth.total == 0
+- if current_user.total == 0
   = render partial: 'new_user'
 - else
   .background-image{ id: "intro1" }
     .survey-wrapper
       .survey-question
         .question{ class: 'intro' }
-          %h3= "Welcome back, #{@auth.first}."
+          %h3= "Welcome back, #{current_user.first}."
           %span{ :'data-question-id' => '0' }
           %p It's good to see you again.
           %p Remember, selecting 1 means you would hate doing the selected task and 5 would mean you'd love it. Feel free to begin as soon as you're ready.
