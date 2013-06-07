@@ -63,7 +63,7 @@ window.iso =
 
   anajax:->
     $('.additional-career-details').slideUp()
-    $('#loading').remove()
+    # $('#loading').remove()
     if $('#careerblock').children().length > 0
       $('.career-list').animate({opacity:0.2}, 400)
       $('.career-list').parent().prepend("<h3 id='loading' style='text-align: center; margin: 50px 0; display:none;'>Loading...</h3>")

@@ -86,6 +86,22 @@ window.user_dashboard =
     color = $('.careers-list').data('color')
     $(".careers-list span[data-career-id=#{id}]").css('background', color).addClass('selected')
 
+  show_interests_graph: (user) ->
+
+    user_data =
+      fillColor: "rgba(139,119,181,0.8)"
+      strokeColor: "rgba(255,255,255,1)"
+      pointColor: "rgba(139,119,181,1)"
+      pointStrokeColor: "#fff"
+      data: user
+
+    data =
+      labels: ["R","I","A","S","E","C"]
+      datasets: [user_data]
+
+    ctx = document.getElementById("my2Chart").getContext("2d");
+    new Chart(ctx).Radar(data);
+
   show_interests_overlap: (career, user) ->
     career_data =
       fillColor: "rgba(238,238,238,0.8)"

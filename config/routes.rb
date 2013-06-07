@@ -1,7 +1,12 @@
 Project3::Application.routes.draw do
-  devise_for :users, controllers: {omniauth_callbacks: "omniauth_callbacks"}
-
   root :to => 'welcome#index'
+
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
+
+  devise_for :users, controllers: {omniauth_callbacks: "omniauth_callbacks"}
+  ActiveAdmin.routes(self)
+
   get '/simple' => 'welcome#simple'
   get '/survey' => 'welcome#survey'
   post '/survey' => 'welcome#answer'

@@ -1,0 +1,22 @@
+@import "custom_settings.scss";
+
+#new-splash-hero {
+  display: table;
+  width: 100%;
+  #new-splash-inner {
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+    h1, h2 { color: white; }
+    h2 { font-size: 1.2em; margin-bottom: 25px; }
+    a.button {
+      color: #222;
+      font-weight: 100;
+    }
+  }
+}
+
+#colorwheel {
+  position: fixed;
+  background: $orange url('/assets/blurred/BlurredBackground3.jpg');
+}

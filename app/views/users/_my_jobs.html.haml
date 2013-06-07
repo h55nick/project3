@@ -1,9 +1,9 @@
 .row.explainer.hide-for-medium-down
   .small-6.large-9.columns
-    %h3 Use Project3's Bookmarklet!
-    %p Drag this button up onto your toolbar. When you're on a job page for one of our supported sites, simply click it and Project3 will save that job for you.
+    %h3 Use CareerCatch's Bookmarklet!
+    %p Drag this button up onto your toolbar. When you're on a job page for one of our supported sites, simply click it and CareerCatch will save that job for you.
   .small-6.large-3.columns{ style: 'margin-top: 35px;'}
-    = link_to 'Add to Project3', "javascript:(function(){location.href='http://project3-wdi.herokuapp.com/jobs/import?url='+encodeURIComponent(location.href)})();", class: 'button large'
+    = link_to 'CareerCatch!', "javascript:(function(){location.href='http://localhost:3000/jobs/import?url='+encodeURIComponent(location.href)})();", class: 'button large'
 
 .row
   .large-12.columns
@@ -14,7 +14,7 @@
           .sectional-block.transitions{ :'data-color' => @user.show_color(@user.get_top_interests[3]) }
             .sectional{ style: "background: url('/assets/folder.svg') no-repeat center; background-size: 14%;" }
           %h5 Saved
-          %p These are jobs you have yet to apply to and have saved through Project3 or from our Bookmarklet. Click the checkmark once you've applied!
+          %p These are jobs you have yet to apply to but have saved. Click the checkmark once you've applied!
           .row
             .large-12.columns.saved-jobs-list
               = render partial: 'users/my_jobs/my_list'

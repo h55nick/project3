@@ -2,6 +2,7 @@
 
 #more_info{
   margin-top: 3px;
+  @media only screen and (min-width: 767px) { margin-top: 55px; }
   font-size: 1.3em;
   font-weight: bold;
   border: 2px solid #ddd;
@@ -21,9 +22,7 @@
   padding: 25px;
   .preparationlevel, .growthoutlook { padding: 20px 0 0 30px;  }
 }
-.border_filter{
-   border-bottom: 3px dotted #ddd;
-}
+
 .total-filter-dropdown{
   margin: 40px auto;
 }

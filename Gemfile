@@ -17,6 +17,7 @@ gem 'devise'
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'omniauth-linkedin-oauth2'
+gem 'activeadmin'
 
 group :assets do
   gem 'sass-rails'

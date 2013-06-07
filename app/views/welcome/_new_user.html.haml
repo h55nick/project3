@@ -2,10 +2,10 @@
   .survey-wrapper
     .survey-question
       .question{ class: 'intro' }
-        %h3= "Welcome to Project3, #{current_user.first}."
+        %h3= "Welcome to CareerCatch, #{current_user.first}."
         %span{ :'data-question-id' => '0' }
         %p It's nice to meet you.
-        %p <strong>Project3</strong> will help you find a perfect career fit. Before, we get started, why don't you let us know a bit about you:
+        %p <strong>CareerCatch</strong> will help you find a perfect career fit. Before, we get started, why don't you let us know a bit about you:
         = form_tag extra_path, class: 'custom', remote: true do
           .row
             .large-6.columns

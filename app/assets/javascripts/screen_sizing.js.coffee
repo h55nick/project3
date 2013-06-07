@@ -1,4 +1,8 @@
 window.resizer =
+  splash: ->
+    $('#new-splash-hero').height( $(window).height() - $('footer').height() )
+    $('#colorwheel').height( $(window).height())
+    $('#colorwheel').width( $(window).width())
   user_dashboard: ->
     nav_top = $('.nav-wrapper').height()
     row_top = $('.nav-wrapper').next().height()

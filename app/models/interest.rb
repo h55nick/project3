@@ -29,6 +29,9 @@ class Interest < ActiveRecord::Base
   has_one :user
   has_one :question
 
+  # SCOPES
+  scope :user_interests, where( 'user_id is NOT NULL' )
+
   def Interest.return_array_of_interests(object)
     [object.interest.realistic,
       object.interest.investigative,

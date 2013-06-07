@@ -1,5 +1,5 @@
 class JobsController < ApplicationController
-  before_filter :logged_in
+  before_filter :authenticate_user!
 
   def search_jobs
     Job.search(current_user,Career.find(params[:id]))

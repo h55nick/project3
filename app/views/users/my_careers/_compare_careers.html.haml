@@ -55,7 +55,7 @@
             .row.career-jobs-subpanel{ style: 'display: none;' }
               .large-10.columns.large-centered
                 %h3 Jobs in Your Area
-                %h5 Below you'll find just a few jobs related to this career. Use these jobs to research options in your area and then search for more using the Project3 Bookmarklet.
+                %h5 Below you'll find just a few jobs related to this career. Use these jobs to research options in your area and then search for more using the CareerCatch Bookmarklet.
                 .row{ style: 'margin: 20px 0;' }
                   .small-6.columns
                     %strong Post
@@ -63,5 +63,5 @@
                     %strong Company
                 = render partial: 'users/my_careers/job', locals: { career: career }
   - else
-    .large-12.columns{ style: 'margin: 100px 0 100px; text-align: center;'}
-      %h1 Select a career from above to learn more.
+    .large-12.columns{ style: 'margin: 75px 0 75px; text-align: center;'}
+      %h1{ style: 'opacity: 0.4;' } No careers have been selected yet!

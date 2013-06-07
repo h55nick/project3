@@ -21,16 +21,16 @@ $(function(){
 function result_show(){
       alert("BOOM");
 }*/
-$(function(){
-  $('#dbear').hide();
-  $('body').keypress(dancingbear);
+// $(function(){
+//   $('#dbear').hide();
+//   $('body').keypress(dancingbear);
 
-});
+// });
 
 
-function dancingbear(e){
-if(e.keyCode === 66){
-  $('#dbear').toggle('hide');
-  $('.hero').toggle('hide');
-}
-}
+// function dancingbear(e){
+// if(e.keyCode === 66){
+//   $('#dbear').toggle('hide');
+//   $('.hero').toggle('hide');
+// }
+// }

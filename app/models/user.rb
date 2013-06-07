@@ -38,7 +38,7 @@ class User < ActiveRecord::Base
   # :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable, :omniauthable,
          :recoverable, :rememberable, :trackable, :validatable,
-         :confirmable, :token_authenticatable
+         :token_authenticatable
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me
@@ -64,6 +64,7 @@ class User < ActiveRecord::Base
   ##########################################
 
   before_save :geocode
+  before_save :t3_save
 
   ##########################################
   # DEVISE
@@ -109,6 +110,13 @@ class User < ActiveRecord::Base
     if result.present?
       self.lat = result.latitude
       self.lon = result.longitude
+    end
+  end
+
+  def t3_save
+    if self.interest
+      self.interest.t3 = self.get_top_interests(3).map(&:capitalize).join(', ')
+      self.interest.save
     end
   end
 
