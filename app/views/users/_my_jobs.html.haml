@@ -3,7 +3,7 @@
     %h3 Use CareerCatch's Bookmarklet!
     %p Drag this button up onto your toolbar. When you're on a job page for one of our supported sites, simply click it and CareerCatch will save that job for you.
   .small-6.large-3.columns{ style: 'margin-top: 35px;'}
-    = link_to 'CareerCatch!', "javascript:(function(){location.href='http://localhost:3000/jobs/import?url='+encodeURIComponent(location.href)})();", class: 'button large'
+    = link_to 'CareerCatch!', "javascript:(function(){location.href='http://careercatch.herokuapp.com/jobs/import?url='+encodeURIComponent(location.href)})();", class: 'button large'
 
 .row
   .large-12.columns
